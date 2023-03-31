@@ -25,7 +25,7 @@ body {
     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 .div-logo {
-  right: 350px;
+  margin-right:100px ;
   width: auto;
   height: auto;
   display: flex;
@@ -38,7 +38,7 @@ body {
 .div-buscar input {
   padding-right: 25px;
   height: 25px;
-  width: 350px;
+  width: 35vw;
   border-radius: 2px;
   background-color: rgba(255, 254, 254, 0.671);
   transition: background-color 0.2s ease;
@@ -89,7 +89,7 @@ body {
   position: fixed;
   background-color: whitesmoke;
   height: 100vh;
-  width: 210px;
+  width: 20vw;
   border-right: solid 1px #b3b3b3;
 }
 
