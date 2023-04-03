@@ -1,4 +1,5 @@
 body {
+display:flex;
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -25,7 +26,7 @@ body {
     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 .div-logo {
-  right: 350px;
+  margin-right:100px ;
   width: auto;
   height: auto;
   display: flex;
@@ -38,7 +39,7 @@ body {
 .div-buscar input {
   padding-right: 25px;
   height: 25px;
-  width: 350px;
+  width: 35vw;
   border-radius: 2px;
   background-color: rgba(255, 254, 254, 0.671);
   transition: background-color 0.2s ease;
@@ -86,10 +87,10 @@ body {
   z-index: 9;
   padding-top: 69px;
   display: block;
-  position: fixed;
+  position: relative;
   background-color: whitesmoke;
   height: 100vh;
-  width: 210px;
+  width: 20vw;
   border-right: solid 1px #b3b3b3;
 }
 
@@ -167,11 +168,11 @@ body {
   align-items: flex-start;
   margin: 0;
   padding: 0;
-  left: 210px;
+  left: 0;
   right: 0;
   top: 65px;
-  height: calc(100vh - 65px);
-  width: calc(100vw - 211px);
+  height: 100vh;
+  width: 100vw;
 }
 .div-inicio-matepratica {
   display: flex;
@@ -253,9 +254,23 @@ body {
   align-items: flex-start;
   margin: 0;
   padding: 0;
-  left: 210px;
+  left: 0;
   right: 0;
   top: 65px;
-  height: calc(100vh - 65px);
-  width: calc(100vw - 211px);
+  height: 100vh;
+  width: 100vw;
+}
+.conteudo-calculadora{
+  z-index: 8;
+  position: relative;
+  display: none;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+  top: 65px;
+  height: 100vh;
+  width: 100vw; 
 }
