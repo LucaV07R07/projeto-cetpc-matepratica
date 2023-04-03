@@ -117,9 +117,6 @@ display:flex;
 .div-sidebar-materiais a:hover {
   background-color: white;
 }
-.div-sidebar-materiais a:focus {
-  background-color: #ebe7f8;
-}
 .div-sidebar-inicio {
   display: flex;
   justify-content: center;
@@ -139,9 +136,6 @@ display:flex;
 .div-sidebar-inicio a:hover {
   background-color: white;
 }
-.div-sidebar-inicio a:focus {
-  background-color: #ebe7f8;
-}
 .div-sidebar-calc {
   display: flex;
   justify-content: center;
@@ -160,9 +154,6 @@ display:flex;
 }
 .div-sidebar-calc a:hover {
   background-color: white;
-}
-.div-sidebar-calc a:focus {
-  background-color: #ebe7f8;
 }
 .conteudo-inicial {
   z-index: 8;
