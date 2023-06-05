@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
   display: flex;
+=======
+display:flex;
+>>>>>>> 70b0704fce28b1b143e65ea5367f6318e3c2d446
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -188,7 +192,11 @@ body {
   align-items: flex-start;
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   left: 0px;
+=======
+  left: 0;
+>>>>>>> 70b0704fce28b1b143e65ea5367f6318e3c2d446
   right: 0;
   top: 65px;
   height: 100vh;
@@ -280,7 +288,11 @@ body {
   height: 100vh;
   width: 100vw;
 }
+<<<<<<< HEAD
 .conteudo-calcgraf {
+=======
+.conteudo-calculadora{
+>>>>>>> 70b0704fce28b1b143e65ea5367f6318e3c2d446
   z-index: 8;
   position: relative;
   display: none;
@@ -292,5 +304,9 @@ body {
   right: 0;
   top: 65px;
   height: 100vh;
+<<<<<<< HEAD
   width: 100vw;
+=======
+  width: 100vw; 
+>>>>>>> 70b0704fce28b1b143e65ea5367f6318e3c2d446
 }
