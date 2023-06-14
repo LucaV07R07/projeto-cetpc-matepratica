@@ -16,25 +16,40 @@
   </head>
   <body>
     <nav class="navbar">
-      <div class="div-logo">LOGOS</div>
-      <div class="div-navbar">
-        <div class="div-buscar">
-          <input type="text" id="txtbusca" placeholder="buscar..." />
-          <div class="div-lupa">
-            <svg
-              class="lupa"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.707,16.293l-3.853-3.853C13.348,11.68,14,10.401,14,9c0-3.309-2.691-6-6-6S2,5.691,2,9s2.691,6,6,6c1.401,0,2.68-0.652,3.54-1.707l3.853,3.853c0.187,0.187,0.442,0.293,0.707,0.293s0.52-0.106,0.707-0.293C18.293,18.027,18.293,16.707,17.707,16.293z M4,9c0-2.206,1.794-4,4-4s4,1.794,4,4s-1.794,4-4,4S4,11.206,4,9z"
-              />
-            </svg>
+      <div class="div-menu-sidebar">
+        <a id="estado-sidebar">
+          <svg
+            class="icon o-0_54"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="div-logo-input">
+        <div class="div-logo">LOGOS</div>
+        <div class="div-navbar">
+          <div class="div-buscar">
+            <input type="text" id="txtbusca" placeholder="buscar..." />
+            <div class="div-lupa">
+              <svg
+                class="lupa"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.707,16.293l-3.853-3.853C13.348,11.68,14,10.401,14,9c0-3.309-2.691-6-6-6S2,5.691,2,9s2.691,6,6,6c1.401,0,2.68-0.652,3.54-1.707l3.853,3.853c0.187,0.187,0.442,0.293,0.707,0.293s0.52-0.106,0.707-0.293C18.293,18.027,18.293,16.707,17.707,16.293z M4,9c0-2.206,1.794-4,4-4s4,1.794,4,4s-1.794,4-4,4S4,11.206,4,9z"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
     </nav>
-    <div class="sidebar">
+    <div id="side-bar" class="sidebar">
       <div class="div-sidebar-inicio">
         <a href="#conteudo-inicio" id="link-inicio">Início</a>
       </div>
