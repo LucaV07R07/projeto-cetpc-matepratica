@@ -5,8 +5,7 @@ const linkCalculadora = document.getElementById("link-calc");
 const linkCalculadora2 = document.getElementById("link-calc2");
 const conteudoInicio = document.getElementById("conteudo-inicio");
 const conteudoMaterialDidatico = document.getElementById(
-  "conteudo-material-didatico"
-);
+  "conteudo-material-didatico");
 const conteudoCalculadora = document.getElementById("calcgraf");
 
 linkInicio.addEventListener("click", function (event) {
@@ -32,7 +31,7 @@ linkCalculadora.addEventListener("click", function (event) {
   event.preventDefault();
   conteudoInicio.style.display = "none";
   conteudoMaterialDidatico.style.display = "none";
-  conteudoCalculadora.style.display = "block";
+  conteudoCalculadora.style.display = "flex";
 });
 linkCalculadora2.addEventListener("click", function (event) {
   event.preventDefault();
@@ -50,17 +49,5 @@ estadoSidebar.addEventListener("click", function (event) {
   } else {
     sidebar.style.display = "block";
   }
-});
-linkCalc.addEventListener("click", function (event) {
-  event.preventDefault();
-  conteudoInicio.style.display = "none";
-  conteudoMaterialDidatico.style.display = "none";
-  conteudoCalcgraf.style.display = "block";
-});
-linkCalc2.addEventListener("click", function (event) {
-  event.preventDefault();
-  conteudoInicio.style.display = "none";
-  conteudoMaterialDidatico.style.display = "none";
-  conteudoCalcgraf.style.display = "block";
 });
 
