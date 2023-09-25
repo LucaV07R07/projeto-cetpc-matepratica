@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funções Quadráticas - História, Conceitos e Gráficos</title>
+    <style>
+         body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .explanation {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .explanation h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .explanation p {
+                margin-bottom: 10px;
+            }
+            .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            canvas{
+                max-width: 500px ;
+                max-height: 500px ;
+            }
+            canvas.axis-lines {
+            position: relative;
+            z-index: 1;
+        }
+
+        canvas.axis-lines::before {
+            content: '';
+            position: relative;
+            background-color: black;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            transform: translateY(-50%);
+        }
+
+        canvas.axis-lines::after {
+            content: '';
+            position: relative;
+            background-color: black;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+    <!-- Adicionando a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+    <div class="explanation">
+        <h2>História do Estudo das Funções Quadráticas</h2>
+        <p>
+            Antes de nos aprofundarmos nas funções quadráticas, vamos fazer uma breve viagem no tempo. O estudo das funções quadráticas tem raízes profundas na matemática antiga, mas o formalismo moderno dessas funções começou a se desenvolver durante o Renascimento. Matemáticos como René Descartes contribuíram para a geometria analítica, permitindo a representação algébrica de curvas, incluindo parábolas.
+        </p>
+        <p>
+            A progressão do estudo das funções quadráticas é fascinante. Ao longo dos séculos, matemáticos e cientistas refinaram a compreensão dessas funções, aprimorando a maneira como as utilizamos para modelar situações do mundo real. Hoje, as funções quadráticas são uma ferramenta poderosa para descrever uma variedade de fenômenos, desde o movimento de projéteis até o crescimento de populações.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Desvendando Funções Quadráticas</h2>
+        <p>
+            Imagine que estamos observando um jogador de basquete arremessando a bola em diferentes ângulos. Funções quadráticas são como esses arremessos, combinando números de uma maneira especial. Elas refletem uma relação quadrática entre duas variáveis, mostrando como a altura da bola muda com o tempo. Essa mudança é representada por uma parábola quando plotada em um gráfico.
+        </p>
+        <p>
+            Para uma função quadrática, a taxa de mudança não é constante, mas é influenciada pelo termo quadrático, o que a torna particularmente interessante de entender e trabalhar. É como se estivéssemos observando a trajetória da bola de basquete, que pode variar de acordo com a força e o ângulo do arremesso. Isso oferece uma visão valiosa em muitas situações do mundo real, permitindo-nos prever a altura da bola em diferentes momentos após o arremesso.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Entendendo a Função Quadrática</h2>
+        <p>
+            Uma função quadrática é um tipo fundamental de função matemática que modela a trajetória de uma bola de basquete após um arremesso. Sua forma geral é expressa como \( f(x) = ax^2 + bx + c \), onde:
+            <ul>
+                <li>\( a \) é o coeficiente quadrático, que afeta a curvatura da trajetória.</li>
+                <li>\( b \) é o coeficiente linear, que influencia a inclinação da trajetória.</li>
+                <li>\( c \) é a constante, a altura inicial da bola no início do arremesso.</li>
+            </ul>
+        </p>
+        <p>
+            O coeficiente quadrático \( a \) é crucial, pois determina a forma da trajetória da bola de basquete. Quando \( a > 0 \), a trajetória é uma parábola que se abre para cima, refletindo um arremesso para cima. Quando \( a < 0 \), a trajetória se abre para baixo, representando um arremesso para baixo.
+        </p>
+        <p>
+            O coeficiente linear \( b \) afeta a inclinação da trajetória. Ele desloca a parábola para a esquerda ou para a direita, indicando como a força do arremesso influencia a trajetória.
+        </p>
+        <p>
+            O intercepto \( c \) é a altura inicial da bola de basquete no início do arremesso. Graficamente, é onde a trajetória cruza o eixo vertical, representando a altura inicial do arremesso.
+        </p>
+        <div class="math-example">
+            Exemplo de função quadrática: \( f(x) = -4.9x^2 + 10x + 2 \)
+        </div>
+        <p>
+            As funções quadráticas são uma ferramenta poderosa para descrever a trajetória de uma bola de basquete após um arremesso. Elas nos permitem entender como a altura da bola muda em resposta ao tempo, levando em consideração a força e o ângulo do arremesso. Isso é crucial para os jogadores de basquete, pois lhes permite ajustar suas jogadas para alcançar o melhor arremesso possível.
+        </p>
+        <div class="example">
+            <h3>Exemplo de Resolução</h3>
+            Vamos determinar a altura da bola de basquete \( f(x) \) após \( x = 2 \) segundos do arremesso, usando a função quadrática \( f(x) = -4.9x^2 + 10x + 2 \):
+            <ol>
+                <li>Substitua \( x \) pelo valor dado: \( f(2) = -4.9 \times 2^2 + 10 \times 2 + 2 = 2.4 \) metros.</li>
+                <li>Portanto, após \( x = 2 \) segundos do arremesso, a altura da bola de basquete é de \( 2.4 \) metros.</li>
+            </ol>
+        </div>
+    </div>
+    <div class="explanation">
+    <h2>Pontos Notáveis de uma Parábola</h2>
+
+    <h3>Interseção com os Eixos (0x e 0y)</h3>
+    <p>
+        A interseção da parábola com o eixo x ocorre quando \(y = 0\), e a interseção com o eixo y ocorre quando \(x = 0\). 
+        Esses pontos são chamados de raízes ou zeros da função quadrática e são encontrados resolvendo a equação quadrática \(ax^2 + bx + c = 0\).
+        As coordenadas desses pontos são \((x_1, 0)\) e \((0, y_1)\) respectivamente, onde \(x_1\) e \(y_1\) são as raízes da equação.
+        <strong>Propriedades das Raízes:</strong>
+        <ul>
+            <li>Se o discriminante (\(\Delta = b^2 - 4ac\)) for maior que zero (\(\Delta > 0\)), a equação quadrática tem duas raízes reais e distintas.</li>
+            <li>Se o discriminante for igual a zero (\(\Delta = 0\)), a equação quadrática tem uma raiz real, resultando em uma interseção da parábola com o eixo x.</li>
+            <li>Se o discriminante for menor que zero (\(\Delta < 0\)), a equação quadrática não tem raízes reais, e a parábola não intersecta o eixo x.</li>
+        </ul>
+    </p>
+
+    <h3>Vértice</h3>
+    <p>
+        O vértice é o ponto de máximo ou mínimo de uma parábola, dependendo da direção de abertura.
+        Para uma parábola na forma \(y = ax^2 + bx + c\), a fórmula para as coordenadas do vértice é:
+    </p>
+    <p class="formula">
+        \(V\left(-\frac{b}{2a}, \frac{4ac - b^2}{4a}\right)\)
+    </p>
+    <p>
+        A fórmula é derivada da conclusão de que o vértice ocorre no eixo de simetria da parábola,
+        onde \(x = -\frac{b}{2a}\), e então substituindo \(x\) na equação da parábola para encontrar \(y\).
+    </p>
+
+    <h3>Propriedades</h3>
+    <p>
+        O vértice da parábola é o ponto de simetria. A parábola é simétrica em relação ao eixo vertical que passa pelo vértice, conhecido como eixo de simetria.
+        Se a parábola se abre para cima, o vértice representa o ponto mais baixo (mínimo) da parábola, e se a parábola se abre para baixo, o vértice representa o ponto mais alto (máximo).
+    </p>
+
+    <!-- Demonstração das Propriedades -->
+    <h3>Demonstração das Propriedades</h3>
+    <p>
+        Para a demonstração das propriedades, considere uma parábola na forma \(y = ax^2 + bx + c\).
+
+        <strong>Interseção com o Eixo x:</strong>
+        Para encontrar as raízes da parábola (\(y = 0\)), resolvemos \(ax^2 + bx + c = 0\) usando a fórmula quadrática.
+
+        <strong>Vértice:</strong>
+        O vértice ocorre onde a derivada de \(y\) em relação a \(x\) é zero, indicando o ponto de inflexão. Isso leva à fórmula do vértice mencionada anteriormente.
+
+        <strong>Propriedades do Vértice:</strong>
+        A simetria da parábola em torno do eixo vertical que passa pelo vértice é evidente pela forma da equação da parábola, e a natureza do vértice como ponto mínimo ou máximo depende do sinal de \(a\).
+    </p>
+</div>
+    <div class="explanation">
+        <h2>Gráfico de uma Função Quadrática</h2>
+    <p>
+        Vamos aprofundar nossa compreensão do gráfico de uma função quadrática \( f(x) = ax^2 + bx + c \). Nesta equação, a variável 'x' representa a posição na horizontal, enquanto 'f(x)' representa a posição vertical correspondente na curva, ou seja, o valor da função para uma determinada entrada 'x'. Vamos analisar o papel crucial dos coeficientes 'a', 'b' e 'c' nessa equação e como o expoente 2 afeta o formato do gráfico.
+    </p>
+
+    <h3>Função de Cada Coeficiente:</h3>
+    <ul>
+        <li>
+            <strong>Coeficiente \( a \):</strong> O coeficiente 'a' determina a concavidade da parábola. Se \( a > 0 \), a parábola é orientada para cima, abrindo para cima como uma 'U' invertida. Se \( a < 0 \), a parábola é orientada para baixo, abrindo para baixo. Quanto maior o valor absoluto de \( a \), mais íngreme será a curva.
+        </li>
+        <li>
+            <strong>Coeficiente \( b \):</strong> O coeficiente 'b' afeta a inclinação e a posição da parábola no eixo horizontal. Ele move a parábola para a esquerda ou para a direita. Se \( b > 0 \), a parábola se move para a esquerda; se \( b < 0 \), a parábola se move para a direita.
+        </li>
+        <li>
+            <strong>Coeficiente \( c \):</strong> O coeficiente 'c' é o termo constante que determina o deslocamento vertical da parábola. Se \( c > 0 \), a parábola se move para cima; se \( c < 0 \), a parábola se move para baixo.
+        </li>
+    </ul>
+
+    <h3>Expoente \(2\) e a Lei da Função:</h3>
+    <p>
+        A função quadrática \( f(x) = ax^2 + bx + c \) descreve um tipo específico de função polinomial de segundo grau, onde \( a \), \( b \) e \( c \) são coeficientes reais. O termo \( ax^2 \) é o componente quadrático que confere à função sua forma parabólica distintiva. O coeficiente \( a \) determina a concavidade da parábola - se \( a > 0 \), a parábola se abre para cima, e se \( a < 0 \), a parábola se abre para baixo.
+    </p>
+
+    <label for="aInput">Coeficiente a:</label>
+    <input type="number" id="aInput" step="0.1" value="1" onchange="updateGraph()"><br>
+
+    <label for="bInput">Coeficiente b:</label>
+    <input type="number" id="bInput" step="0.1" value="-1" onchange="updateGraph()"><br>
+
+    <label for="cInput">Coeficiente c:</label>
+    <input type="number" id="cInput" step="0.1" value="-2" onchange="updateGraph()"><br>
+
+    <canvas id="quadraticGraph"></canvas>
+
+    <script>
+        let chart;
+
+        function updateGraph() {
+            const a = parseFloat(document.getElementById('aInput').value);
+            const b = parseFloat(document.getElementById('bInput').value);
+            const c = parseFloat(document.getElementById('cInput').value);
+
+            const labels = [];
+            const data = [];
+            for (let i = -10; i <= 10; i += 0.1) {
+                labels.push(i);
+                data.push(a * Math.pow(i, 2) + b * i + c);
+            }
+
+            if (chart) {
+                chart.destroy(); // Destruir o gráfico anterior antes de criar um novo
+            }
+
+            const canvas = document.getElementById('quadraticGraph').getContext('2d');
+            chart = new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `f(x) = ${a}x^2 + ${b}x + ${c}`,
+                        data: data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'x'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'f(x)'
+                            },
+                            min: -15,
+                            max: 15
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chame updateGraph para gerar o gráfico inicial
+        updateGraph();
+    </script>
+</div>
+    </div>
+    <div class="questions">
+        <h2>Quiz sobre Funções Quadráticas</h2>
+        <ol>
+            <!-- Questão 1 -->
+            <li>
+                <p>Qual é a fórmula geral de uma função quadrática?</p>
+                <label for="q1a1"><input type="radio" name="q1" id="q1a1" value="f(x) = ax^2 + bx + c"> \( f(x) = ax^2 + bx + c \)</label><br>
+                <label for="q1a2"><input type="radio" name="q1" id="q1a2" value="f(x) = mx + b"> \( f(x) = mx + b \)</label><br>
+                <label for="q1a3"><input type="radio" name="q1" id="q1a3" value="f(x) = x^2"> \( f(x) = x^2 \)</label><br>
+                <label for="q1a4"><input type="radio" name="q1" id="q1a4" value="f(x) = 1/x"> \( f(x) = \frac{1}{x} \)</label><br>
+            </li>
+    
+            <!-- Questão 2 -->
+            <li>
+                <p>Seja a função quadrática \( f(x) = -2x^2 + 4x - 1 \). Qual é o valor de \( f(3) \)?</p>
+                <label for="q2a1"><input type="radio" name="q2" id="q2a1" value="f(3) = -15"> \( f(3) = -15 \)</label><br>
+                <label for="q2a2"><input type="radio" name="q2" id="q2a2" value="f(3) = 9"> \( f(3) = 9 \)</label><br>
+                <label for="q2a3"><input type="radio" name="q2" id="q2a3" value="f(3) = -7"> \( f(3) = -7 \)</label><br>
+                <label for="q2a4"><input type="radio" name="q2" id="q2a4" value="f(3) = -6"> \( f(3) = -6 \)</label><br>
+            </li>
+    
+            <!-- Questão 3 -->
+            <li>
+                <p>Qual é o coeficiente quadrático da função quadrática \( f(x) = 0.5x^2 - 3x + 2 \)?</p>
+                <label for="q3a1"><input type="radio" name="q3" id="q3a1" value="0.5"> 0.5</label><br>
+                <label for="q3a2"><input type="radio" name="q3" id="q3a2" value="-3"> -3</label><br>
+                <label for="q3a3"><input type="radio" name="q3" id="q3a3" value="2"> 2</label><br>
+                <label for="q3a4"><input type="radio" name="q3" id="q3a4" value="0"> 0</label><br>
+            </li>
+    
+            <!-- Questão 4 -->
+            <li>
+                <p>Seja a função quadrática \( f(x) = -x^2 + 4x - 5 \). Qual é o valor de \( x \) quando \( f(x) = 0 \)?</p>
+                <label for="q4a1"><input type="radio" name="q4" id="q4a1" value="x = 1"> \( x = 1 \)</label><br>
+                <label for="q4a2"><input type="radio" name="q4" id="q4a2" value="x = -1"> \( x = -1 \)</label><br>
+                <label for="q4a3"><input type="radio" name="q4" id="q4a3" value="x = -5"> \( x = -5 \)</label><br>
+                <label for="q4a4"><input type="radio" name="q4" id="q4a4" value="x = 0"> \( x = 0 \)</label><br>
+            </li>
+    
+            <!-- Questão 5 -->
+            <li>
+                <p>Se \( f(x) = 2x^2 + 3x + 1 \), qual é o coeficiente linear?</p>
+                <label for="q5a1"><input type="radio" name="q5" id="q5a1" value="3"> 3</label><br>
+                <label for="q5a2"><input type="radio" name="q5" id="q5a2" value="2"> 2</label><br>
+                <label for="q5a3"><input type="radio" name="q5" id="q5a3" value="1"> 1</label><br>
+                <label for="q5a4"><input type="radio" name="q5" id="q5a4" value="0"> 0</label><br>
+            </li>
+    
+            <!-- Questão 6 -->
+            <li>
+                <p>Seja \( f(x) = -0.25x^2 + 2x - 3 \). Qual é o vértice da parábola?</p>
+                <label for="q6a1"><input type="radio" name="q6" id="q6a1" value="Vértice: (4, -7)"> Vértice: (4, -7)</label><br>
+                <label for="q6a2"><input type="radio" name="q6" id="q6a2" value="Vértice: (-4, 7)"> Vértice: (-4, 7)</label><br>
+                <label for="q6a3"><input type="radio" name="q6" id="q6a3" value="Vértice: (-2, 1)"> Vértice: (-2, 1)</label><br>
+                <label for="q6a4"><input type="radio" name="q6" id="q6a4" value="Vértice: (4, 1)"> Vértice: (4, 1)</label><br>
+            </li>
+    
+            <!-- Questão 7 -->
+            <li>
+                <p>Seja \( f(x) = x^2 - 6x + 9 \). Qual é o valor de \( f(3) \)?</p>
+                <label for="q7a1"><input type="radio" name="q7" id="q7a1" value="f(3) = 9"> \( f(3) = 9 \)</label><br>
+                <label for="q7a2"><input type="radio" name="q7" id="q7a2" value="f(3) = -6"> \( f(3) = -6 \)</label><br>
+                <label for="q7a3"><input type="radio" name="q7" id="q7a3" value="f(3) = 0"> \( f(3) = 0 \)</label><br>
+                <label for="q7a4"><input type="radio" name="q7" id="q7a4" value="f(3) = 3"> \( f(3) = 3 \)</label><br>
+            </li>
+    
+            <!-- Questão 8 -->
+            <li>
+                <p>Seja \( f(x) = 0.3x^2 - 2x + 1 \). Qual é o coeficiente quadrático?</p>
+                <label for="q8a1"><input type="radio" name="q8" id="q8a1" value="0.3"> 0.3</label><br>
+                <label for="q8a2"><input type="radio" name="q8" id="q8a2" value="-2"> -2</label><br>
+                <label for="q8a3"><input type="radio" name="q8" id="q8a3" value="1"> 1</label><br>
+                <label for="q8a4"><input type="radio" name="q8" id="q8a4" value="0"> 0</label><br>
+            </li>
+    
+            <!-- Questão 9 -->
+            <li>
+                <p>Seja \( f(x) = -x^2 + 4x \). Qual é o intercepto no eixo y?</p>
+                <label for="q9a1"><input type="radio" name="q9" id="q9a1" value="0"> 0</label><br>
+                <label for="q9a2"><input type="radio" name="q9" id="q9a2" value="4"> 4</label><br>
+                <label for="q9a3"><input type="radio" name="q9" id="q9a3" value="-4"> -4</label><br>
+                <label for="q9a4"><input type="radio" name="q9" id="q9a4" value="1"> 1</label><br>
+            </li>
+    
+            <!-- Questão 10 -->
+            <li>
+                <p>Seja \( f(x) = 2x^2 - 5x + 3 \). Qual é o valor de \( f(2) \)?</p>
+                <label for="q10a1"><input type="radio" name="q10" id="q10a1" value="f(2) = 5"> \( f(2) = 5 \)</label><br>
+                <label for="q10a2"><input type="radio" name="q10" id="q10a2" value="f(2) = 1"> \( f(2) = 1 \)</label><br>
+                <label for="q10a3"><input type="radio" name="q10" id="q10a3" value="f(2) = 7"> \( f(2) = 7 \)</label><br>
+                <label for="q10a4"><input type="radio" name="q10" id="q10a4" value="f(2) = 3"> \( f(2) = 3 \)</label><br>
+            </li>
+        </ol>
+            <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
+        </div>
+        <script>
+            function corrigirExercicios() {
+                const respostasCorretas = ["f(x) = ax^2 + bx + c",
+                "f(3) = -7",
+                "0.5",
+                "x = -5",
+                "3",
+                "Vértice: (4, 1)",
+                "f(3) = 0",
+                "0.3",
+                "0",
+                "f(2) = 1"];         
+    
+                 let acertos = 0;
+        let erros = 0;
+    
+        for (let i = 0; i < respostasCorretas.length; i++) {
+            const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+    
+            if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+                acertos++;
+            } else {
+                erros++;
+            }
+        }
+    
+        const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+        let corBarra = "";
+        if (indiceAcertos >= 70) {
+            corBarra = "green"; // Verde para bom desempenho
+        } else if (indiceAcertos >= 40) {
+            corBarra = "yellow"; // Amarelo para desempenho médio
+        } else {
+            corBarra = "red"; // Vermelho para baixo desempenho
+        }
+    
+        const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+        const progressBarWidth = `${indiceAcertos}%`;
+    
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+                <div class="message">${mensagem}</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        setTimeout(() => {
+            modal.style.display = 'block';
+        }, 100);
+    }
+    function fecharModal() {
+                const modal = document.querySelector(".modal");
+                modal.style.display = "none";
+                modal.remove();
+            }
+        </script> 
+</body>
+</html>
