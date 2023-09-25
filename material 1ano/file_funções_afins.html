@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funções Afins - História, Conceitos e Gráficos</title>
+    <style>
+         body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .explanation {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .explanation h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .explanation p {
+                margin-bottom: 10px;
+            }
+            .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            canvas{
+                max-width: 500px ;
+                max-height: 500px ;
+            }
+            canvas.axis-lines {
+            position: relative;
+            z-index: 1;
+        }
+
+        canvas.axis-lines::before {
+            content: '';
+            position: relative;
+            background-color: black;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            transform: translateY(-50%);
+        }
+
+        canvas.axis-lines::after {
+            content: '';
+            position: relative;
+            background-color: black;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+    <!-- Adicionando a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+    <div class="explanation">
+        <h2>História do Estudo das Funções Afins</h2>
+        <p>
+            Antes de nos aprofundarmos nas funções afins, vamos fazer uma breve viagem no tempo. O estudo das funções afins remonta à antiguidade, quando matemáticos gregos como Euclides começaram a explorar relações proporcionais entre grandezas. Posteriormente, no século XVII, os matemáticos começaram a formalizar essas relações lineares, levando ao desenvolvimento da álgebra linear e das funções afins. A álgebra linear tornou-se uma ferramenta poderosa para resolver problemas do mundo real e modelar fenômenos variados.
+        </p>
+        <p>
+            A progressão do estudo das funções afins é fascinante. Ao longo dos séculos, matemáticos e cientistas refinaram a compreensão dessas funções, aprimorando a maneira como as utilizamos para modelar situações reais. Hoje, as funções afins são uma pedra angular da matemática e têm aplicações amplas em diversas áreas, desde economia até física.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Desvendando Funções Afins</h2>
+        <p>
+            Imagine que estamos observando um artista misturando cores para criar diferentes tons. Funções afins são como essa mistura, combinando números de uma maneira especial. Elas refletem uma relação linear entre duas variáveis, mostrando como uma quantidade muda em resposta à outra. Essa mudança é representada por uma reta quando plotada em um gráfico.
+        </p>
+        <p>
+            Para uma função afim, a taxa de mudança é constante, o que a torna particularmente fácil de entender e trabalhar. É como se estivéssemos sempre misturando as cores nas mesmas proporções. Isso oferece uma visão valiosa em muitas situações do mundo real, permitindo-nos prever resultados com base em mudanças específicas nas variáveis envolvidas.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Entendendo a Função Afim</h2>
+        <p>
+            Uma função afim é um tipo fundamental de função matemática que modela uma relação linear entre duas variáveis. Sua forma geral é expressa como \( f(x) = mx + b \), onde:
+            <ul>
+                <li>\( m \) é a inclinação da reta, que representa a taxa de variação da função.</li>
+                <li>\( b \) é o intercepto no eixo vertical, indicando o valor que \( f(x) \) assume quando \( x \) é zero.</li>
+            </ul>
+        </p>
+        <p>
+            A inclinação \( m \) reflete o quanto \( f(x) \) se altera para uma unidade de mudança em \( x \). Quando \( m > 0 \), a função está aumentando à medida que \( x \) aumenta. Quando \( m < 0 \), a função está diminuindo. Se \( m = 0 \), a função é uma linha horizontal.
+        </p>
+        <p>
+            O intercepto \( b \) é o valor inicial da função, ou seja, o valor de \( f(x) \) quando \( x = 0 \). Graficamente, é onde a função cruza o eixo vertical.
+        </p>
+        <div class="math-example">
+            Exemplo de função afim: \( f(x) = 2x + 3 \)
+        </div>
+        <p>
+            As funções afins são uma ferramenta poderosa para descrever uma variedade de situações do mundo real. Elas nos permitem entender como uma quantidade muda em resposta a mudanças em outra quantidade. Por exemplo, em um negócio, a receita pode ser modelada por uma função afim, onde a inclinação representa o preço de venda por unidade e o intercepto representa os custos fixos.
+        </p>
+        <div class="example">
+            <h3>Exemplo de Resolução</h3>
+            Vamos resolver a função afim \( f(x) = 3x + 1 \) para \( x = 2 \):
+            <ol>
+                <li>Substitua \( x \) pelo valor dado: \( f(2) = 3 \times 2 + 1 = 7 \).</li>
+                <li>Portanto, quando \( x = 2 \), \( f(x) = 7 \).</li>
+            </ol>
+            Ou seja, \( f(2) = 7 \).
+        </div>
+    </div>
+    <div class="explanation">
+        <h2>Visualizando Gráficos de Funções Afins</h2>
+        <p>
+            Imagine traçar o caminho de uma subida de montanha. Gráficos de funções afins são como essas trilhas, linhas retas que revelam o relacionamento entre variáveis. A inclinação 'm' determina o ângulo da subida, enquanto o termo independente 'b' indica o ponto onde a linha cruza o eixo vertical. Um gráfico claro pode oferecer insights imediatos sobre a natureza da função e sua relação com as variáveis envolvidas.
+        </p>
+        <p>
+            Ao interpretar gráficos de funções afins, podemos entender a influência de 'm' e 'b' no comportamento da função. Um 'm' maior significa uma inclinação mais acentuada, indicando uma maior taxa de variação. O valor de 'b' determina a posição inicial da função, onde ela cruza o eixo vertical. Essa visualização é fundamental para a análise e interpretação de problemas do mundo real.
+        </p>
+        <p>
+            Vamos visualizar a função afim \(f(x) = -1.5x + 5\). Veja o gráfico correspondente abaixo:
+        </p>
+        <canvas id="grafico4" class="axis-lines"></canvas>
+
+        <script>
+            const canvas4 = document.getElementById('grafico4').getContext('2d');
+            const labels4 = [];
+            const data4 = {
+                labels: labels4,
+                datasets: [{
+                    label: 'Função Afim',
+                    data: [],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            };
+            const config4 = {
+                type: 'line',
+                data: data4,
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            ticks: {
+                                color: 'gray' // Cor mais escura para os ticks do eixo x
+                            },
+                            grid: {
+                                color: 'gray' // Cor mais escura para as linhas do grid do eixo x
+                            }
+                        },
+                        y: {
+                            min: -10,
+                            max: 10,
+                            type: 'linear',
+                            position: 'left',
+                            ticks: {
+                                color: 'rgba(0, 0, 0, 1)' // Cor mais escura para os ticks do eixo y
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 1)' // Cor mais escura para as linhas do grid do eixo y
+                            }
+                        }
+                    }
+                }
+            };
+            const chart4 = new Chart(canvas4, config4);
+
+            // Adicionando dados à função afim
+            for (let i = -10; i <= 10; i++) {
+                labels4.push(i);
+                data4.datasets[0].data.push(-1.5 * i + 5);
+            }
+
+            chart4.update();
+        </script>
+    </div>
+
+    </div>
+    <div class="explanation">
+        <h2>Integrando Inequações e Funções Afins</h2>
+        <p>
+            Agora, vamos acrescentar uma camada extra. Inequações, como portas se abrindo e fechando, complementam as funções afins. Elas estabelecem limites e intervalos no eixo x, permitindo-nos explorar as regiões em que a função afim é verdadeira. As inequações fornecem uma forma de representar uma gama de soluções possíveis, fornecendo uma visão abrangente do comportamento da função.
+        </p>
+        <p>
+            A integração das inequações nas funções afins nos ajuda a compreender não apenas os pontos específicos em que a função é válida, mas também os intervalos em que ela cresce ou decresce. Isso é vital para diversas aplicações, incluindo otimização de processos e tomada de decisões em diversas áreas.
+        </p>
+        <div class="math-example">
+            Vamos considerar a seguinte inequação: \( f(x) \leq 2x + 5 \).
+        </div>
+        <div class="math-example">
+            Passo 1: Substitua \( f(x) \) pela expressão da função afim: \( 2x \leq 2x + 5 \).
+        </div>
+        <div class="math-example">
+            Passo 2: Isolando \( x \), temos \( 0 \leq 5 \). Isso é sempre verdadeiro para qualquer valor de \( x \).
+        </div>
+        <div class="math-example">
+            Portanto, a solução para a inequação \( f(x) \leq 2x + 5 \) é \( x \in \mathbb{R} \) (todos os números reais).
+        </div>
+        <div class="questions">
+            <h2>Quiz sobre Funções Afins</h2>
+            <ol>
+                <!-- Questão 1 -->
+                <li>
+                    <p>Qual é a fórmula geral de uma função afim?</p>
+                    <label for="q1a1"><input type="radio" name="q1" id="q1a1" value="f(x) = mx + b"> \( f(x) = mx + b \)</label><br>
+                    <label for="q1a2"><input type="radio" name="q1" id="q1a2" value="f(x) = ax^2 + bx + c"> \( f(x) = ax^2 + bx + c \)</label><br>
+                    <label for="q1a3"><input type="radio" name="q1" id="q1a3" value="f(x) = x^2"> \( f(x) = x^2 \)</label><br>
+                    <label for="q1a4"><input type="radio" name="q1" id="q1a4" value="f(x) = 1/x"> \( f(x) = \frac{1}{x} \)</label><br>
+                </li>
+        
+                <!-- Questão 2 -->
+                <li>
+                    <p>Seja a função afim \( f(x) = 3x + 5 \). Qual é o valor de \( f(2) \)?</p>
+                    <label for="q2a1"><input type="radio" name="q2" id="q2a1" value="11"> 11</label><br>
+                    <label for="q2a2"><input type="radio" name="q2" id="q2a2" value="9"> 9</label><br>
+                    <label for="q2a3"><input type="radio" name="q2" id="q2a3" value="7"> 7</label><br>
+                    <label for="q2a4"><input type="radio" name="q2" id="q2a4" value="10"> 10</label><br>
+                </li>
+        
+                <!-- Questão 3 -->
+                <li>
+                    <p>Qual é a inclinação de uma função afim \( f(x) = -2x + 4 \)?</p>
+                    <label for="q3a1"><input type="radio" name="q3" id="q3a1" value="2"> 2</label><br>
+                    <label for="q3a2"><input type="radio" name="q3" id="q3a2" value="4"> 4</label><br>
+                    <label for="q3a3"><input type="radio" name="q3" id="q3a3" value="-2"> -2</label><br>
+                    <label for="q3a4"><input type="radio" name="q3" id="q3a4" value="1"> 1</label><br>
+                </li>
+        
+                <!-- Questão 4 -->
+                <li>
+                    <p>Seja a função afim \( f(x) = 0.5x - 3 \). Qual é o valor de \( x \) quando \( f(x) = 0 \)?</p>
+                    <label for="q4a1"><input type="radio" name="q4" id="q4a1" value="6"> 6</label><br>
+                    <label for="q4a2"><input type="radio" name="q4" id="q4a2" value="3"> 3</label><br>
+                    <label for="q4a3"><input type="radio" name="q4" id="q4a3" value="-6"> -6</label><br>
+                    <label for="q4a4"><input type="radio" name="q4" id="q4a4" value="-3"> -3</label><br>
+                </li>
+        
+                <!-- Questão 5 -->
+                <li>
+                    <p>Se \( f(x) = 4x + 7 \), qual é o intercepto no eixo y?</p>
+                    <label for="q5a1"><input type="radio" name="q5" id="q5a1" value="4"> 4</label><br>
+                    <label for="q5a2"><input type="radio" name="q5" id="q5a2" value="7"> 7</label><br>
+                    <label for="q5a3"><input type="radio" name="q5" id="q5a3" value="0"> 0</label><br>
+                    <label for="q5a4"><input type="radio" name="q5" id="q5a4" value="1"> 1</label><br>
+                </li>
+        
+                <!-- Questão 6 -->
+                <li>
+                    <p>Seja \( f(x) = -0.75x - 2 \). Qual é a inclinação da reta?</p>
+                    <label for="q6a1"><input type="radio" name="q6" id="q6a1" value="-0.75"> -0.75</label><br>
+                    <label for="q6a2"><input type="radio" name="q6" id="q6a2" value="2"> 2</label><br>
+                    <label for="q6a3"><input type="radio" name="q6" id="q6a3" value="0.75"> 0.75</label><br>
+                    <label for="q6a4"><input type="radio" name="q6" id="q6a4" value="1"> 1</label><br>
+                </li>
+        
+                <!-- Questão 7 -->
+                <li>
+                    <p>Seja \( f(x) = 2x + 1 \). Qual é o valor de \( f(5) \)?</p>
+                    <label for="q7a1"><input type="radio" name="q7" id="q7a1" value="13"> 13</label><br>
+                    <label for="q7a2"><input type="radio" name="q7" id="q7a2" value="10"> 10</label><br>
+                    <label for="q7a3"><input type="radio" name="q7" id="q7a3" value="9"> 9</label><br>
+                    <label for="q7a4"><input type="radio" name="q7" id="q7a4" value="11"> 11</label><br>
+                </li>
+        
+                <!-- Questão 8 -->
+                <li>
+                    <p>Seja \( f(x) = -2x + 3 \). Qual é o valor de \( x \) quando \( f(x) = 0 \)?</p>
+                    <label for="q8a1"><input type="radio" name="q8" id="q8a1" value="1.5"> 1.5</label><br>
+                    <label for="q8a2"><input type="radio" name="q8" id="q8a2" value="-1.5"> -1.5</label><br>
+                    <label for="q8a3"><input type="radio" name="q8" id="q8a3" value="1"> 1</label><br>
+                    <label for="q8a4"><input type="radio" name="q8" id="q8a4" value="-1"> -1</label><br>
+                </li>
+        
+                <!-- Questão 9 -->
+                <li>
+                    <p>Seja \( f(x) = 0.25x - 4 \). Qual é o intercepto no eixo y?</p>
+                    <label for="q9a1"><input type="radio" name="q9" id="q9a1" value="-3"> -3</label><br>
+                    <label for="q9a2"><input type="radio" name="q9" id="q9a2" value="-4"> -4</label><br>
+                    <label for="q9a3"><input type="radio" name="q9" id="q9a3" value="0"> 0</label><br>
+                    <label for="q9a4"><input type="radio" name="q9" id="q9a4" value="1"> 1</label><br>
+                </li>
+        
+                <!-- Questão 10 -->
+                <li>
+                    <p>Seja \( f(x) = 5x + 2 \). Qual é o valor de \( f(0) \)?</p>
+                    <label for="q10a1"><input type="radio" name="q10" id="q10a1" value="10"> 10</label><br>
+                    <label for="q10a2"><input type="radio" name="q10" id="q10a2" value="5"> 5</label><br>
+                    <label for="q10a3"><input type="radio" name="q10" id="q10a3" value="2"> 2</label><br>
+                    <label for="q10a4"><input type="radio" name="q10" id="q10a4" value="7"> 7</label><br>
+                </li>
+            </ol>
+            <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
+        </div>
+        <script>
+            function corrigirExercicios() {
+                const respostasCorretas = ["f(x) = mx + b",
+                "11",
+                "-2",
+                "6",
+                "7",
+                "-0.75",
+                "11",
+                "1.5",
+                "-4",
+                "2"];         
+    
+                 let acertos = 0;
+        let erros = 0;
+    
+        for (let i = 0; i < respostasCorretas.length; i++) {
+            const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+    
+            if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+                acertos++;
+            } else {
+                erros++;
+            }
+        }
+    
+        const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+        let corBarra = "";
+        if (indiceAcertos >= 70) {
+            corBarra = "green"; // Verde para bom desempenho
+        } else if (indiceAcertos >= 40) {
+            corBarra = "yellow"; // Amarelo para desempenho médio
+        } else {
+            corBarra = "red"; // Vermelho para baixo desempenho
+        }
+    
+        const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+        const progressBarWidth = `${indiceAcertos}%`;
+    
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+                <div class="message">${mensagem}</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        setTimeout(() => {
+            modal.style.display = 'block';
+        }, 100);
+    }
+    function fecharModal() {
+                const modal = document.querySelector(".modal");
+                modal.style.display = "none";
+                modal.remove();
+            }
+        </script> 
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Progressões Aritméticas e Geométricas</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .explanation {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .explanation h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .explanation p {
+                margin-bottom: 10px;
+            }
+            .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="explanation">
+            <h2>Progressões Aritméticas (PA)</h2>
+            <p>
+                Uma Progressão Aritmética (PA) é uma sequência numérica em que
+                cada termo, a partir do segundo, é obtido pela adição de uma
+                constante chamada de razão ou diferença com o termo anterior. A
+                razão é representada por 'd', e é a diferença entre cada termo
+                subsequente e o anterior.
+            </p>
+            <p>
+                Por exemplo, considere a sequência 2, 5, 8, 11, 14. É uma PA com
+                uma razão (d) de 3, pois, para obter cada termo, somamos 3 ao
+                termo anterior. Assim, 5 = 2 + 3, 8 = 5 + 3 e assim por diante.
+            </p>
+            <p>
+                As progressões aritméticas são amplamente aplicadas em várias
+                áreas, como finanças, física e estatística. Em finanças, são
+                usadas para calcular juros, depreciação e outros cálculos
+                relacionados a investimentos.
+            </p>
+            <p>
+                A fórmula geral para encontrar o termo 'n' de uma PA é dada por:
+                a<sub>n</sub> = a + (n - 1)d, onde 'a' é o primeiro termo, 'n' é
+                o número do termo e 'd' é a razão.
+            </p>
+            <p>
+                Além disso, a soma dos primeiros 'n' termos de uma PA
+                (S<sub>n</sub>) pode ser calculada usando a fórmula: S<sub
+                    >n</sub
+                >
+                = (n/2) * (2a + (n - 1)d), onde 'a' é o primeiro termo, 'd' é a
+                razão e 'n' é o número de termos a serem somados.
+            </p>
+        </div>
+
+        <div class="explanation">
+            <h2>Progressões Geométricas (PG)</h2>
+            <p>
+                Uma Progressão Geométrica (PG) é uma sequência numérica em que
+                cada termo, a partir do segundo, é obtido pela multiplicação de
+                uma constante chamada razão (r) com o termo anterior.
+            </p>
+            <p>
+                Por exemplo, considere a sequência 2, 6, 18, 54. É uma PG com
+                uma razão (r) de 3, pois cada termo é obtido multiplicando o
+                termo anterior por 3. Assim, 6 = 2 * 3, 18 = 6 * 3 e assim por
+                diante.
+            </p>
+            <p>
+                As progressões geométricas são fundamentais em diversas áreas,
+                como crescimento populacional, física, biologia e economia. Por
+                exemplo, o crescimento exponencial pode ser modelado usando uma
+                PG.
+            </p>
+            <p>
+                A fórmula geral para encontrar o termo 'n' de uma PG é dada por:
+                a<sub>n</sub> = a * r<sup>(n - 1)</sup>, onde 'a' é o primeiro
+                termo, 'n' é o número do termo e 'r' é a razão.
+            </p>
+            <p>
+                Além disso, a soma dos primeiros 'n' termos de uma PG
+                (S<sub>n</sub>) finita pode ser calculada usando a fórmula:
+                S<sub>n</sub> = a * (1 - r<sup>n</sup>) / (1 - r), onde 'a' é o
+                primeiro termo, 'r' é a razão e 'n' é o número de termos a serem
+                somados.
+            </p>
+        </div>
+        <div class="questions">
+            <h2>Teste de Progressões</h2>
+            <ol>
+                <li>
+                    Calcule o décimo primeiro termo da Progressão Aritmética
+                    (PA): 3, 6, 9, 12, ...
+                    <br />
+                    <input type="text" name="q1" />
+                </li>
+                <li>
+                    Calcule a soma dos primeiros cinco termos da Progressão
+                    Aritmética (PA): 2, 5, 8, 11, ...
+                    <br />
+                    <input type="text" name="q2" />
+                </li>
+                <li>
+                    Qual é a razão da Progressão Geométrica (PG): 2, 4, 8, 16,
+                    ...?
+                    <br />
+                    <input type="text" name="q3" />
+                </li>
+                <li>
+                    Calcule o quarto termo da Progressão Geométrica (PG): 5,
+                    15,...
+                    <br />
+                    <input type="text" name="q4" />
+                </li>
+                <li>
+                    Qual é a soma dos primeiros quatro termos da Progressão
+                    Geométrica (PG): 3, 6,...?
+                    <br />
+                    <input type="text" name="q5" />
+                </li>
+                <li>
+                    Calcule o décimo termo da Progressão Aritmética (PA): 10,
+                    20, 30, 40, ...
+                    <br />
+                    <input type="text" name="q6" />
+                </li>
+                <li>
+                    Calcule a soma dos primeiros seis termos da Progressão
+                    Aritmética (PA): -2, 1, 4, 7, ...
+                    <br />
+                    <input type="text" name="q7" />
+                </li>
+                <li>
+                    Qual é a razão da Progressão Geométrica (PG): 4, 8, 16, 32,
+                    ...?
+                    <br />
+                    <input type="text" name="q8" />
+                </li>
+                <li>
+                    Calcule o quarto termo da Progressão Geométrica (PG): 125,
+                    25,...
+                    <br />
+                    <input type="text" name="q9" />
+                </li>
+                <li>
+                    Calcule a soma dos primeiros três termos da Progressão
+                    Geométrica (PG): 7, 14,...
+                    <br />
+                    <input type="text" name="q10" />
+                </li>
+            </ol>
+            <button class="btn-correct" onclick="corrigirQuestoes()">
+                Corrigir Teste
+            </button>
+        </div>
+
+        <script>
+            function corrigirQuestoes() {
+                const respostasCorretas = [
+                    33, 40, 2, 135, 63, 100, 30, 2, 1, 49,
+                ]; // Respostas corretas
+                let acertos = 0;
+                let erros = 0;
+
+                for (let i = 0; i < respostasCorretas.length; i++) {
+                    const respostaUsuario = parseInt(
+                        document.getElementsByName(`q${i + 1}`)[0].value
+                    );
+                    if (respostaUsuario === respostasCorretas[i]) {
+                        acertos++;
+                    } else {
+                        erros++;
+                    }
+                }
+
+                const indiceAcertos =
+                    (acertos / respostasCorretas.length) * 100;
+                let corBarra = "";
+                if (indiceAcertos >= 70) {
+                    corBarra = "green"; // Verde para bom desempenho
+                } else if (indiceAcertos >= 40) {
+                    corBarra = "yellow"; // Amarelo para desempenho médio
+                } else {
+                    corBarra = "red"; // Vermelho para baixo desempenho
+                }
+
+                const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(
+                    2
+                )}%`;
+                const progressBarWidth = `${indiceAcertos}%`;
+
+                const modal = document.createElement("div");
+                modal.classList.add("modal");
+                modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close" onclick="fecharModal()">&times;</span>
+          <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+          <div class="message">${mensagem}</div>
+        </div>
+      `;
+                document.body.appendChild(modal);
+                setTimeout(() => {
+        modal.style.display = 'block';
+      }, 100);
+                
+    }
+
+            function fecharModal() {
+                const modal = document.querySelector(".modal");
+                modal.style.display = "none";
+                modal.remove();
+            }
+          
+        </script>
+    </body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funções - História, Conceitos e Gráficos</title>
+    <style>
+         body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .explanation {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .explanation h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .explanation p {
+                margin-bottom: 10px;
+            }
+            .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        canvas{
+            max-width: 400px; /* Ajuste o tamanho conforme necessário */
+            width: 100%;
+           max-height: 400px;
+           height: 100%;
+        }
+
+    </style>
+    <!-- Adicionando a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+    <div class="explanation">
+        <h2>História do Estudo das Funções</h2>
+        <p>
+            O estudo das funções remonta a períodos antigos da história da matemática, tendo evoluído significativamente ao longo do tempo. Os primeiros indícios de funções e relações matemáticas aparecem em textos babilônicos e egípcios, mas a formalização começou na Grécia antiga, especialmente com matemáticos como Euclides e Arquimedes.
+        </p>
+        <p>
+            Durante a Renascença, matemáticos como René Descartes e Pierre de Fermat desempenharam papéis cruciais no desenvolvimento do estudo das funções. Descartes introduziu o uso das coordenadas cartesianas para representar as relações entre variáveis, criando a base da geometria analítica. Fermat trabalhou na teoria dos máximos e mínimos de funções e resolveu diversos problemas que levaram ao cálculo diferencial.
+        </p>
+        <p>
+            No século XVIII, Leonhard Euler e Joseph-Louis Lagrange expandiram a teoria das funções, introduzindo conceitos fundamentais como a função exponencial e logarítmica. Euler também desenvolveu a notação f(x) para representar funções, padronizando a maneira como as funções eram descritas.
+        </p>
+        <p>
+            O século XIX testemunhou um rápido desenvolvimento na teoria das funções, principalmente com os trabalhos de Augustin-Louis Cauchy, Karl Weierstrass e Bernhard Riemann. Eles contribuíram para a análise matemática, estabelecendo rigorosamente os conceitos de limite, continuidade e derivada.
+        </p>
+        <p>
+            No século XX, com o advento da teoria dos conjuntos, a lógica matemática e a computação, o estudo das funções se expandiu ainda mais. Alan Turing e Alonzo Church, com suas máquinas e cálculos lambda, respectivamente, formalizaram a computação e influenciaram a teoria da computabilidade.
+        </p>
+        <p>
+            Atualmente, as funções são essenciais em inúmeras áreas, desde a física e a engenharia até a economia e a biologia. A evolução do estudo das funções continua, com a matemática aplicada e a inteligência artificial desempenhando papéis cruciais na exploração de funções complexas e abstratas que modelam o mundo ao nosso redor.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Funções</h2>
+        <p>
+            Na matemática, uma função é uma regra ou correspondência entre dois conjuntos, geralmente chamados de domínio e contradomínio. Cada elemento do domínio é associado a um único elemento no contradomínio, seguindo essa regra.
+        </p>
+        <p>
+            Por exemplo, consideremos uma função que dobra o valor de entrada. Se o domínio é o conjunto dos números inteiros e o contradomínio também é o conjunto dos números inteiros, então para cada número no domínio, a função associa o dobro desse número como saída.
+        </p>
+        <p>
+            Esta é a representação matemática da função: f(x) = 2x.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Conceitos de uma Função</h2>
+        <ul>
+            <li><strong>Domínio:</strong> O domínio de uma função é o conjunto de todos os valores de entrada para os quais a função é definida. Em termos simples, são os "ingredientes" que o chef tem à disposição para criar seus "pratos".</li>
+            <li><strong>Contradomínio:</strong> É o conjunto de todos os possíveis resultados da função. É como todos os "pratos" que o chef pode criar.</li>
+            <li><strong>Imagem:</strong> A imagem de uma função é o conjunto de todos os valores de saída que a função pode produzir. Em outras palavras, é o conjunto de todos os "pratos" que o chef realmente criou.</li>
+        </ul>
+        <p>
+            Por exemplo, na função f(x) = 2x, se o domínio é o conjunto dos números inteiros, então o contradomínio também é o conjunto dos números inteiros, e a imagem será o conjunto dos números inteiros pares.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Análise de Gráficos de Funções</h2>
+        <p>
+            Um gráfico de função é uma representação visual da função, onde o eixo horizontal representa o domínio e o eixo vertical representa o contradomínio. Cada ponto no gráfico mostra um par de valores (x, f(x)) ou (x,y) indicando a relação entre o valor de entrada e o valor de saída da função.
+        </p>
+        <p>
+            Vamos considerar a função afim (que você vai aprender futuramente aqui no site!) f(x) = ax + b no intervalo de -3 a 3 para ilustrar o gráfico.
+        </p>
+
+        <!-- Adicionando um exemplo de gráfico com Chart.js -->
+        <canvas id="graficoFuncao"></canvas>
+        <script>
+            const ctx = document.getElementById('graficoFuncao').getContext('2d');
+            const labels = ['-3', '-2', '-1', '0', '1', '2', '3'];
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'f(x) = ax + b',
+                    data: [-6, -4, -2, 0, 2, 4, 6],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'x'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'f(x)'
+                            }
+                        }
+                    }
+                }
+            };
+            const myChart = new Chart(ctx, config);
+        </script>
+    </div>
+
+    <div class="explanation">
+        <h2>Funções Definidas por Mais de uma Sentença</h2>
+        <p>
+            Às vezes, uma função precisa de diferentes regras para diferentes partes do domínio. Isso é como um chef que faz pratos diferentes para diferentes grupos de ingredientes. Cada regra se aplica a uma parte específica do domínio.
+        </p>
+        
+        <p>
+            Função Composta: Imagine dois chefs - um prepara ingredientes, o outro cria pratos. A função composta é como colocar esses chefs em sequência: o resultado do primeiro chef é a entrada do segundo chef. Em termos matemáticos, se você tem duas funções f e g, a função composta é \( (g \circ f)(x) = g(f(x)) \).
+        </p>
+        
+        <p>
+            Função Inversa: A função inversa é como ter um chef que desfaz o trabalho do outro chef. Se você tem uma função f que transforma A em B, a função inversa \( f^{-1} \) transforma B de volta em A. Isso é possível se a função f for bijetiva.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Operações com Funções</h2>
+        <p>
+            As funções podem ser combinadas e manipuladas por meio de operações específicas, o que gera novas funções a partir das existentes. Algumas operações comuns incluem:
+        </p>
+        
+        <ul>
+            <li><strong>Soma de Funções:</strong> A soma de duas funções \( f(x) \) e \( g(x) \) é uma nova função \( h(x) = f(x) + g(x) \), onde \( h(x) \) produz a soma dos valores de \( f(x) \) e \( g(x) \) para cada \( x \) no domínio.</li>
+            
+            <li><strong>Subtração de Funções:</strong> A subtração de duas funções \( f(x) \) e \( g(x) \) é uma nova função \( h(x) = f(x) - g(x) \), onde \( h(x) \) produz a diferença dos valores de \( f(x) \) e \( g(x) \) para cada \( x \) no domínio.</li>
+            
+            <li><strong>Multiplicação por um Escalar:</strong> Multiplicar uma função \( f(x) \) por um escalar \( c \) resulta em uma nova função \( h(x) = c \times f(x) \), onde \( h(x) \) é igual a \( f(x) \) multiplicada por \( c \) para cada \( x \) no domínio.</li>
+            
+            <li><strong>Composição de Funções ( que voce aprendeu acima) :</strong> A composição de duas funções \( f \) e \( g \) gera uma nova função \( h(x) = f(g(x)) \), onde \( h(x) \) é obtida aplicando primeiro \( g \) a \( x \) e, em seguida, aplicando \( f \) ao resultado de \( g \).</li>
+            <li><strong>Multiplicação de Funções:</strong> A multiplicação de duas funções \( f(x) \) e \( g(x) \) é uma nova função \( h(x) = f(x) \times g(x) \), onde \( h(x) \) produz o produto dos valores de \( f(x) \) e \( g(x) \) para cada \( x \) no domínio.</li>
+        
+            <li><strong>Divisão de Funções:</strong> A divisão de duas funções \( f(x) \) e \( g(x) \) é uma nova função \( h(x) = \frac{f(x)}{g(x)} \), onde \( h(x) \) produz o quociente dos valores de \( f(x) \) e \( g(x) \) para cada \( x \) no domínio, desde que \( g(x) \neq 0 \).</li>
+            
+            <li><strong>Propriedades:</strong>
+                <ul>
+                    <li><em>Associatividade:</em> \( (f \cdot g) \cdot h = f \cdot (g \cdot h) \)</li>
+                    <li><em>Comutatividade:</em> \( f \cdot g = g \cdot f \) (em geral, a multiplicação de funções não é comutativa)</li>
+                    <li><em>Identidade:</em> \( f(x) \cdot 1 = f(x) \) (a função identidade age como o elemento neutro na multiplicação)</li>
+                    <li><em>Distributividade:</em> \( f \cdot (g + h) = f \cdot g + f \cdot h \) (a multiplicação é distribuída sobre a adição)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>
+            Essas operações são fundamentais para a manipulação e análise de funções em diversos contextos matemáticos e aplicados.
+        </p>
+    </div>
+    
+    <div class="questions">
+        <h2>Quiz sobre Funções</h2>
+        <ol>
+            <li>
+                <p>Exercício 1: Qual é a definição de função na matemática?</p>
+                <label for="q1a1"><input type="radio" name="q1" id="q1a1" value="Uma regra ou correspondência entre dois conjuntos onde cada elemento do domínio é associado a um único elemento no contradomínio."> Uma regra ou correspondência entre dois conjuntos onde cada elemento do domínio é associado a um único elemento no contradomínio.</label><br>
+                <label for="q1a2"><input type="radio" name="q1" id="q1a2" value="A soma de dois números."> A soma de dois números.</label><br>
+                <label for="q1a3"><input type="radio" name="q1" id="q1a3" value="Uma multiplicação de dois números."> Uma multiplicação de dois números.</label><br>
+                <label for="q1a4"><input type="radio" name="q1" id="q1a4" value="A diferença entre dois números."> A diferença entre dois números.</label><br>
+            </li>
+            <li>
+                <p>Exercício 2: O que é o domínio de uma função?</p>
+                <label for="q2a1"><input type="radio" name="q2" id="q2a1" value="O conjunto de todos os valores de entrada para os quais a função é definida."> O conjunto de todos os valores de entrada para os quais a função é definida.</label><br>
+                <label for="q2a2"><input type="radio" name="q2" id="q2a2" value="O conjunto de todos os possíveis resultados da função."> O conjunto de todos os possíveis resultados da função.</label><br>
+                <label for="q2a3"><input type="radio" name="q2" id="q2a3" value="O conjunto de valores de saída que a função pode produzir."> O conjunto de valores de saída que a função pode produzir.</label><br>
+                <label for="q2a4"><input type="radio" name="q2" id="q2a4" value="O conjunto de valores pares."> O conjunto de valores pares.</label><br>
+            </li>
+            <li>
+                <p>Exercício 3: O que é a imagem de uma função?</p>
+                <label for="q3a1"><input type="radio" name="q3" id="q3a1" value="O conjunto de todos os valores de saída que a função pode produzir."> O conjunto de todos os valores de saída que a função pode produzir.</label><br>
+                <label for="q3a2"><input type="radio" name="q3" id="q3a2" value="O conjunto de todos os valores de entrada."> O conjunto de todos os valores de entrada.</label><br>
+                <label for="q3a3"><input type="radio" name="q3" id="q3a3" value="O conjunto de valores pares."> O conjunto de valores pares.</label><br>
+                <label for="q3a4"><input type="radio" name="q3" id="q3a4" value="O conjunto de todos os números inteiros."> O conjunto de todos os números inteiros.</label><br>
+            </li>
+            <li>
+                <p>Exercício 4: O que é uma função composta?</p>
+                <label for="q4a1"><input type="radio" name="q4" id="q4a1" value="É a aplicação de uma função após a aplicação de outra função."> É a aplicação de uma função após a aplicação de outra função.</label><br>
+                <label for="q4a2"><input type="radio" name="q4" id="q4a2" value="É a divisão de uma função por outra função."> É a divisão de uma função por outra função.</label><br>
+                <label for="q4a3"><input type="radio" name="q4" id="q4a3" value="É a soma de duas funções."> É a soma de duas funções.</label><br>
+                <label for="q4a4"><input type="radio" name="q4" id="q4a4" value="É a multiplicação de duas funções."> É a multiplicação de duas funções.</label><br>
+            </li>
+            <li>
+                <p>Exercício 5: Qual operação combina duas funções produzindo uma nova função que é a soma dos valores de cada função para cada \(x\) no domínio?</p>
+                <label for="q5a1"><input type="radio" name="q5" id="q5a1" value="Soma de Funções"> Soma de Funções</label><br>
+                <label for="q5a2"><input type="radio" name="q5" id="q5a2" value="Subtração de Funções"> Subtração de Funções</label><br>
+                <label for="q5a3"><input type="radio" name="q5" id="q5a3" value="Multiplicação de Funções"> Multiplicação de Funções</label><br>
+                <label for="q5a4"><input type="radio" name="q5" id="q5a4" value="Divisão de Funções"> Divisão de Funções</label><br>
+            </li>
+            <li>
+                <p>Exercício 6: Se \( f(x) = x^2 - 9 \), calcule \( f(5) \).</p>
+                <label for="q6a1"><input type="radio" name="q6" id="q6a1" value="14"> 14</label><br>
+                <label for="q6a2"><input type="radio" name="q6" id="q6a2" value="16"> 16</label><br>
+                <label for="q6a3"><input type="radio" name="q6" id="q6a3" value="10"> 10</label><br>
+                <label for="q6a4"><input type="radio" name="q6" id="q6a4" value="6"> 6</label><br>
+            </li>
+            <li>
+                <p>Exercício 7: Se \( f(x) = \frac{x}{\sqrt{2x}} \), calcule \( f(2) \).</p>
+                <label for="q7a1"><input type="radio" name="q7" id="q7a1" value="2"> 2</label><br>
+                <label for="q7a2"><input type="radio" name="q7" id="q7a2" value="0.25"> 0.25</label><br>
+                <label for="q7a3"><input type="radio" name="q7" id="q7a3" value="0.04"> 0.04</label><br>
+                <label for="q7a4"><input type="radio" name="q7" id="q7a4" value="1"> 1</label><br>
+            </li>
+            <li>
+                <p>Exercício 8: Se \( f(x) = 3^x \), calcule \( f(3) \).</p>
+                <label for="q8a1"><input type="radio" name="q8" id="q8a1" value="81"> 81</label><br>
+                <label for="q8a2"><input type="radio" name="q8" id="q8a2" value="27"> 27</label><br>
+                <label for="q8a3"><input type="radio" name="q8" id="q8a3" value="54"> 54</label><br>
+                <label for="q8a4"><input type="radio" name="q8" id="q8a4" value="9"> 9</label><br>
+            </li>
+        </ol>
+        <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
+    </div>
+    <script>
+        function corrigirExercicios() {
+            const respostasCorretas = ["Uma regra ou correspondência entre dois conjuntos onde cada elemento do domínio é associado a um único elemento no contradomínio.",
+             "O conjunto de todos os valores de entrada para os quais a função é definida.",
+              "O conjunto de todos os valores de saída que a função pode produzir.",
+              "É a aplicação de uma função após a aplicação de outra função.",
+              "Soma de Funções",
+            "16",
+             "1",
+             "27"];         
+
+             let acertos = 0;
+    let erros = 0;
+
+    for (let i = 0; i < respostasCorretas.length; i++) {
+        const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+
+        if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+            acertos++;
+        } else {
+            erros++;
+        }
+    }
+
+    const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+    let corBarra = "";
+    if (indiceAcertos >= 70) {
+        corBarra = "green"; // Verde para bom desempenho
+    } else if (indiceAcertos >= 40) {
+        corBarra = "yellow"; // Amarelo para desempenho médio
+    } else {
+        corBarra = "red"; // Vermelho para baixo desempenho
+    }
+
+    const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+    const progressBarWidth = `${indiceAcertos}%`;
+
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+            <div class="message">${mensagem}</div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    setTimeout(() => {
+        modal.style.display = 'block';
+    }, 100);
+}
+function fecharModal() {
+            const modal = document.querySelector(".modal");
+            modal.style.display = "none";
+            modal.remove();
+        }
+    </script> 
+</body>
+</html>
