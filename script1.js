@@ -10,17 +10,23 @@ linkInicio.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "flex";
     conteudoMaterialDidatico.style.display = "none";
+    linkInicio.style.backgroundColor = "#c4c4c4";
+    linkMateria.style.backgroundColor = "";
 });
 
 linkMateria.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    linkMateria.style.backgroundColor = "#c4c4c4";
+    linkInicio.style.backgroundColor = "";
 });
 LinkMateria2.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    linkMateria.style.backgroundColor = "#c4c4c4";
+    linkInicio.style.backgroundColor = "";
 });
 const estadoSidebar = document.getElementById("estado-sidebar");
 const sidebar = document.getElementById("side-bar");
