@@ -2,32 +2,47 @@ const linkInicio = document.getElementById("link-inicio");
 const linkMateria = document.getElementById("link-materiais");
 const LinkMateria2 = document.getElementById("link-materiais2");
 const conteudoInicio = document.getElementById("conteudo-inicio");
-const conteudoMaterialDidatico = document.getElementById(
-    "conteudo-material-didatico"
-);
-
+const conteudoMaterialDidatico = document.getElementById("conteudo-material-didatico");
+const barraPesquisa = document.querySelector("#txtbusca"); 
+const botaoPesquisa = document.querySelector("#search-button");
+const conteudoResultadoPesquisa = document.getElementById("id-resultado-pesquisa");
 linkInicio.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "flex";
     conteudoMaterialDidatico.style.display = "none";
+    conteudoResultadoPesquisa.style.display = "none";
     linkInicio.style.backgroundColor = "#c4c4c4";
     linkMateria.style.backgroundColor = "";
+    
 });
 
 linkMateria.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    conteudoResultadoPesquisa.style.display = "none";
     linkMateria.style.backgroundColor = "#c4c4c4";
     linkInicio.style.backgroundColor = "";
 });
+
 LinkMateria2.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    conteudoResultadoPesquisa.style.display = "none";
     linkMateria.style.backgroundColor = "#c4c4c4";
     linkInicio.style.backgroundColor = "";
 });
+
+botaoPesquisa.addEventListener('click', function (event) {
+  event.preventDefault();
+  conteudoInicio.style.display = "none";
+  conteudoMaterialDidatico.style.display = "none";
+  conteudoResultadoPesquisa.style.display = "flex";
+  var pesquisa = barraPesquisa.value;
+  conteudoResultadoPesquisa.innerHTML = `<p>${pesquisa}</p>`;
+});
+
 const estadoSidebar = document.getElementById("estado-sidebar");
 const sidebar = document.getElementById("side-bar");
 const estiloComputado = window.getComputedStyle(sidebar);
@@ -120,3 +135,7 @@ estadoSidebar.addEventListener("click", function (event) {
    function updateButton3Style(){
     bt3.style.background = isActive3 ? 'linear-gradient(to bottom, #00acee, #0be6e6) padding-box, linear-gradient(to bottom, #00acee, #0be6e6) border-box' : '';
    }
+   
+   
+   
+  
