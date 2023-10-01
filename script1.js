@@ -2,32 +2,123 @@ const linkInicio = document.getElementById("link-inicio");
 const linkMateria = document.getElementById("link-materiais");
 const LinkMateria2 = document.getElementById("link-materiais2");
 const conteudoInicio = document.getElementById("conteudo-inicio");
-const conteudoMaterialDidatico = document.getElementById(
-    "conteudo-material-didatico"
-);
-
+const conteudoMaterialDidatico = document.getElementById("conteudo-material-didatico");
+const barraPesquisa = document.querySelector("#txtbusca"); 
+const botaoPesquisa = document.querySelector("#search-button");
+const conteudoResultadoPesquisa = document.getElementById("id-resultado-pesquisa");
 linkInicio.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "flex";
     conteudoMaterialDidatico.style.display = "none";
+    conteudoResultadoPesquisa.style.display = "none";
     linkInicio.style.backgroundColor = "#c4c4c4";
     linkMateria.style.backgroundColor = "";
+    
 });
 
 linkMateria.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    conteudoResultadoPesquisa.style.display = "none";
     linkMateria.style.backgroundColor = "#c4c4c4";
     linkInicio.style.backgroundColor = "";
 });
+
 LinkMateria2.addEventListener("click", function (event) {
     event.preventDefault();
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "flex";
+    conteudoResultadoPesquisa.style.display = "none";
     linkMateria.style.backgroundColor = "#c4c4c4";
     linkInicio.style.backgroundColor = "";
 });
+function removeAcentos(text) {
+ // Substitui caracteres especiais por espaços, excluindo o caractere "("
+ text = text.replace(/[\),!@#$%\^&*\{\};:'"<>?|\/\\]/g, " ");
+
+ return text.normalize("NFD") // Normaliza para decompor os caracteres acentuados em não acentuados
+   .replace(/[\u0300-\u036f]/g, ""); // Remove os caracteres acentuados
+}
+
+botaoPesquisa.addEventListener('click', async function (event) {
+  event.preventDefault();
+  conteudoInicio.style.display = "none";
+  conteudoMaterialDidatico.style.display = "none";
+  conteudoResultadoPesquisa.style.display = "block";
+  conteudoResultadoPesquisa.innerHTML = ""; // Limpa o conteúdo anterior
+  var pesquisa = removeAcentos(barraPesquisa.value.toLowerCase());
+  var urlsMaterias = urlsMaterias = [
+    { nome: "Conjuntos", url: "material 1ano/file_conjuntos.html" },
+    { nome: "Funções", url: "material 1ano/file_funções.html" },
+    { nome: "Funções Afins", url: "material 1ano/file_funções_afins.html" },
+    { nome: "Funções Quadráticas", url: "material 1ano/file_funções_quadráticas.html" },
+    { nome: "Sequências", url: "material 1ano/file_sequências.html" }
+  ];
+  let pesquisaEncontrada = false;  // Flag para verificar se a pesquisa foi encontrada
+
+  try {
+    for (const materia of urlsMaterias) {
+      const response = await fetch(materia.url);
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const paragrafos = doc.querySelectorAll('p,label,h1');
+      let paragrafosConcatenados = "";
+
+      paragrafos.forEach(paragrafo => {
+        paragrafosConcatenados += removeAcentos(paragrafo.textContent.toLowerCase()) + " ";
+      });
+
+      const pesquisaCount = (paragrafosConcatenados.match(new RegExp(pesquisa, "gi")) || []).length;
+
+      if (removeAcentos(paragrafosConcatenados).includes(pesquisa)) {
+        const link = document.createElement("a");
+        link.textContent = materia.nome;
+        link.href = materia.url;
+        link.target = "_blank";
+        link.style.display = "flex";
+        link.style.marginBottom = "5px"; 
+        link.style.width = "auto";
+        link.style.height = "50px";
+        link.style.textDecoration="none";
+        link.style.color = "black";
+        link.style.justifyContent = "center";
+        link.style.alignItems = "center";
+        let ishovered = false;
+        link.addEventListener('mouseover',() => {
+          link.style.backgroundColor = "#F5F5F5";
+          ishovered = true;
+        })
+        link.addEventListener('mouseout',() => {
+          link.style.backgroundColor = "";
+          ishovered = false;
+        })
+
+
+        const countElement = document.createElement("span");
+        countElement.textContent = `Ocorrências do termo pesquisado: ${pesquisaCount}`;
+        countElement.style.fontSize = "small"; // Tamanho pequeno
+        countElement.style.color = "#777"; // Cor sem destaque
+
+        conteudoResultadoPesquisa.appendChild(link);
+        conteudoResultadoPesquisa.appendChild(countElement);
+      }
+     
+    }
+
+    // Se não houver ocorrências da pesquisa em nenhuma matéria
+    if (conteudoResultadoPesquisa.children.length === 0) {
+      const resultado = document.createElement("div");
+      resultado.textContent = "Sua pesquisa não encontrou nenhum resultado correspondente.";
+      conteudoResultadoPesquisa.appendChild(resultado);
+    }
+  } catch (error) {
+    console.error('Ocorreu um erro ao carregar:', error);
+  }
+});
+
 const estadoSidebar = document.getElementById("estado-sidebar");
 const sidebar = document.getElementById("side-bar");
 const estiloComputado = window.getComputedStyle(sidebar);
@@ -120,3 +211,7 @@ estadoSidebar.addEventListener("click", function (event) {
    function updateButton3Style(){
     bt3.style.background = isActive3 ? 'linear-gradient(to bottom, #00acee, #0be6e6) padding-box, linear-gradient(to bottom, #00acee, #0be6e6) border-box' : '';
    }
+   
+   
+   
+  
