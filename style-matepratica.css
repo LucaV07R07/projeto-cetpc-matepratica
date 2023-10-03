@@ -14,6 +14,7 @@ body {
     padding: 0;
     font-family: "Roboto", sans-serif;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .navbar {
     z-index: 10;
@@ -21,7 +22,7 @@ body {
     top: 0;
     display: flex;
     justify-content: left;
-    align-items: last baseline;
+    align-items: center;
     width: 100vw;
     height: 60px;
     background-color: white;
@@ -81,6 +82,8 @@ body {
     color: black;
 }
 .div-lupa {
+    border-color: transparent ;
+    background-color: transparent;
     position: absolute;
     right: 10px;
     top: 2px;
@@ -192,15 +195,20 @@ body {
     width: 100vw;
 }
 .div-inicio-matepratica {
-    display: flex;
+    max-width: 400px;
+    display: block;
     position: relative;
     margin: 40px 70px;
 }
-.div-inicio-matepratica p {
+.div-inicio-matepratica h1 {
     font-size: 38px;
     color: rgba(0, 0, 0, 0.877);
     font-weight: 100;
     text-decoration: none;
+}
+.div-inicio-matepratica p {
+    font-size: large;
+    color: #777777;
 }
 .div-links-container1 {
     display: flex;
@@ -242,6 +250,20 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
+    top: 75px;
+    height: 100vh;
+    width: 100vw;
+}
+.resultados-pesquisa{
+    z-index: 8;
+    position: relative;
+    display: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px;
     padding: 0;
     left: 0;
     right: 0;
