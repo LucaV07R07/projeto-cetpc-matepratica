@@ -15,6 +15,29 @@
     <title>Mateprática</title>
   </head>
   <body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBjuMluOorfnvb11HFJuLp-AYXQTID7kvQ",
+          authDomain: "matepratica-4d1fd.firebaseapp.com",
+          projectId: "matepratica-4d1fd",
+          storageBucket: "matepratica-4d1fd.appspot.com",
+          messagingSenderId: "304848171845",
+          appId: "1:304848171845:web:2ef58cda6335907d0a042c",
+          measurementId: "G-1KRZMT2DCR"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
     <nav class="navbar">
       <div class="div-menu-sidebar">
         <a id="estado-sidebar">
