@@ -15,19 +15,7 @@
     <title>Mateprática</title>
   </head>
   <body>
-    <script src="firebaseConfig.js"></script>
-    <script type="module">
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-  
-        firebase.auth().onAuthStateChanged(function (user) {
-          if (!user) {
-            // Se o usuário não estiver autenticado, redirecionar para a página de login
-            window.location.href = "login.html";  // Substitua "login.html" com o caminho para a página de login
-          }
-        });
-    </script>
+    <script src="script2.js"></script>
     <nav class="navbar">
       <div class="div-menu-sidebar">
         <a id="estado-sidebar">
@@ -63,6 +51,9 @@
           </div>
         </div>
       </div>
+      <div class="div-link-login">
+      <a class="link-tela-login" id="link-login" href="login.html">Entrar</a>
+    </div>
     </nav>
     <div id="side-bar" class="sidebar">
       <div class="div-sidebar-inicio">
@@ -286,5 +277,6 @@
     </div>
     <div class="resultados-pesquisa" id="id-resultado-pesquisa"></div>
     <script src="script1.js"></script>
+    
   </body>
 </html>
