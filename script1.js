@@ -37,12 +37,7 @@ LinkMateria2.addEventListener("click", function (event) {
   linkInicio.style.backgroundColor = "";
 });
 function trataTexto(text) {
-  // Substitui caracteres especiais por espaços, excluindo o caractere "("
-  text = text.replace(/[\),!@#$%\^&*\{\};:'"<>?|\/\\]/g, " ");
-
-  return text
-    .normalize("NFD") // Normaliza para decompor os caracteres acentuados em não acentuados
-    .replace(/[\u0300-\u036f]/g, ""); // Remove os caracteres acentuados
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 }
 var urlsMaterias = (urlsMaterias = [
   { nome: "Conjuntos", url: "material 1ano/file_conjuntos.html" },
