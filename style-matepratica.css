@@ -15,6 +15,7 @@ body {
     font-family: "Roboto", sans-serif;
     overflow-x: hidden;
     overflow-y: hidden;
+    position: relative;
 }
 .navbar {
     z-index: 10;
@@ -260,13 +261,17 @@ body {
 .div-lista-materias{
     display: flex;
     justify-content: space-evenly;
+    position: relative;
+    z-index: 9;
 }
 .div-svg-book{
     height: 100%;
     display: flex;
     justify-content: center;
     align-self: center;
-    margin: 100px
+    margin: 100px;
+    position:relative;
+    z-index: 8;
 }
 .svg-book{
     width: 300px;
@@ -330,11 +335,15 @@ body {
     width: 70%;
     max-height: 500px;
     background-color: #ebe9e9;
+    position: relative;
+    z-index: 10;
 }
 .lista-materiais-2ano.show-lista-materiais-2ano{
     width: 70%;
     max-height: 500px;
     background-color: #ebe9e9;
+    position: relative;
+    z-index: 10;
 }
 .area-2ano{
     width: 25%;
@@ -350,6 +359,8 @@ body {
     width: 70%;
     max-height: 500px;
     background-color: #ebe9e9;
+    position: relative;
+    z-index: 10;
 }
 .lista-materiais-3ano{
     margin-top: 3px;

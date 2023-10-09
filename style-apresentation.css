@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #444444;
+    color: white;
+  }
+  h1{
+    color: #04C3EB;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #04C3EB;
+    position:fixed;
+    width: 100vw;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding-right: 65px;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline;
+    margin-left: 20px;
+  }
+  
+  nav li:first-child {
+    margin-left: 0;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  nav a:hover {
+    color: #444444;
+  }
+  
+  .banner {
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('banner-image.jpg');
+    background-size: cover;
+    color: white;
+  }
+  
+  .banner h1 {
+    font-size: 36px;
+  }
+  
+  .banner p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .start-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #444444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .start-button:hover {
+    background-color: #04C3EB;
+  }
+  
+  .features {
+    padding: 20px;
+  }
+  
+  .features h2 {
+    color: #04C3EB;
+  }
+  
+  .features .feature {
+    margin-bottom: 20px;
+  }
+  
+  .login-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .login-button {
+    padding: 15px 30px;
+    background-color: #04C3EB;
+    color: white;
+    border-color: #04C3EB;
+    border-width: 3px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom:100px ;
+  }
+  
+  .login-button:hover {
+    border-color: #444444;
+  }
+  
+  

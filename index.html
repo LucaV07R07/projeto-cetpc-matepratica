@@ -1,289 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="style-matepratica.css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mateprática</title>
-  </head>
-  <body>
-    <script src="script2.js"></script>
-    <nav class="navbar">
-      <div class="div-menu-sidebar">
-        <a id="estado-sidebar">
-          <svg
-            class="icon o-0_54"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path>
-          </svg>
-        </a>
-      </div>
-      <div class="div-logo-input">
-        <div class="div-logo">
-          <img src="download.png" alt="logo" style="width: 130px; height: 50px" />
-        </div>
-        <div class="div-navbar">
-          <div class="div-buscar">
-            <input type="text" id="txtbusca" placeholder="buscar..." />
-            <button class="div-lupa" id="search-button">
-              <svg
-                class="lupa"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.707,16.293l-3.853-3.853C13.348,11.68,14,10.401,14,9c0-3.309-2.691-6-6-6S2,5.691,2,9s2.691,6,6,6c1.401,0,2.68-0.652,3.54-1.707l3.853,3.853c0.187,0.187,0.442,0.293,0.707,0.293s0.52-0.106,0.707-0.293C18.293,18.027,18.293,16.707,17.707,16.293z M4,9c0-2.206,1.794-4,4-4s4,1.794,4,4s-1.794,4-4,4S4,11.206,4,9z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="div-link-login">
-      <a class="link-tela-login" id="link-login" href="login.html">Entrar</a>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style-apresentation.css">
+  <title>Mateprática - Aprendendo Matemática de Forma Prática</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="download.png" alt="Mateprática Logo">
     </div>
-    </nav>
-    <div id="side-bar" class="sidebar">
-      <div class="div-sidebar-inicio">
-        <a href="#conteudo-inicio" id="link-inicio">Início</a>
-      </div>
-      <div class="div-sidebar-materiais">
-        <a href="#conteudo-material-didatico" id="link-materiais">Materiais</a>
-      </div>
+    <ul>
+      <li><a href="#Início">Início</a></li>
+      <li><a href="#Recursos">Recursos</a></li>
+    </ul>
+  </nav>
+
+  <section id="Início" class="introduction">
+    <div class="banner">
+      <h1>Bem-vindo ao Mateprática!</h1>
+      <p>Explore e aprenda Matemática de forma prática, com acesso a conteúdos, exercícios e recursos audiovisuais.</p>
     </div>
-    <div class="conteudo-inicial" id="conteudo-inicio">
-      <div class="div-container1-inicial">
-        <div class="div-inicio-matepratica">
-          <h1>MatePrática</h1>
-          <p>
-            Mateprática é uma plataforma online dedicada ao apoio dos estudos de
-            matemática no nível do ensino médio brasileiro.
-          </p>
-        </div>
-        <div class="div-links-container1">
-          <div class="div-inicial-material">
-            <a href="#conteudo-material-didatico" id="link-materiais2">
-              Materiais Didáticos</a
-            >
-          </div>
-          
-        </div>
-      </div>
+  </section>
+
+  <section id="Recursos" class="features">
+    <h2>Recursos do Mateprática</h2>
+    <div class="feature">
+      <h3>Acesso a Conteúdos de Matemática</h3>
+      <p>Explore uma variedade de matérias de Matemática do Ensino Médio, com materiais teóricos e práticos.</p>
     </div>
-    <div class="conteudo-materias" id="conteudo-material-didatico">
-      <div class="div-lista-materias">
-      <div class="area-1ano">
-        <button class="btn-materias" id="bt-materias-1ano">
-          1&ordm;ano ensino médio
-        </button>
-        <div id="materias-1ano" class="materia">
-          <ul class="lista-materiais-1ano" id="lista-materias-1ano">
-            <!-- Os links serão gerados aqui -->
-          </ul>
-          <script>
-            var materias1Ano = [
-              "Conjuntos",
-              "Funções",
-              "Funções Afins",
-              "Funções Quadráticas",
-              "Funções Modulares",
-              "Funções Exponenciais",
-              "Funções Logarítmicas",
-              "Sequências",
-              "Geometria plana: Triângulo e Semelhanças",
-              "Trigonometria no Triângulo Retângulo",
-            ];
-
-            var listaMaterias1Ano = document.getElementById(
-              "lista-materias-1ano"
-            );
-
-            for (var i = 0; i < materias1Ano.length; i++) {
-              var materia = materias1Ano[i];
-              var link = document.createElement("a");
-              link.textContent = materia;
-
-              var listItem = document.createElement("li");
-              listItem.appendChild(link);
-
-              listItem.setAttribute("id", materia);
-
-              listItem.addEventListener("click", function () {
-                // Open a new window with a file or URL based on the id
-                var id = this.getAttribute("id");
-                var fileName =
-                  "material 1ano/file_" +
-                  id.toLowerCase().replace(/\s/g, "_") +
-                  ".html"; // Replace with your file name pattern
-                var newWindow = window.open(fileName, "_blank");
-                if (newWindow) {
-                  newWindow.focus();
-                } else {
-                  alert("Please allow pop-ups for this website.");
-                }
-              });
-
-              listItem.setAttribute(
-                "style",
-                "padding-bottom: 5px; margin-left: -20px; cursor: pointer"
-              );
-
-              listItem.addEventListener("mouseover", function () {
-                this.style.backgroundColor = "#F2F2F2"; // Altere a cor para a cor desejada
-              });
-
-              listItem.addEventListener("mouseout", function () {
-                this.style.backgroundColor = ""; // Deixe a cor de fundo vazia para voltar à cor original
-              });
-
-              listaMaterias1Ano.appendChild(listItem);
-            }
-          </script>
-          <script>
-            var button1Ano = document.getElementById("bt-materias-1ano");
-            var linkList1Ano = document.getElementById("lista-materias-1ano");
-            button1Ano.addEventListener("click", function () {
-              linkList1Ano.classList.toggle("show-lista-materiais-1ano");
-            });
-          </script>
-        </div>
-      </div>
-      <div class="area-2ano">
-        <button class="btn-materias" id="bt-materias-2ano">
-          2&ordm;ano ensino médio
-        </button>
-        <div id="materias-2ano" class="materia">
-          <ul class="lista-materiais-2ano" id="lista-materias-2ano">
-            <!-- Os links serão gerados aqui -->
-          </ul>
-          <script>
-            var materias2Ano = [
-              "Ciclo trigonométrico",
-              "Funções trigonométricas",
-              "Matrizes e determinantes",
-              "Sistemas lineares",
-              "Superfícies poligonais, círculos e áreas",
-              "Introdução a geometria espacial",
-              "Poliedros",
-              "Corpos redondos",
-              "Análise combinatória",
-              "Probabilidade",
-            ];
-
-            var listaMaterias2Ano = document.getElementById(
-              "lista-materias-2ano"
-            );
-
-            for (var i = 0; i < materias2Ano.length; i++) {
-              var materia = materias2Ano[i];
-              var link = document.createElement("a");
-              link.textContent = materia;
-
-              var listItem = document.createElement("li");
-              listItem.appendChild(link);
-
-              listItem.setAttribute(
-                "style",
-                "padding-bottom: 5px; margin-left: -20px ;padding-left: 0px; cursor:pointer;"
-              );
-
-              listItem.addEventListener("mouseover", function () {
-                this.style.backgroundColor = "#F2F2F2"; // Altere a cor para a cor desejada
-              });
-
-              listItem.addEventListener("mouseout", function () {
-                this.style.backgroundColor = ""; // Deixe a cor de fundo vazia para voltar à cor original
-              });
-
-              listaMaterias2Ano.appendChild(listItem);
-            }
-          </script>
-          <script>
-            var button2Ano = document.getElementById("bt-materias-2ano");
-            var linkList2Ano = document.getElementById("lista-materias-2ano");
-            button2Ano.addEventListener("click", function () {
-              linkList2Ano.classList.toggle("show-lista-materiais-2ano");
-            });
-          </script>
-        </div>
-      </div>
-      <div class="area-3ano">
-        <button class="btn-materias" id="bt-materias-3ano">
-          3&ordm;ano ensino médio
-        </button>
-        <div id="materias-3ano" class="materia">
-          <ul class="lista-materiais-3ano" id="lista-materias-3ano">
-            <!-- Os links serão gerados aqui -->
-          </ul>
-          <script>
-            var materias3Ano = [
-              "Matemática Financeira",
-              "Estátisticas: análise de dados e medidas estátisticas",
-              "Geometria Analítica: conceitos básicos e a reta",
-              "Circunferência",
-              "Cônicas",
-              "Números complexos",
-              "Polinômios e equações polinomiais",
-            ];
-
-            var listaMaterias3Ano = document.getElementById(
-              "lista-materias-3ano"
-            );
-
-            for (var i = 0; i < materias3Ano.length; i++) {
-              var materia = materias3Ano[i];
-              var link = document.createElement("a");
-              link.textContent = materia;
-
-              var listItem = document.createElement("li");
-              listItem.appendChild(link);
-
-              listItem.setAttribute(
-                "style",
-                "padding-bottom: 5px; margin-left: -20px; cursor:pointer;"
-              );
-
-              listItem.addEventListener("mouseover", function () {
-                this.style.backgroundColor = "#F2F2F2"; // Altere a cor para a cor desejada
-              });
-
-              listItem.addEventListener("mouseout", function () {
-                this.style.backgroundColor = ""; // Deixe a cor de fundo vazia para voltar à cor original
-              });
-
-              listaMaterias3Ano.appendChild(listItem);
-            }
-          </script>
-          <script>
-            var button3Ano = document.getElementById("bt-materias-3ano");
-            var linkList3Ano = document.getElementById("lista-materias-3ano");
-            button3Ano.addEventListener("click", function () {
-              linkList3Ano.classList.toggle("show-lista-materiais-3ano");
-            });
-          </script>
-        </div>
-      </div>
+    <div class="feature">
+      <h3>Indicações de Materiais</h3>
+      <p>Sugestões de materiais audiovisuais e de leitura para aprimorar seus estudos.</p>
     </div>
-      <div class="div-svg-book">
-      <div class="svg-book">
-        <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M511.3 191.8H94c-16.4 0-29.8 13.3-29.8 29.7l-0.8 644.3c0 16.5 13.3 29.8 29.8 29.8h306.1l8.3 16.3c5.1 10 15.3 16.3 26.6 16.3h156c10.9 0 20.9-6 26.2-15.5l9.3-17h304c16.4 0 29.8-13.3 29.8-29.8V221.6c0-16.4-13.3-29.8-29.8-29.8H511.3z" fill="#4e4e4e"></path><path d="M517.8 189.4c-5.3 3.6-12.1 4.3-18 1.7-32.7-14.4-143.8-59.4-248.8-59.4H144.5c-10.2 0-18.5 8.3-18.5 18.5v666.6c0 10.2 8.3 18.5 18.5 18.5h328.3c5.4 0 10.5 2.3 14 6.4l8.8 10.1c7.3 8.4 20.3 8.5 27.7 0.3l9.8-10.7c3.5-3.9 8.5-6.1 13.7-6.1h328.8c10.2 0 18.5-8.3 18.5-18.5l0.9-666.6c0-10.3-8.3-18.6-18.5-18.6H764.2c0 0.1-155.6-4.1-246.4 57.8z" fill="#FFFFFF"></path><path d="M511 894.1l-31.3-36c-3.5-4.1-8.6-6.4-14-6.4H126.6c-10.2 0-18.5-8.3-18.5-18.5V126.6c0-10.2 8.3-18.5 18.5-18.5H253c100.6 0 204.6 39 247.2 56.9 5.6 2.3 11.9 1.8 17-1.3 94.5-58.4 239.7-55.8 249.4-55.6h132.1c10.3 0 18.6 8.3 18.5 18.6l-1 706.6c0 10.2-8.3 18.5-18.5 18.5h-340c-5.2 0-10.2 2.2-13.7 6.1l-33 36.2z m-363-82.4h336c5.4 0 10.5 2.3 14 6.4 7.3 8.4 20.3 8.5 27.7 0.3l0.6-0.6c3.5-3.9 8.5-6.1 13.7-6.1h336.2l0.9-663.7H765.7c-1.6 0-159.7-3.5-242.2 59.7l-0.7 0.5c-5.5 4.2-13 5-19.3 2l-0.8-0.4C501 209 371.5 148 252.9 148H148v663.7z" fill="#8a8a8a"></path><path d="M511.3 200.1v667.5" fill="#FFFFFF"></path><path d="M491.3 200.1h40v667.5h-40z" fill="#8a8a8a"></path><path d="M576 291.6h256v40H576zM576 443.1h256v40H576zM576 611.5h256v40H576zM191 291.5h256v40H191zM191 443.1h256v40H191zM191 611.5h256v40H191z" fill="#cdcdcd"></path></g></svg>
-      </div>
-    </div>
-  </div>
-    <div class="resultados-pesquisa" id="id-resultado-pesquisa"></div>
-    <script src="script1.js"></script>
-    
-  </body>
+  </section>
+
+  <section class="login-section">
+    <a href="login.html" class="login-button">Entrar</a>
+  </section>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+  <script src="script2.js"></script>
+</body>
 </html>

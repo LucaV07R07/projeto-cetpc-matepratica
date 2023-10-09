@@ -1,6 +1,6 @@
 body {
-    background: black;
-    color: white;
+    background: #0BE5E6;
+    color: black;
     padding: 0px;
     margin: 0px;
     font-family: 'Nunito', sans-serif;
@@ -37,9 +37,9 @@ body {
   }
   
   .div_principal button, .div_logado button {
-    background: #F75D59; 
+    background: #444444; 
     color: white;
-    border: 1px solid #F75D59; 
+    border: 3px solid #444444; 
     border-radius: 5px;
     padding: 15px;
     display: block;
@@ -49,7 +49,7 @@ body {
   
   .div_principal button:hover, .div_logado button:hover {
     background: white;
-    color: #F75D59;
-    border: 1px solid #F75D59;
+    color: black;
+    border: 3px solid #444444;
     cursor: pointer;
   }
