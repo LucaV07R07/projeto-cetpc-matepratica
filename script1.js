@@ -1,13 +1,13 @@
-const linkInicio = document.getElementById("link-inicio");
-const linkMateria = document.getElementById("link-materiais");
-const LinkMateria2 = document.getElementById("link-materiais2");
-const conteudoInicio = document.getElementById("conteudo-inicio");
-const conteudoMaterialDidatico = document.getElementById(
+var linkInicio = document.getElementById("link-inicio");
+var linkMateria = document.getElementById("link-materiais");
+var LinkMateria2 = document.getElementById("link-materiais2");
+var conteudoInicio = document.getElementById("conteudo-inicio");
+var conteudoMaterialDidatico = document.getElementById(
   "conteudo-material-didatico"
 );
-const barraPesquisa = document.querySelector("#txtbusca");
-const botaoPesquisa = document.querySelector("#search-button");
-const conteudoResultadoPesquisa = document.getElementById(
+var barraPesquisa = document.querySelector("#txtbusca");
+var botaoPesquisa = document.querySelector("#search-button");
+var conteudoResultadoPesquisa = document.getElementById(
   "id-resultado-pesquisa"
 );
 linkInicio.addEventListener("click", function (event) {
@@ -22,7 +22,7 @@ linkInicio.addEventListener("click", function (event) {
 linkMateria.addEventListener("click", function (event) {
   event.preventDefault();
   conteudoInicio.style.display = "none";
-  conteudoMaterialDidatico.style.display = "flex";
+  conteudoMaterialDidatico.style.display = "block";
   conteudoResultadoPesquisa.style.display = "none";
   linkMateria.style.backgroundColor = "#c4c4c4";
   linkInicio.style.backgroundColor = "";
@@ -31,18 +31,13 @@ linkMateria.addEventListener("click", function (event) {
 LinkMateria2.addEventListener("click", function (event) {
   event.preventDefault();
   conteudoInicio.style.display = "none";
-  conteudoMaterialDidatico.style.display = "flex";
+  conteudoMaterialDidatico.style.display = "block";
   conteudoResultadoPesquisa.style.display = "none";
   linkMateria.style.backgroundColor = "#c4c4c4";
   linkInicio.style.backgroundColor = "";
 });
 function trataTexto(text) {
-  // Substitui caracteres especiais por espaços, excluindo o caractere "("
-  text = text.replace(/[\),!@#$%\^&*\{\};:'"<>?|\/\\]/g, " ");
-
-  return text
-    .normalize("NFD") // Normaliza para decompor os caracteres acentuados em não acentuados
-    .replace(/[\u0300-\u036f]/g, ""); // Remove os caracteres acentuados
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 }
 var urlsMaterias = (urlsMaterias = [
   { nome: "Conjuntos", url: "material 1ano/file_conjuntos.html" },

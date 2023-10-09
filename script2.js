@@ -19,9 +19,9 @@ firebase.auth().onAuthStateChanged(function (usuario) {
     firebase
     .auth()
     .createUserWithEmailAndPassword(emailUsuario, senhaUsuario)
-    .then((user) => {
-      // Signed in
-      // ...
+    .then((userCredential) => {
+      document.getElementById('aviso_cadastro').innerText = 'Usuário cadastrado com sucesso. Faça login para entrar.';
+      document.getElementById('aviso_cadastro').style.display = 'block';
     })
     .catch((error) => {
       var codigoErro = error.code;
@@ -42,7 +42,7 @@ firebase.auth().onAuthStateChanged(function (usuario) {
     .signInWithEmailAndPassword(emailUsuario, senhaUsuario)
     .then(function (userCredential) {
         // Autenticação bem-sucedida, redirecionar para a página 
-        window.location.href = 'index.html'; 
+        window.location.href = 'matepratica-site.html'; 
        
     })
     .catch(function (error) {
@@ -50,14 +50,11 @@ firebase.auth().onAuthStateChanged(function (usuario) {
         var codigoErro = error.code;
         var mensagemErro = error.message;
         window.alert('Erro: ' + mensagemErro);
-        linkLogin.style.display = "none";
 
     })
     .finally(function () {
-        // Esconder o link de login após login bem-sucedido
-        var linkLogin = document.getElementById('link-login');
-        if (linkLogin) {
-          linkLogin.style.display = 'none';
-        }
+      // Esconder o aviso de cadastro após login
+      document.getElementById('aviso_cadastro').style.display = 'none';
     });
+       
 }

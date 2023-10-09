@@ -1,4 +1,4 @@
-()Fazer sistema de cadastro. (depois)
+(quase)Fazer sistema de cadastro. (depois)
 ()ocupar espaçoes vazios no sistema.
-()fazer a logo.
+(x)fazer a logo.
 ()colocar links para bons videos de determinada materia.
