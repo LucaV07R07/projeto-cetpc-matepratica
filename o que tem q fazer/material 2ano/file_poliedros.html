@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poliedros: Formas Tridimensionais</title>
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .explanation {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .explanation p {
+            margin-bottom: 10px;
+        }
+        .explanation ul {
+            padding-left: 20px;
+        }
+        .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+     <script type="text/javascript" async
+     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+    <div class="explanation">
+        <h2>História dos Poliedros</h2>
+        <p>
+            Os poliedros têm uma longa história que remonta aos antigos matemáticos gregos, como Platão, que estudou as formas tridimensionais e suas propriedades. A exploração dos poliedros não se limita apenas à matemática; sua beleza e simetria também fascinaram arquitetos e artistas ao longo dos séculos. Os estudos de Platão sobre os sólidos platônicos, como o tetraedro e o dodecaedro, contribuíram significativamente para a compreensão moderna dos poliedros.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>O que é um Poliedro?</h2>
+        <p>
+            Um poliedro é uma forma tridimensional composta por faces planas, onde cada face é um polígono. Essas faces se encontram em arestas e os vértices são os pontos onde as arestas se encontram. Os poliedros são entidades matemáticas fundamentais que podem representar uma variedade de objetos do mundo real, desde caixas até cristais. A classificação dos poliedros é feita com base na forma e no número de faces, proporcionando uma maneira de entender suas propriedades distintas.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Tipos de Poliedros</h2>
+        <p>
+            Os poliedros podem ser classificados em dois tipos principais: convexos e não-convexos. Os poliedros convexos têm todas as faces voltadas para dentro, formando uma estrutura onde qualquer linha entre dois pontos internos está completamente contida no poliedro. Já os poliedros não-convexos possuem pelo menos uma face em que isso não ocorre, resultando em "dobras" para fora na sua parte interna.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Poliedros Convexos</h2>
+        <p>
+            Poliedros convexos apresentam uma estrutura tridimensional em que, para quaisquer dois pontos no seu interior, a linha que os conecta está inteiramente contida no poliedro. Isso implica que a parte interna da figura está "dobrada" para dentro, sem protrusões ou reentrâncias notáveis.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Poliedros Não-Convexos</h2>
+        <p>
+            Poliedros não-convexos possuem pelo menos uma face em que, ao ligar dois pontos internos, a linha que os conecta está fora do poliedro. Isso resulta em áreas "dobradas" para fora na parte interna do poliedro, mostrando a não conformidade com a definição de convexidade.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Poliedros de Euler</h2>
+        <p>
+            Os poliedros de Euler obedecem à Fórmula de Euler para Poliedros: \(V - A + F = 2\), onde \(V\) representa o número de vértices, \(A\) é o número de arestas e \(F\) é o número de faces de um poliedro. Essa fórmula é válida tanto para poliedros convexos quanto não-convexos, proporcionando uma relação fundamental entre suas características.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Nomenclatura dos Poliedros</h2>
+        <p>
+            A nomenclatura dos poliedros é essencial para descrever suas características e formas. Ela é baseada em suas faces, vértices e arestas. Alguns dos termos comuns incluem:
+        </p>
+        <ul>
+            <li><strong>Tetraedro:</strong> Um poliedro com quatro faces, cada face sendo um triângulo equilátero.</li>
+            <li><strong>Cubo ou Hexaedro:</strong> Um poliedro com seis faces, cada face sendo um quadrado.</li>
+            <li><strong>Octaedro:</strong> Um poliedro com oito faces, cada face sendo um triângulo equilátero.</li>
+            <li><strong>Dodecaedro:</strong> Um poliedro com doze faces, cada face sendo um pentágono regular.</li>
+            <li><strong>Icosaedro:</strong> Um poliedro com vinte faces, cada face sendo um triângulo equilátero.</li>
+            <li><strong>Piramidal Pentagonal:</strong> Um poliedro com uma base pentagonal e faces triangulares convergentes para o vértice.</li>
+            <li><strong>Cuboctaedro:</strong> Um poliedro com oito faces triangulares e seis faces quadradas.</li>
+            <li><strong>Icosidodecaedro:</strong> Um poliedro com doze faces pentagonais e vinte faces triangulares.</li>
+            <li><strong>Rombicosidodecaedro:</strong> Um poliedro com vinte faces triangulares, doze faces pentagonais e trinta faces quadradas.</li>
+            <li><strong>Cuboctaedro Truncado:</strong> Um poliedro obtido truncando os vértices de um cuboctaedro.</li>
+            <!-- Adicione mais nomenclaturas conforme necessário -->
+        </ul>
+        <p>
+            Além dessas, existem muitos outros poliedros com formas e características distintas, contribuindo para a riqueza da geometria tridimensional.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Poliedros de Platão</h2>
+        <p>
+            Os poliedros de Platão são cinco sólidos tridimensionais convexos, também conhecidos como sólidos platônicos, que possuem características distintas e especiais. Eles são chamados de "convexos" porque todas as suas faces são planas e cada ângulo interno em cada vértice é menor que 180 graus, tornando-os sólidos convexos.
+        </p>
+    
+        <h3>Tetraedro</h3>
+        <p>
+            O tetraedro é o poliedro mais simples de Platão, composto por quatro faces triangulares idênticas, quatro vértices e seis arestas de comprimentos iguais.
+        </p>
+    
+        <h3>Cubo (Hexaedro Regular)</h3>
+        <p>
+            O cubo é um poliedro com seis faces quadradas idênticas, oito vértices e doze arestas de comprimentos iguais.
+        </p>
+    
+        <h3>Octaedro</h3>
+        <p>
+            O octaedro possui oito faces triangulares idênticas, seis vértices e doze arestas de comprimentos iguais.
+        </p>
+    
+        <h3>Dodecaedro</h3>
+        <p>
+            O dodecaedro é um poliedro com doze faces pentagonais idênticas, vinte vértices e trinta arestas de comprimentos iguais.
+        </p>
+    
+        <h3>Icosaedro</h3>
+        <p>
+            O icosaedro possui vinte faces triangulares idênticas, doze vértices e trinta arestas de comprimentos iguais.
+        </p>
+    
+        <p>
+            Esses sólidos de Platão são fundamentais na geometria e têm várias propriedades e aplicações em matemática, física e outras ciências.
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Projeções Ortogonais</h2>
+        <p>
+            As projeções ortogonais são representações bidimensionais de um poliedro em um plano. Elas são úteis para visualizar a forma tridimensional do poliedro em uma representação bidimensional mais simples. Essas projeções conservam ângulos e permitem uma análise mais fácil das propriedades e estruturas do poliedro.
+        </p>
+    </div>
+    <div class="explanation">
+        <h2>Prisma</h2>
+        <p>
+            Um prisma é um sólido geométrico tridimensional com duas bases paralelas e faces laterais que são paralelogramos. Dependendo do formato da base, os prismas podem ter diferentes nomes, como prismas retos (quando a altura é perpendicular à base) e prismas oblíquos (quando a altura não é perpendicular à base).
+        </p>
+    
+        <h3>Propriedades do Prisma</h3>
+        <ul>
+            <li>O prisma tem duas bases, que são polígonos idênticos e paralelos.</li>
+            <li>As faces laterais são paralelogramos.</li>
+            <li>A altura do prisma é a distância entre as bases ao longo de uma linha perpendicular a elas.</li>
+            <li>O volume de um prisma é dado por \(V = \text{Área da base} \times \text{Altura}\).</li>
+        </ul>
+    
+        <h3>Classificação de Prismas</h3>
+        <p>
+            Os prismas podem ser classificados com base na forma da base. Alguns exemplos incluem:
+        </p>
+        <ul>
+            <li><strong>Prisma Retangular:</strong> Quando as bases são retângulos.</li>
+            <li><strong>Prisma Triangular:</strong> Quando as bases são triângulos.</li>
+            <li><strong>Prisma Pentagonal:</strong> Quando as bases são pentágonos.</li>
+            <!-- Adicione mais exemplos de prismas conforme necessário -->
+        </ul>
+    </div>
+
+    <div class="explanation">
+        <h2>Paralelepípedo Reto-Retângulo</h2>
+        <p>
+            Um paralelepípedo reto-retângulo é um sólido geométrico tridimensional com todas as faces sendo retângulos. Ele tem três pares de faces retangulares paralelas e retas.
+        </p>
+    
+        <h3>Medida da Diagonal</h3>
+        <p>
+            A medida da diagonal (\(D\)) de um paralelepípedo reto-retângulo pode ser calculada usando o Teorema de Pitágoras para um espaço tridimensional:
+        </p>
+        <p>
+            \(D = \sqrt{a^2 + b^2 + c^2}\)
+        </p>
+        <p>
+            Onde:
+            <ul>
+                <li>\(a\), \(b\) e \(c\) são as medidas das arestas do paralelepípedo.</li>
+            </ul>
+        </p>
+    
+        <h3>Exemplo de Cálculo</h3>
+        <p>
+            Suponha que as medidas das arestas do paralelepípedo sejam:
+            <ul>
+                <li>\(a = 4\) cm</li>
+                <li>\(b = 3\) cm</li>
+                <li>\(c = 5\) cm</li>
+            </ul>
+        </p>
+        <p>
+            A medida da diagonal (\(D\)) será:
+        </p>
+        <p>
+            \(D = \sqrt{4^2 + 3^2 + 5^2} \approx 7.071\) cm
+        </p>
+    </div>
+
+    <div class="explanation">
+        <h2>Área da Superfície do Prisma</h2>
+    <p>
+        A área da superfície de um prisma é a soma das áreas de suas bases e das faces laterais. Para um prisma com base regular (como um prisma retangular), a fórmula da área da superfície pode ser expressa como:
+    </p>
+    <p>
+        \(A_{\text{total}} = A_{\text{lateral}} + 2 \times A_{\text{base}}\)
+    </p>
+    <p>
+        Onde:
+        <ul>
+            <li>\(A_{\text{lateral}}\) é a área das faces laterais.</li>
+            <li>\(A_{\text{base}}\) é a área de uma base do prisma.</li>
+        </ul>
+    </p>
+
+    <h3>Exemplo de Cálculo</h3>
+    <p>
+        Suponha que a base do prisma seja um retângulo com comprimento \(L = 6\) cm e largura \(W = 4\) cm, e a altura do prisma seja \(H = 5\) cm.
+    </p>
+    <p>
+        A área da superfície do prisma será:
+    </p>
+    <p>
+        \(A_{\text{total}} = (2 \times L \times H + 2 \times W \times H) + 2 \times (L \times W) = 84\) cm²
+    </p>
+</div>
+<div class="explanation">
+    <h2>Volume de Prismas</h2>
+
+    <h3>Volume de um Prisma</h3>
+    <p>
+        O volume (\(V_{\text{prisma}}\)) de um prisma é calculado multiplicando a área da base (\(A_{\text{base}}\)) pela altura (\(h\)):
+        \[V_{\text{prisma}} = A_{\text{base}} \times h\]
+    </p>
+
+    <h3>Volume de um Cubo</h3>
+    <p>
+        O volume (\(V_{\text{cubo}}\)) de um cubo é calculado pela fórmula \(V_{\text{cubo}} = a^3\), onde \(a\) é o comprimento de uma aresta do cubo.
+    </p>
+
+    <h3>Volume de um Paralelepípedo Reto-Retângulo</h3>
+    <p>
+        Para um paralelepípedo reto-retângulo, o volume (\(V_{\text{paralelepípedo}}\)) é dado por \(V_{\text{paralelepípedo}} = a \times b \times c\), onde \(a\), \(b\) e \(c\) são os comprimentos das arestas adjacentes.
+    </p>
+
+    <h3>Unidades de Volume</h3>
+    <p>
+        As unidades de volume comumente usadas incluem metros cúbicos (\(m^3\)), centímetros cúbicos (\(cm^3\)), litros (\(L\)), entre outras. O metro cúbico é a unidade padrão do SI para volume.
+    </p>
+
+    <h3>Seção Transversal de um Prisma</h3>
+    <p>
+        Uma seção transversal de um prisma é a forma resultante ao cortar o prisma perpendicularmente às suas bases. A área da seção transversal é usada para determinar o volume do prisma.
+    </p>
+
+    <h3>Princípio de Cavalieri</h3>
+    <p>
+        Segundo o Princípio de Cavalieri, dois sólidos \(S_1\) e \(S_2\) apoiados em um plano \(A\) e contidos no mesmo semiespaço terão o mesmo volume \(V\) se toda seção transversal que corta ambos os sólidos resulta em regiões planas de mesma área \(A\).
+    </p>
+</div>
+<div class="explanation">
+    <h2>Pirâmides</h2>
+
+    <h3>Definição de Pirâmides</h3>
+    <p>
+        Chama-se pirâmide o poliedro convexo formado por todos os segmentos de reta cujas extremidades são o ponto V (vértice) e um ponto da região S (base).
+    </p>
+
+    <h3>Elementos de uma Pirâmide</h3>
+    <ul>
+        <li>Base: A região plana que forma a parte inferior da pirâmide.</li>
+        <li>Vértice da Pirâmide: O ponto comum a todas as arestas laterais.</li>
+        <li>Faces Laterais: Os triângulos formados pelos segmentos de reta conectando o vértice à base.</li>
+        <li>Arestas da Base: As arestas que compõem a base da pirâmide.</li>
+        <li>Arestas Laterais: As arestas que conectam o vértice à base.</li>
+        <li>Altura da Pirâmide: A distância do vértice à base medida perpendicularmente ao plano da base.</li>
+    </ul>
+
+    <h3>Classificação das Pirâmides</h3>
+    <p>
+        As pirâmides podem ser classificadas com base na forma da base, como triangular, quadrangular, pentagonal e assim por diante.
+    </p>
+
+    <h3>Pirâmide Regular</h3>
+    <p>
+        Uma pirâmide cuja base é uma superfície poligonal regular e cuja projeção ortogonal P do vértice sobre o plano da base coincide com o centro O do polígono da base.
+    </p>
+
+    <h3>Elementos das Pirâmides Regulares</h3>
+    <ul>
+        <li>Apótema da Pirâmide Regular: A altura do triângulo da face lateral.</li>
+        <li>Apótema da Base: A distância do centro do polígono da base ao vértice da pirâmide.</li>
+        <li>Raio da Base: O raio do polígono da base.</li>
+    </ul>
+
+    <h3>Área da Superfície de uma Pirâmide</h3>
+    <p>
+        A área total (\(A_{\text{total}}\)) de uma pirâmide é a soma da área lateral (\(A_{\text{lateral}}\)) com a área da base (\(A_{\text{base}}\)):
+        \[A_{\text{total}} = A_{\text{lateral}} + A_{\text{base}}\]
+    </p>
+
+    <h3>Volume de uma Pirâmide</h3>
+    <p>
+        O volume (\(V_{\text{pirâmide}}\)) de uma pirâmide é calculado usando a fórmula:
+        \[V_{\text{pirâmide}} = \frac{1}{3} \times \text{Área da Base} \times \text{Altura da Pirâmide}\]
+    </p>
+    <h3>Tronco de Pirâmide</h3>
+    <p>
+        Um tronco de pirâmide de bases paralelas é um sólido tridimensional que ocorre quando uma pirâmide é truncada, resultando em uma pirâmide sem a parte superior, criando bases paralelas.
+    </p>
+
+    <h3>Elementos de um Tronco de Pirâmide</h3>
+    <ul>
+        <li>Base Maior: A base superior do tronco de pirâmide.</li>
+        <li>Base Menor: A base inferior do tronco de pirâmide.</li>
+        <li>Faces Laterais: São os trapézios formados pelas arestas laterais conectando as bases.</li>
+        <li>Arestas da Base: São as arestas dos polígonos das bases.</li>
+        <li>Altura do Tronco: É a distância entre as bases ao longo de uma linha perpendicular a elas.</li>
+        <li>Altura da Pirâmide: A altura da parte retirada ou a distância entre a base menor e a base maior.</li>
+    </ul>
+
+    <h3>Área da Superfície de um Tronco de Pirâmide</h3>
+    <p>
+        A área total (\(A_{\text{total\_tronco}}\)) de um tronco de pirâmide de bases paralelas é dada por:
+        \[A_{\text{total\_tronco}} = A_{\text{lateral}} + A_{\text{base\_maior}} + A_{\text{base\_menor}}\]
+    </p>
+
+    <h3>Razão de Semelhança</h3>
+    <p>
+        A razão de semelhança entre dois troncos de pirâmide é igual à razão entre o quadrado da razão das alturas e a razão dos volumes:
+        \[\text{Razão de Semelhança} = \left(\frac{H_1}{H_2}\right)^2 = \frac{V_1}{V_2}\]
+    </p>
+
+    <h3>Volume de um Tronco de Pirâmide</h3>
+    <p>
+        O volume (\(V_{\text{tronco}}\)) de um tronco de pirâmide é dado por:
+        \[V_{\text{tronco}} = \frac{1}{3} \times (\text{Área da base\_maior} + \text{Área da base\_menor} + \sqrt{A_{\text{base\_maior}} \times A_{\text{base\_menor}}}) \times \text{Altura do Tronco}\]
+    </p>
+</div>
+</div>
+
+    
+
+    
+
+   
+</body>
+</html>
