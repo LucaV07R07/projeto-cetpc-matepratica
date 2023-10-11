@@ -195,6 +195,23 @@
               var listItem = document.createElement("li");
               listItem.appendChild(link);
 
+              listItem.setAttribute("id", materia);
+
+              listItem.addEventListener("click", function () {
+                // Open a new window with a file or URL based on the id
+                var id = this.getAttribute("id");
+                var fileName =
+                  "material 2ano/file_" +
+                  id.toLowerCase().replace(/\s/g, "_") +
+                  ".html"; // Replace with your file name pattern
+                var newWindow = window.open(fileName, "_blank");
+                if (newWindow) {
+                  newWindow.focus();
+                } else {
+                  alert("Please allow pop-ups for this website.");
+                }
+              });
+
               listItem.setAttribute(
                 "style",
                 "padding-bottom: 5px; margin-left: -20px ;padding-left: 0px; cursor:pointer;"
@@ -250,6 +267,23 @@
 
               var listItem = document.createElement("li");
               listItem.appendChild(link);
+
+              listItem.setAttribute("id", materia);
+
+              listItem.addEventListener("click", function () {
+                // Open a new window with a file or URL based on the id
+                var id = this.getAttribute("id");
+                var fileName =
+                  "material 3ano/file_" +
+                  id.toLowerCase().replace(/\s/g, "_") +
+                  ".html"; // Replace with your file name pattern
+                var newWindow = window.open(fileName, "_blank");
+                if (newWindow) {
+                  newWindow.focus();
+                } else {
+                  alert("Please allow pop-ups for this website.");
+                }
+              });
 
               listItem.setAttribute(
                 "style",

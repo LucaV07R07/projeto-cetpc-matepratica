@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poliedros: Formas Tridimensionais</title>
+    <title>Poliedros: Formas Tridimensionais - Exploração e Propriedades</title>
     <style>
         /* Your CSS styles go here */
         body {
@@ -112,54 +112,85 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+            .lista-secoes a{
+                text-decoration: none;
+                color: black;
+            }
+            .lista-secoes a:hover{
+                text-decoration: underline;
+            }
     </style>
      <script type="text/javascript" async
      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 </head>
 <body>
+    <ul class="lista-secoes">
+        <li><a href="#historia-poliedros">História dos Poliedros</a></li>
+        <li><a href="#o-que-e-poliedro">O que é um Poliedro?</a></li>
+        <li><a href="#tipos-poliedros">Tipos de Poliedros</a></li>
+        <li><a href="#poliedros-convexos">Poliedros Convexos</a></li>
+        <li><a href="#poliedros-nao-convexos">Poliedros Não-Convexos</a></li>
+        <li><a href="#poliedros-euler">Poliedros de Euler</a></li>
+        <li><a href="#nomenclatura-poliedros">Nomenclatura dos Poliedros</a></li>
+        <li><a href="#poliedros-platao">Poliedros de Platão</a></li>
+        <li><a href="#projecoes-ortogonais">Projeções Ortogonais</a></li>
+        <li><a href="#prisma">Prisma</a></li>
+        <li><a href="#paralelepipedo">Paralelepípedo Reto-Retângulo</a></li>
+        <li><a href="#area-superficie-prisma">Área da Superfície do Prisma</a></li>
+        <li><a href="#volume-prisma">Volume de Prismas</a></li>
+        <li><a href="#piramides">Pirâmides</a></li>
+        <li><a href="#exercicios">Exercícios</a></li>
+    </ul>
+    <section id="historia-poliedros">
     <div class="explanation">
         <h2>História dos Poliedros</h2>
         <p>
             Os poliedros têm uma longa história que remonta aos antigos matemáticos gregos, como Platão, que estudou as formas tridimensionais e suas propriedades. A exploração dos poliedros não se limita apenas à matemática; sua beleza e simetria também fascinaram arquitetos e artistas ao longo dos séculos. Os estudos de Platão sobre os sólidos platônicos, como o tetraedro e o dodecaedro, contribuíram significativamente para a compreensão moderna dos poliedros.
         </p>
     </div>
-
+    </section>
+    <section id="o-que-e-poliedro">
     <div class="explanation">
         <h2>O que é um Poliedro?</h2>
         <p>
             Um poliedro é uma forma tridimensional composta por faces planas, onde cada face é um polígono. Essas faces se encontram em arestas e os vértices são os pontos onde as arestas se encontram. Os poliedros são entidades matemáticas fundamentais que podem representar uma variedade de objetos do mundo real, desde caixas até cristais. A classificação dos poliedros é feita com base na forma e no número de faces, proporcionando uma maneira de entender suas propriedades distintas.
         </p>
     </div>
-
+    </section>
+    <section id="tipos-poliedros">
     <div class="explanation">
         <h2>Tipos de Poliedros</h2>
         <p>
             Os poliedros podem ser classificados em dois tipos principais: convexos e não-convexos. Os poliedros convexos têm todas as faces voltadas para dentro, formando uma estrutura onde qualquer linha entre dois pontos internos está completamente contida no poliedro. Já os poliedros não-convexos possuem pelo menos uma face em que isso não ocorre, resultando em "dobras" para fora na sua parte interna.
         </p>
     </div>
-
+</section>
+<section id="poliedros-convexos">
     <div class="explanation">
         <h2>Poliedros Convexos</h2>
         <p>
             Poliedros convexos apresentam uma estrutura tridimensional em que, para quaisquer dois pontos no seu interior, a linha que os conecta está inteiramente contida no poliedro. Isso implica que a parte interna da figura está "dobrada" para dentro, sem protrusões ou reentrâncias notáveis.
         </p>
     </div>
-
+</section>
+<section id="poliedros-nao-convexos">
     <div class="explanation">
         <h2>Poliedros Não-Convexos</h2>
         <p>
             Poliedros não-convexos possuem pelo menos uma face em que, ao ligar dois pontos internos, a linha que os conecta está fora do poliedro. Isso resulta em áreas "dobradas" para fora na parte interna do poliedro, mostrando a não conformidade com a definição de convexidade.
         </p>
     </div>
-
+</section>
+<section id="poliedros-euler">
     <div class="explanation">
         <h2>Poliedros de Euler</h2>
         <p>
             Os poliedros de Euler obedecem à Fórmula de Euler para Poliedros: \(V - A + F = 2\), onde \(V\) representa o número de vértices, \(A\) é o número de arestas e \(F\) é o número de faces de um poliedro. Essa fórmula é válida tanto para poliedros convexos quanto não-convexos, proporcionando uma relação fundamental entre suas características.
         </p>
     </div>
-
+</section>
+<section id="nomenclatura-poliedros">
     <div class="explanation">
         <h2>Nomenclatura dos Poliedros</h2>
         <p>
@@ -182,7 +213,8 @@
             Além dessas, existem muitos outros poliedros com formas e características distintas, contribuindo para a riqueza da geometria tridimensional.
         </p>
     </div>
-
+</section>
+<section id="poliedros-platao">
     <div class="explanation">
         <h2>Poliedros de Platão</h2>
         <p>
@@ -218,13 +250,16 @@
             Esses sólidos de Platão são fundamentais na geometria e têm várias propriedades e aplicações em matemática, física e outras ciências.
         </p>
     </div>
-
+</section>
+<section id="projecoes-ortogonais">
     <div class="explanation">
         <h2>Projeções Ortogonais</h2>
         <p>
             As projeções ortogonais são representações bidimensionais de um poliedro em um plano. Elas são úteis para visualizar a forma tridimensional do poliedro em uma representação bidimensional mais simples. Essas projeções conservam ângulos e permitem uma análise mais fácil das propriedades e estruturas do poliedro.
         </p>
     </div>
+</section>
+<section id="prisma">
     <div class="explanation">
         <h2>Prisma</h2>
         <p>
@@ -250,7 +285,8 @@
             <!-- Adicione mais exemplos de prismas conforme necessário -->
         </ul>
     </div>
-
+</section>
+<section id="paralelepipedo">
     <div class="explanation">
         <h2>Paralelepípedo Reto-Retângulo</h2>
         <p>
@@ -287,7 +323,8 @@
             \(D = \sqrt{4^2 + 3^2 + 5^2} \approx 7.071\) cm
         </p>
     </div>
-
+</section>
+<section id="area-superficie-prisma">
     <div class="explanation">
         <h2>Área da Superfície do Prisma</h2>
     <p>
@@ -315,6 +352,8 @@
         \(A_{\text{total}} = (2 \times L \times H + 2 \times W \times H) + 2 \times (L \times W) = 84\) cm²
     </p>
 </div>
+</section>
+<section id="volume-prisma">
 <div class="explanation">
     <h2>Volume de Prismas</h2>
 
@@ -349,6 +388,8 @@
         Segundo o Princípio de Cavalieri, dois sólidos \(S_1\) e \(S_2\) apoiados em um plano \(A\) e contidos no mesmo semiespaço terão o mesmo volume \(V\) se toda seção transversal que corta ambos os sólidos resulta em regiões planas de mesma área \(A\).
     </p>
 </div>
+</section>
+<section id="piramides">
 <div class="explanation">
     <h2>Pirâmides</h2>
 
@@ -429,8 +470,159 @@
     </p>
 </div>
 </div>
-
+</section>
+ <section id="exercicios">
+    <div class="questions">
+        <h2>Exercícios sobre Poliedros</h2>
+        <ol>
+            <!-- Questão 1 -->
+            <li>
+                <p>Um poliedro convexo tem 8 faces triangulares e 6 faces octagonais. Quantos vértices tem esse poliedro?</p>
+                <label for="q1a1"><input type="radio" name="q1" id="q1a1" value="24"> a) 24</label><br>
+                <label for="q1a2"><input type="radio" name="q1" id="q1a2" value="20"> b) 20</label><br>
+                <label for="q1a3"><input type="radio" name="q1" id="q1a3" value="15"> c) 15</label><br>
+                <label for="q1a4"><input type="radio" name="q1" id="q1a4" value="32"> d) 32</label><br>
+            </li>
     
+            <!-- Questão 2 -->
+            <li>
+                <p>Calcule o número de faces de um poliedro convexo que tem 12 vértices e 30 arestas.</p>
+                <label for="q2a1"><input type="radio" name="q2" id="q2a1" value="11"> a) 11</label><br>
+                <label for="q2a2"><input type="radio" name="q2" id="q2a2" value="24"> b) 24</label><br>
+                <label for="q2a3"><input type="radio" name="q2" id="q2a3" value="20"> c) 20</label><br>
+                <label for="q2a4"><input type="radio" name="q2" id="q2a4" value="12"> d) 12</label><br>
+            </li>
+    
+            <!-- Questão 3 -->
+            <li>
+                <p>Calcule a medida da diagonal do paralelepípedo reto-retângulo com as três dimensões medindo \(5\sqrt{3}\) cm.</p>
+                <label for="q3a1"><input type="radio" name="q3" id="q3a1" value="15cm"> a) \(15 \, \text{cm}\)</label><br>
+                <label for="q3a2"><input type="radio" name="q3" id="q3a2" value="10cm"> b) \(10 \, \text{cm}\)</label><br>
+                <label for="q3a3"><input type="radio" name="q3" id="q3a3" value="15\sqrt{3}cm"> c) \(15\sqrt{3} \, \text{cm}\)</label><br>
+                <label for="q3a4"><input type="radio" name="q3" id="q3a4" value="10\sqrt{3}cm"> d) \(10\sqrt{3} \, \text{cm}\)</label><br>
+            </li>
+    
+            <!-- Questão 4 -->
+            <li>
+                <p>Um paralelepípedo reto-retângulo tem dimensões \(a \, \text{cm}\), \(4 \, \text{cm}\) e \(7 \, \text{cm}\) e tem diagonal de medida \(3\sqrt{10} \, \text{cm}\). Determine o valor de \(a\).</p>
+                <label for="q4a1"><input type="radio" name="q4" id="q4a1" value="\sqrt{5}"> a) \(\sqrt{5}\)</label><br>
+                <label for="q4a2"><input type="radio" name="q4" id="q4a2" value="4"> b) \(4\)</label><br>
+                <label for="q4a3"><input type="radio" name="q4" id="q4a3" value="5"> c) \(5\)</label><br>
+                <label for="q4a4"><input type="radio" name="q4" id="q4a4" value="9"> d) \(9\)</label><br>
+            </li>
+    
+            <!-- Questão 5 -->
+            <li>
+                <p>Calcule a área total da superfície de um prisma triangular regular, de área lateral \(300 \, \text{cm}^2\), sabendo que a medida da aresta de base é igual à medida da aresta lateral.</p>
+                <label for="q5a1"><input type="radio" name="q5" id="q5a1" value="300cm^2"> a) \(300 \, \text{cm}^2\)</label><br>
+                <label for="q5a2"><input type="radio" name="q5" id="q5a2" value="150cm^2"> b) \(150 \, \text{cm}^2\)</label><br>
+                <label for="q5a3"><input type="radio" name="q5" id="q5a3" value="25\sqrt{3}cm^2"> c) \(25\sqrt{3} \, \text{cm}^2\)</label><br>
+                <label for="q5a4"><input type="radio" name="q5" id="q5a4" value="50(6+/sqrt{3})cm^2"> d) \(50(6+\sqrt{3}) \, \text{cm}^2\)</label><br>
+            </li>
+    
+            <!-- Questão 6 -->
+            <li>
+                <p>Calcule a área de superfície lateral de um prisma hexagonal cuja área da base é \(12\sqrt{3} \, \text{cm}^2\), sabendo que a aresta da base mede metade da medida da aresta lateral.</p>
+                <label for="q6a1"><input type="radio" name="q6" id="q6a1" value="89cm^2"> a) \(89 \, \text{cm}^2\)</label><br>
+                <label for="q6a2"><input type="radio" name="q6" id="q6a2" value="96cm^2"> b) \(96 \, \text{cm}^2\)</label><br>
+                <label for="q6a3"><input type="radio" name="q6" id="q6a3" value="106cm^2"> c)\(106 \, \text{cm}^2\)</label><br>
+                <label for="q6a4"><input type="radio" name="q6" id="q6a4" value="90cm^2"> d) \(90 \, \text{cm}^2\)</label><br>
+            </li>
+    
+            <!-- Questão 7 -->
+            <li>
+                <p>Duas caixas são cubos perfeitamente regulares, isto é, cada uma tem seis faces que são, por sua vez, quadrados perfeitos. Cada face da primeira caixa tem exatamente \(3 \, \text{m}^2\) de área, e cada face da segunda caixa tem exatamente \(9 \, \text{m}^2\) de área. A razão entre o volume da primeira caixa e o volume da segunda caixa é, portanto, igual a:</p>
+                <label for="q7a1"><input type="radio" name="q7" id="q7a1" value="3^(1/2)"> a) \(3^{1/2}\)</label><br>
+                <label for="q7a2"><input type="radio" name="q7" id="q7a2" value="3^(-1/2)"> b) \(3^{-1/2}\)</label><br>
+                <label for="q7a3"><input type="radio" name="q7" id="q7a3" value="3^(-3/2)"> c) \(3^{-3/2}\)</label><br>
+                <label for="q7a4"><input type="radio" name="q7" id="q7a4" value="3^(3/2)"> d) \(3^{3/2}\)</label><br>
+            </li>
+            <li>
+                <p>Dado um cubo de aresta \(l\), qual é o volume do octaedro cujos vértices são os centros das faces do cubo?</p>
+                <label for="q8a1"><input type="radio" name="q8" id="q8a1" value="(l^3)/6"> a) \(\frac{{l^3}}{6}\)</label><br>
+                <label for="q8a2"><input type="radio" name="q8" id="q8a2" value="l^3"> b) \(l^3\)</label><br>
+                <label for="q8a3"><input type="radio" name="q8" id="q8a3" value="(l^3)/3"> c) \(\frac{{l^3}}{3}\)</label><br>
+                <label for="q8a4"><input type="radio" name="q8" id="q8a4" value="(l^3)/2"> d) \(\frac{{l^3}}{2}\)</label><br>
+            </li>
+            
+            <li>
+                <p>Em um paralelepípedo reto-retângulo, a área total mede \(28 \, \text{cm}^2\) e a diagonal é \(21\sqrt{2} \, \text{cm}\). A soma das dimensões mede:</p>
+                <label for="q9a1"><input type="radio" name="q9" id="q9a1" value="7cm"> a) \(7 \, \text{cm}\)</label><br>
+                <label for="q9a2"><input type="radio" name="q9" id="q9a2" value="8cm"> b) \(8 \, \text{cm}\)</label><br>
+                <label for="q9a3"><input type="radio" name="q9" id="q9a3" value="9cm"> c) \(9 \, \text{cm}\)</label><br>
+                <label for="q9a4"><input type="radio" name="q9" id="q9a4" value="10cm"> d) \(10 \, \text{cm}\)</label><br>
+            </li>
+            
+            <li>
+                <p>Uma pirâmide quadrangular regular com \(224 \, \text{cm}\) de altura foi seccionada por um plano paralelo à base e distante do vértice \(\frac{3}{4}\) da altura. Calcule o volume do tronco de pirâmide resultante, sabendo que o perímetro da seção é \(180 \, \text{cm}\).</p>
+                <label for="q10a1"><input type="radio" name="q10" id="q10a1" value="144500cm^3"> a) \(144500 \, \text{cm}^3\)</label><br>
+                <label for="q10a2"><input type="radio" name="q10" id="q10a2" value="166300cm^3"> b) \(166300 \, \text{cm}^3\)</label><br>
+                <label for="q10a3"><input type="radio" name="q10" id="q10a3" value="155400cm^3"> c) \(155400 \, \text{cm}^3\)</label><br>
+                <label for="q10a4"><input type="radio" name="q10" id="q10a4" value="100000cm^3"> d) \(100000 \, \text{cm}^3\)</label><br>
+            </li>
+        </ol>
+        <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Exercícios</button>
+    </div>
+ </section>  
+ <script>
+    function corrigirExercicios() {
+        const respostasCorretas = ["24",
+        "20",
+        "15cm",
+        "5",
+        "50(6+/sqrt{3})cm^2",
+        "96cm^2",
+        "3^(-3/2)",
+        "(l^3)/6",
+        "7cm",
+        "155400cm^3"];         
+
+         let acertos = 0;
+let erros = 0;
+
+for (let i = 0; i < respostasCorretas.length; i++) {
+    const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+
+    if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+        acertos++;
+    } else {
+        erros++;
+    }
+}
+
+const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+let corBarra = "";
+if (indiceAcertos >= 70) {
+    corBarra = "green"; // Verde para bom desempenho
+} else if (indiceAcertos >= 40) {
+    corBarra = "yellow"; // Amarelo para desempenho médio
+} else {
+    corBarra = "red"; // Vermelho para baixo desempenho
+}
+
+const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+const progressBarWidth = `${indiceAcertos}%`;
+
+const modal = document.createElement("div");
+modal.classList.add("modal");
+modal.innerHTML = `
+    <div class="modal-content">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+        <div class="message">${mensagem}</div>
+    </div>
+`;
+document.body.appendChild(modal);
+setTimeout(() => {
+    modal.style.display = 'block';
+}, 100);
+}
+function fecharModal() {
+        const modal = document.querySelector(".modal");
+        modal.style.display = "none";
+        modal.remove();
+    }
+</script>  
 
     
 
