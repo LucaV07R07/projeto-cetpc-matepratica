@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matemática Financeira</title>
+    <style>
+         body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+            .explanation {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .explanation h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .explanation p {
+                margin-bottom: 10px;
+            }
+            .questions {
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .questions h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+            .questions ol {
+                margin-bottom: 20px;
+            }
+            .questions ol li {
+                margin-bottom: 10px;
+            }
+            .btn-correct {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .btn-correct:hover {
+                background-color: #45a049;
+            }
+
+            .progress-bar {
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: red;
+                transition: width 1s ease-in-out,
+                    background-color 0.5s ease-in-out;
+            }
+
+            .message {
+                padding-top: 25px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            #juros-compostos table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    #juros-compostos th, #juros-compostos td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: center;
+    }
+
+    #juros-compostos th {
+        background-color: #f2f2f2;
+    }
+
+    #juros-compostos tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    </style>
+    <!-- Adicionando a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+    <section id="historia-matematica-financeira">
+        <div class="explanation">
+            <h2>História da Matemática Financeira</h2>
+            <p>
+                A matemática financeira tem raízes profundas na história e desempenha um papel fundamental na tomada de decisões financeiras. Sua origem remonta a civilizações antigas que desenvolveram métodos de cálculo para lidar com transações comerciais e problemas financeiros. Ao longo dos séculos, a matemática financeira evoluiu e se tornou uma disciplina crucial para entender o valor do dinheiro, investimentos, empréstimos e muito mais.
+            </p>
+        </div>
+    </section>  
+
+    <section id="taxa-percentual">
+        <div class="explanation">
+            <h2>Entendendo a Taxa Percentual na Matemática Financeira</h2>
+            <p>
+                A taxa percentual, ou porcentagem, é uma forma de expressar a relação entre um número real \( p \) e o número 100, representada como \( p\% \). Matematicamente, isso é indicado por:
+            </p>
+            <p>
+                \( p\% = \frac{p}{100} \)
+            </p>
+            <p>
+                Vamos aprender com alguns exemplos de cálculos de porcentagem:
+            </p>
+            <ul>
+                <li>a) Calcular 100% de 70: <br/>
+                   \(\left(\frac{100}{100}\right) \times 70 = 1 \times 70 = 70 \)
+                </li>
+                <li>b) Calcular 25% de 200: <br/>
+                    
+                        \(\left(\frac{25}{100}\right) \times 200 = \frac{1}{4} \times 200 = \frac{200}{4} = 50 \)</li>
+                    
+                </li>
+                <li>c) Calcular 50% de 25% de 40: <br/>
+                   \(\left(\frac{50}{100}\right) \times \left(\frac{25}{100}\right) \times 40 = \frac{1}{2} \times \frac{1}{4} \times 40 = \frac{1}{8} \)
+                        \( \frac{1}{8} \times 40 = \frac{40}{8} = 5 \)
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="aplicacoes-taxa-percentual">
+        <div class="explanation">
+            <h2>Aplicações da Taxa Percentual</h2>
+            <p>
+                Na matemática financeira, a taxa percentual (\(i\)) é fundamental para calcular acréscimos e descontos em um valor inicial (\(V_0\)) e obter o valor final (\(V_f\)).
+                A fórmula para o cálculo do valor final com acréscimos ou descontos é:
+            </p>
+            <p>
+                \(V_f = V_0 \times (1 \pm i_1) \times (1 \pm i_2) \times \ldots \times (1 \pm i_n)\)
+            </p>
+            <p>
+                O símbolo \( \pm \) representa que o sinal é positivo se a taxa indica acréscimo e negativo se indica desconto.
+            </p>
+    
+            <p>
+                Vamos desenvolver um exemplo com acréscimos e descontos sucessivos:
+            </p>
+    
+            <p>
+                <strong>Exemplo de Exercício:</strong>
+                <br>
+                Um produto inicialmente custa R$ 500,00 e sofre um acréscimo de 10% e depois um desconto de 5%. Qual será o valor final do produto?
+            </p>
+            <ul>
+                <li>Acrescimento de 10%: \(1 + 0,10 = 1,10\)</li>
+                <li>Desconto de 5%: \(1 - 0,05 = 0,95\)</li>
+                <li>Valor final (\(V_f\)) utilizando a fórmula:
+                    \[ V_f = 500,00 \times (1,10) \times (0,95) = 522,50 \text{ (R\$)} \]
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="conceitos-financeiros">
+        <div class="explanation">
+            <h2>Conceitos Financeiros: Descontos, Acréscimos, Lucros e Prejuízos</h2>
+            <p>
+                Entender conceitos financeiros como descontos, acréscimos, lucros e prejuízos é fundamental para lidar com transações comerciais e finanças pessoais. Vamos explicar cada um desses conceitos:
+            </p>
+            <ul>
+                <li><strong>Desconto:</strong> É uma redução no preço de um produto ou serviço, geralmente expressa em porcentagem. O desconto é subtraído do valor inicial para obter o valor final.</li>
+                <li><strong>Acréscimo:</strong> É um aumento no preço de um produto ou serviço, também expresso em porcentagem. O acréscimo é adicionado ao valor inicial para calcular o valor final.</li>
+                <li><strong>Lucro:</strong> É a diferença entre o preço de venda (\(Pv\)) de um produto ou serviço e o seu preço de custo (\(Pc\)). Pode ser calculado pela fórmula: \(L = Pv - Pc\). Representa o ganho obtido após a venda.</li>
+                <li><strong>Prejuízo:</strong> É a diferença entre o preço de custo (\(Pc\)) de um produto ou serviço e o seu preço de venda (\(Pv\)). Pode ser calculado pela fórmula: \(P = Pc - Pv\). Representa a perda incorrida após a venda.</li>
+            </ul>
+    
+            <p>
+                Vamos exemplificar com alguns cálculos:
+            </p>
+    
+            <p>
+                <strong>Exemplo de Lucro:</strong> Um carro foi comprado por R$ 100.000,00 e foi vendido por R$ 125.000,00. Qual o lucro obtido pelo vendedor?
+            </p>
+            <ul>
+                <li>Lucro (\(L\)) = \(Pv - Pc = 125.000 - 100.000 = 25.000\)</li>
+            </ul>
+    
+            <p>
+                <strong>Exemplo de Porcentagem do Lucro:</strong> O preço de um produto é R$ 160,00 e ele é vendido por R$ 200,00. Vamos calcular a porcentagem do lucro sobre o preço de custo e o preço de venda.
+            </p>
+            <ul>
+                <li>Lucro (\(L\)) = \(Pv - Pc = 200 - 160 = 40\), portanto, o lucro é R$ 40,00.</li>
+                <li>Porcentagem do lucro sobre o preço de custo: \( \frac{L}{Pc} = \frac{40}{160} = 25\% \)</li>
+                <li>Porcentagem do lucro sobre o preço de venda: \( \frac{L}{Pv} = \frac{40}{200} = 20\% \)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="juros-simples">
+        <div class="explanation">
+            <h2>Juros Simples</h2>
+            <p>
+                Juros simples é um modelo básico de cálculo de juros utilizado na matemática financeira. Para compreendê-lo, é essencial entender os seguintes conceitos:
+            </p>
+            <ul>
+                <li><strong>Capital (\(C\)):</strong> É o valor inicial investido ou emprestado.</li>
+                <li><strong>Montante (\(M\)):</strong> É o valor total obtido após o período de tempo, incluindo os juros.</li>
+                <li><strong>Juros (\(J\)):</strong> É a quantia adicional obtida pelo capital inicial ao longo do tempo, geralmente expressa em moeda.</li>
+                <li><strong>Taxa de juros (\(i\)):</strong> Representa a porcentagem do capital que será adicionada aos juros. Dependendo do período considerado, pode ser mensal, diária ou anual.</li>
+            </ul>
+    
+            <p>
+                As fórmulas do juros simples são:
+            </p>
+            <ul>
+                <li>Juros (\(J\)): \(J = C \times i \times t\)</li>
+                <li>Montante (\(M\)): \(M = C + J\)</li>
+                <li>Montante (\(M\)): \(M = C(1 + i \times t)\)</li>
+            </ul>
+    
+            <p>
+                Considerando o ano comercial, a taxa de juros anual (\(i_{\text{anual}}\)) pode ser convertida para mensal ou diária:
+            </p>
+            <ul>
+                <li>Taxa mensal (\(i_{\text{mensal}}\)): \(i_{\text{mensal}} = \frac{i_{\text{anual}}}{12}\)</li>
+                <li>Taxa diária (\(i_{\text{diaria}}\)): \(i_{\text{diaria}} = \frac{i_{\text{anual}}}{360}\)</li>
+            </ul>
+    
+            <p>
+                Vamos resolver alguns exemplos de situações com juros simples:
+            </p>
+    
+            <p>
+                <strong>Exemplo 1:</strong> Calcular o capital (\(C\)) com juros simples sabendo o montante (\(M\)), a taxa (\(i\)) e o tempo (\(t\)).
+                <br>
+                Dados: \(M = 1200\) (Montante), \(i = 0,05\) (Taxa), \(t = 4\) anos (Tempo).
+            </p>
+            <ul>
+                <li>Usaremos a fórmula \(M = C(1 + i \times t)\) para calcular \(C\).</li>
+                <li>Isolando \(C\), temos: \(C = \frac{M}{1 + i \times t}\).</li>
+                <li>Substituindo os valores, obtemos: \(C = \frac{1200}{1 + 0,05 \times 4} = 1000\) (Capital).</li>
+            </ul>
+    
+            <p>
+                <strong>Exemplo 2:</strong> Calcular a taxa (\(i\)) em termos mensais conhecendo o montante (\(M\)), o capital (\(C\)) e o tempo (\(t\)).
+                <br>
+                Dados: \(M = 1500\) (Montante), \(C = 1000\) (Capital), \(t = 3\) meses (Tempo).
+            </p>
+            <ul>
+                <li>Usaremos a fórmula \(J = C \times i \times t\) para calcular \(i_{\text{mensal}}\).</li>
+                <li>Isolando \(i_{\text{mensal}}\), temos: \(i_{\text{mensal}} = \frac{J}{C \times t}\).</li>
+                <li>Substituindo os valores, obtemos: \(i_{\text{mensal}} = \frac{500}{1000 \times 3} = 0,1667\) (Taxa mensal).</li>
+                <li>Para obter a taxa anual, multiplicamos a taxa mensal por 12: \(i_{\text{anual}} = 12 \times i_{\text{mensal}}\).</li>
+            </ul>
+    
+            <p>
+                <strong>Exemplo 3:</strong> Calcular o tempo (\(t\)) necessário para atingir um montante (\(M\)) conhecendo o capital (\(C\)), a taxa (\(i\)) e o montante.
+                <br>
+                Dados: \(C = 2000\) (Capital), \(i = 0,02\) (Taxa mensal), \(M = 2500\) (Montante).
+            </p>
+            <ul>
+                <li>Usaremos a fórmula \(J = C \times i \times t\) para calcular \(t\).</li>
+                <li>Isolando \(t\), temos: \(t = \frac{J}{C \times i}\).</li>
+                <li>Substituindo os valores, obtemos: \(t = \frac{500}{2000 \times 0,02} = 12,5\) (Tempo em meses).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="juros-compostos">
+        <div class="explanation">
+            <h2>Juros Compostos</h2>
+            <h3>Juros Compostos vs Juros Simples</h3>
+            <p>
+                A diferença fundamental entre juros compostos e juros simples está na forma como os juros são calculados ao longo do tempo. Nos juros simples, os juros são calculados apenas sobre o capital inicial (ou principal), enquanto nos juros compostos, os juros são calculados sobre o montante acumulado, o que resulta em um crescimento exponencial dos investimentos.
+            </p>
+            <p>
+                A fórmula dos juros compostos é \(M = C \times (1 + i)^t\), onde \(M\) é o montante, \(C\) é o capital inicial, \(i\) é a taxa de juros por período e \(t\) é o número de períodos.
+            </p>
+            <p>
+                Abaixo, apresentamos uma tabela que compara os montantes obtidos com juros simples e juros compostos ao longo de vários períodos em função da taxa \(i = 0,05\) :
+            </p>
+            <table>
+                <tr>
+                    <th>Período</th>
+                    <th>Juros Simples</th>
+                    <th>Juros Compostos</th>
+                </tr>
+                <tr>
+                    <td>Início</td>
+                    <td>R$ 100,00</td>
+                    <td>R$ 100,00</td>
+                </tr>
+                <tr>
+                    <td>Após 1 mês</td>
+                    <td>R$ 105,00</td>
+                    <td>R$ 105,00</td>
+                </tr>
+                <tr>
+                    <td>Após 2 meses</td>
+                    <td>R$ 110,00</td>
+                    <td>R$ 110,25</td>
+                </tr>
+                <tr>
+                    <td>Após 3 meses</td>
+                    <td>R$ 115,00</td>
+                    <td>R$ 115,76</td>
+                </tr>
+                <tr>
+                    <td>Após 4 meses</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 121,55</td>
+                </tr>
+                <tr>
+                    <td>Após \(t\) meses</td>
+                    <td>R$ 100,00 + R$ 5,00\(t\)</td>
+                    <td>R$ 100,00 \(\times (1 + 0,05)^t\)</td>
+                </tr>
+            </table>
+        <h2>Exemplos de Juros Compostos</h2>
+
+        <div class="exemplo">
+            <h3>Exemplo 1:</h3>
+            <p>
+                Calcular o montante (\(M\)) com juros compostos sabendo o capital (\(C\)), a taxa (\(i\)) e o tempo (\(t\)).
+                <br>
+                Dados: \(C = 1000\) (Capital), \(i = 0,05\) (Taxa), \(t = 3\) anos (Tempo).
+            </p>
+            <ul>
+                <li>Usaremos a fórmula \(M = C(1 + i)^t\) para calcular \(M\).</li>
+                <li>Substituindo os valores, obtemos: \(M = 1000 \times (1 + 0,05)^3 = 1157,63\) (Montante).</li>
+            </ul>
+        </div>
+
+        <div class="exemplo">
+            <h3>Exemplo 2:</h3>
+            <p>
+                Calcular a taxa (\(i\)) anual conhecendo o montante (\(M\)), o capital (\(C\)) e o tempo (\(t\)).
+                <br>
+                Dados: \(M = 2205\) (Montante), \(C = 2000\) (Capital), \(t = 2\) anos (Tempo).
+            </p>
+            <ul>
+                <li>Usaremos a fórmula \(M = C(1 + i)^t\) para calcular \(i_{\text{anual}}\).</li>
+                <li>Aplicando os valores na fórmula, temos \(2205 = 2000(1+i)^2\).</li>
+                <li>Isolando \((1+i)^2\), temos: \((1+i)^2 = \frac{2205}{2000}\).</li>
+                <li>\(1+i = \sqrt{\frac{2205}{2000}} = \sqrt{1,1025} = \sqrt{\frac{11025}{10000}} = \frac{105}{100}\).</li>
+                <li>\(1+i = 1,05\).</li>
+                <li>\(i = 0,05\).</li>
+            </ul>
+        </div>
+
+        <div class="exemplo">
+            <h3>Exemplo 3:</h3>
+            <p>
+                Calcular o tempo (\(t\)) necessário para atingir um montante (\(M\)) conhecendo o capital (\(C\)), a taxa (\(i\)) e o montante.
+                <br>
+                Dados: \(C = 3000\) (Capital), \(i = 0,1\) (Taxa anual), \(M = 3993\) (Montante).
+            </p>
+            <ul>
+                <li>Avalie \(3993 = 3000 \times (1 + i)^t\).</li>
+                <li>Converta o decimal em uma fração: \(3993 = 3000 \times \left(\frac{10}{11}\right)^t\).</li>
+                <li>Troque os lados da equação: \(\left(\frac{11}{10}\right)^t = \frac{3993}{3000}\).</li>
+                <li>Escreva o número na forma exponencial com base \(11/10\): \(\left(\frac{11}{10}\right)^t = \left(\frac{11}{10}\right)^3\).</li>
+                <li>Solução: \(t = 3\).</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+
+    <div class="explanation">
+        <h3>Amortização e Parcelas de Financiamento</h3>
+        <p>
+            Amortização é o processo de pagamento de um empréstimo ou financiamento em parcelas periódicas que incluem tanto a parte do valor inicial (capital) quanto os juros.
+        </p>
+        <ul>
+            <li>Para obter o valor futuro (\(V_f\)), multiplica-se o valor presente (\(V_p\)) por \((1+i)^t\): \(V_f = V_p \times (1+i)^t\).</li>
+            <li>Para obter o valor presente (\(V_p\)), divide-se o valor futuro (\(V_f\)) por \((1+i)^t\): \(V_p = \frac{V_f}{(1+i)^t}\).</li>
+        </ul>
+    <div class="exemplo">
+        <h3>Exemplo:</h3>
+        <p>
+            Uma compra de R$ 600,00 será paga em 3 parcelas mensais e iguais, sendo a primeira à vista. A loja cobra juros de 6,5% ao mês. Vamos determinar o valor de cada parcela.
+        </p>
+        <p>
+            Utilizaremos a equação \(x + \frac{x}{1,065} + \frac{x}{(1,065)^2} = 600\) para calcular \(x\).
+        </p>
+        <p>
+            \(x + \frac{x}{1,065} + \frac{x}{(1,065)^2} = 600\)<br>
+            \((1,065)^2x + (1,065)x + x = 1,065^2 \times 600\)<br>
+            \(3,199225x = 680,535\)<br>
+            \(x \approx 212,72\)
+        </p>
+        <p>
+            Cada parcela do financiamento é de aproximadamente R$ 212,72.
+        </p>
+    </div>
+</div>
+    <div class="questions">
+        <h2>Teste de Matemática Financeira</h2>
+        <ol>
+            <!-- Questão 1 -->
+            <li>
+                <p>(FGV) O país A possui renda per capita anual de R dólares e população de P habitantes. Sabendo-se que o país B possui renda per capita anual igual a 60% da do país A e o dobro da sua população, é correto dizer que a renda total anual do país B é:</p>
+                <label for="q1a1"><input type="radio" name="q1" id="q1a1" value="a"> a) 20% inferior à de A</label><br>
+                <label for="q1a2"><input type="radio" name="q1" id="q1a2" value="b"> b) 30% inferior à de A</label><br>
+                <label for="q1a3"><input type="radio" name="q1" id="q1a3" value="c"> c) Igual à de A</label><br>
+                <label for="q1a4"><input type="radio" name="q1" id="q1a4" value="d"> d) 30% superior à de A</label><br>
+                <label for="q1a5"><input type="radio" name="q1" id="q1a5" value="e"> e) 20% superior à de A</label><br>
+            </li>
+
+            <!-- Questão 2 -->
+            <li>
+                <p>Em 1 de abril de determinado ano, um produto que custava R$ 250,00 teve seu preço diminuído de p% de seu valor. Em 1 de maio do mesmo ano, o novo preço foi diminuído em p% do seu valor, passando a custar R$ 211,6. Determine o valor de p.</p>
+                <label for="q2a1"><input type="radio" name="q2" id="q2a1" value="a"> a) 8</label><br>
+                <label for="q2a2"><input type="radio" name="q2" id="q2a2" value="b"> b) 10</label><br>
+                <label for="q2a3"><input type="radio" name="q2" id="q2a3" value="c"> c) 7</label><br>
+                <label for="q2a4"><input type="radio" name="q2" id="q2a4" value="d"> d) 5</label><br>
+                <label for="q2a5"><input type="radio" name="q2" id="q2a5" value="e"> e) 11</label><br>
+            </li>
+
+            <!-- Questão 3 -->
+            <li>
+                <p>Um capital de R$ 2400,00 foi aplicado durante 5 meses a juros simples, gerando um montante de R$ 2760,00. Qual foi a taxa mensal de juro?</p>
+                <label for="q3a1"><input type="radio" name="q3" id="q3a1" value="a"> a) 2%</label><br>
+                <label for="q3a2"><input type="radio" name="q3" id="q3a2" value="b"> b) 3%</label><br>
+                <label for="q3a3"><input type="radio" name="q3" id="q3a3" value="c"> c) 4%</label><br>
+                <label for="q3a4"><input type="radio" name="q3" id="q3a4" value="d"> d) 5%</label><br>
+                <label for="q3a5"><input type="radio" name="q3" id="q3a5" value="e"> e) 6%</label><br>
+            </li>
+
+            <!-- Questão 4 -->
+            <li>
+                <p>Quanto uma pessoa deve aplicar hoje, a juro composto com taxa de 1,4% ao mês, para conseguir pagar uma dívida de R$ 3600,00 daqui a 3 meses?</p>
+                <label for="q4a1"><input type="radio" name="q4" id="q4a1" value="a"> a) R$ 3422,75</label><br>
+                <label for="q4a2"><input type="radio" name="q4" id="q4a2" value="b"> b) R$ 3433,14</label><br>
+                <label for="q4a3"><input type="radio" name="q4" id="q4a3" value="c"> c) R$ 3452,94</label><br>
+                <label for="q4a4"><input type="radio" name="q4" id="q4a4" value="d"> d) R$ 3452,54</label><br>
+                <label for="q4a5"><input type="radio" name="q4" id="q4a5" value="e"> e) R$ 3352,94</label><br>
+            </li>
+
+            <!-- Questão 5 -->
+            <li>
+                <p>Um automóvel custou R$ 20000. Por quanto deve ser vendido para que haja um lucro de 6% sobre o preço de custo?</p>
+                <label for="q5a1"><input type="radio" name="q5" id="q5a1" value="a"> a) R$ 20.900,00</label><br>
+                <label for="q5a2"><input type="radio" name="q5" id="q5a2" value="b"> b) R$ 22.200,00</label><br>
+                <label for="q5a3"><input type="radio" name="q5" id="q5a3" value="c"> c) R$ 21.500,00</label><br>
+                <label for="q5a4"><input type="radio" name="q5" id="q5a4" value="d"> d) R$ 21.200,00</label><br>
+                <label for="q5a5"><input type="radio" name="q5" id="q5a5" value="e"> e) R$ 21.250,00</label><br>
+            </li>
+
+            <!-- Questão 6 -->
+            <li>
+                <p>Uma dívida aumenta 9% ao mês. Se hoje a dívida é de R$ 13.000,00, de quanto será daqui a 3 meses?</p>
+                <label for="q6a1"><input type="radio" name="q6" id="q6a1" value="a"> a) Aproximadamente R$ 16.835,38</label><br>
+                <label for="q6a2"><input type="radio" name="q6" id="q6a2" value="b"> b) Aproximadamente R$ 16.800,72</label><br>
+                <label for="q6a3"><input type="radio" name="q6" id="q6a3" value="c"> c) Aproximadamente R$ 15.805,30</label><br>
+                <label for="q6a4"><input type="radio" name="q6" id="q6a4" value="d"> d) Aproximadamente R$ 18.835,40</label><br>
+                <label for="q6a5"><input type="radio" name="q6" id="q6a5" value="e"> e) Aproximadamente R$ 17.835,52</label><br>
+            </li>
+
+            <!-- Questão 7 -->
+            <li>
+                <p>Um imóvel, no valor total de R$ 364.000,00, vai ser pago em 3 parcelas anuais iguais, sendo a primeira à vista. Qual é o valor de cada parcela, se está sendo cobrado juro de 20% ao ano na segunda e na terceira parcelas?</p>
+                <label for="q7a1"><input type="radio" name="q7" id="q7a1" value="a"> a) R$ 120.000,00</label><br>
+                <label for="q7a2"><input type="radio" name="q7" id="q7a2" value="b"> b) R$ 144.000,00</label><br>
+                <label for="q7a3"><input type="radio" name="q7" id="q7a3" value="c"> c) R$ 122.000,00</label><br>
+                <label for="q7a4"><input type="radio" name="q7" id="q7a4" value="d"> d) R$ 120.200,00</label><br>
+                <label for="q7a5"><input type="radio" name="q7" id="q7a5" value="e"> e) R$ 124.400,00</label><br>
+            </li>
+
+            <!-- Questão 8 -->
+            <li>
+                <p>Quanto Mariana deveria aplicar hoje em um investimento que rende juro composto à taxa de 10% ao ano para obter um montante de R$ 13.310,00 daqui a 3 anos?</p>
+                <label for="q8a1"><input type="radio" name="q8" id="q8a1" value="a"> a) R$ 10.000,00</label><br>
+                <label for="q8a2"><input type="radio" name="q8" id="q8a2" value="b"> b) R$ 10.310,00</label><br>
+                <label for="q8a3"><input type="radio" name="q8" id="q8a3" value="c"> c) R$ 10.300,00</label><br>
+                <label for="q8a4"><input type="radio" name="q8" id="q8a4" value="d"> d) R$ 11.000,00</label><br>
+                <label for="q8a5"><input type="radio" name="q8" id="q8a5" value="e"> e) R$ 10.030,00</label><br>
+            </li>
+
+            <!-- Questão 9 -->
+            <li>
+                <p>Um vendedor repassa seus produtos ao consumidor com lucro de 60% em relação ao preço de venda. Qual é a taxa de lucro do comerciante em relação ao preço de custo?</p>
+                <label for="q9a1"><input type="radio" name="q9" id="q9a1" value="a"> a) 120%</label><br>
+                <label for="q9a2"><input type="radio" name="q9" id="q9a2" value="b"> b) 90%</label><br>
+                <label for="q9a3"><input type="radio" name="q9" id="q9a3" value="c"> c) 150%</label><br>
+                <label for="q9a4"><input type="radio" name="q9" id="q9a4" value="d"> d) 80%</label><br>
+                <label for="q9a5"><input type="radio" name="q9" id="q9a5" value="e"> e) 115%</label><br>
+            </li>
+
+            <!-- Questão 10 -->
+            <li>
+                <p>Um capital foi aplicado a juro composto com taxa de 20% ao mês, durante 3 meses. Se no fim desse período o montante atingido foi de R$ 864,00, qual foi o capital aplicado?</p>
+                <label for="q10a1"><input type="radio" name="q10" id="q10a1" value="a"> a) R$ 510,00</label><br>
+                <label for="q10a2"><input type="radio" name="q10" id="q10a2" value="b"> b) R$ 505,00</label><br>
+                <label for="q10a3"><input type="radio" name="q10" id="q10a3" value="c"> c) R$ 500,00</label><br>
+                <label for="q10a4"><input type="radio" name="q10" id="q10a4" value="d"> d) R$ 600,00</label><br>
+                <label for="q10a5"><input type="radio" name="q10" id="q10a5" value="e"> e) R$ 650,00</label><br>
+            </li>
+        </ol>
+            <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
+        </div>
+        <script>
+            function corrigirExercicios() {
+                const respostasCorretas = ["e","a","b","c","d","a","b","a","c","c"];         
+    
+                 let acertos = 0;
+        let erros = 0;
+    
+        for (let i = 0; i < respostasCorretas.length; i++) {
+            const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+    
+            if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+                acertos++;
+            } else {
+                erros++;
+            }
+        }
+    
+        const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+        let corBarra = "";
+        if (indiceAcertos >= 70) {
+            corBarra = "green"; // Verde para bom desempenho
+        } else if (indiceAcertos >= 40) {
+            corBarra = "yellow"; // Amarelo para desempenho médio
+        } else {
+            corBarra = "red"; // Vermelho para baixo desempenho
+        }
+    
+        const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+        const progressBarWidth = `${indiceAcertos}%`;
+    
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+                <div class="message">${mensagem}</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        setTimeout(() => {
+            modal.style.display = 'block';
+        }, 100);
+    }
+    function fecharModal() {
+                const modal = document.querySelector(".modal");
+                modal.style.display = "none";
+                modal.remove();
+            }
+        </script> 
+</body>
+</html>

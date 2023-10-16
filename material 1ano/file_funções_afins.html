@@ -140,8 +140,6 @@
         }
 
     </style>
-    <!-- Adicionando a biblioteca Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -205,63 +203,9 @@
             Ao interpretar gráficos de funções afins, podemos entender a influência de 'm' e 'b' no comportamento da função. Um 'm' maior significa uma inclinação mais acentuada, indicando uma maior taxa de variação. O valor de 'b' determina a posição inicial da função, onde ela cruza o eixo vertical. Essa visualização é fundamental para a análise e interpretação de problemas do mundo real.
         </p>
         <p>
-            Vamos visualizar a função afim \(f(x) = -1.5x + 5\). Veja o gráfico correspondente abaixo:
+            Vamos visualizar a função afim \(f(x) = ax + b\). Veja o gráfico correspondente abaixo:
         </p>
-        <canvas id="grafico4" class="axis-lines"></canvas>
-
-        <script>
-            const canvas4 = document.getElementById('grafico4').getContext('2d');
-            const labels4 = [];
-            const data4 = {
-                labels: labels4,
-                datasets: [{
-                    label: 'Função Afim',
-                    data: [],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            };
-            const config4 = {
-                type: 'line',
-                data: data4,
-                options: {
-                    scales: {
-                        x: {
-                            type: 'linear',
-                            position: 'bottom',
-                            ticks: {
-                                color: 'gray' // Cor mais escura para os ticks do eixo x
-                            },
-                            grid: {
-                                color: 'gray' // Cor mais escura para as linhas do grid do eixo x
-                            }
-                        },
-                        y: {
-                            min: -10,
-                            max: 10,
-                            type: 'linear',
-                            position: 'left',
-                            ticks: {
-                                color: 'rgba(0, 0, 0, 1)' // Cor mais escura para os ticks do eixo y
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 1)' // Cor mais escura para as linhas do grid do eixo y
-                            }
-                        }
-                    }
-                }
-            };
-            const chart4 = new Chart(canvas4, config4);
-
-            // Adicionando dados à função afim
-            for (let i = -10; i <= 10; i++) {
-                labels4.push(i);
-                data4.datasets[0].data.push(-1.5 * i + 5);
-            }
-
-            chart4.update();
-        </script>
+        <iframe scrolling="no" title="Mova as barras vermelha (coeficiente angular) ou azul (coeficiente linear) para visualizar o comportamento da função f(x) = ax + b." src="https://www.geogebra.org/material/iframe/id/qxv2bkcn/width/700/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false" width="700px" height="500px" style="border:0px;"> </iframe>
     </div>
 
     </div>

@@ -113,13 +113,6 @@ function login () {
     alert(error_message)
   })
 }
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  .then(() => {
-    // A persistência de sessão foi ativada
-  })
-  .catch((error) => {
-    console.error('Erro ao configurar a persistência de sessão:', error);
-  });
 
 // Validate Functions
 function validate_email(email) {
