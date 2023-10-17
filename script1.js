@@ -48,6 +48,8 @@ var urlsMaterias = (urlsMaterias = [
     url: "material 1ano/file_funções_quadráticas.html",
   },
   { nome: "Sequências", url: "material 1ano/file_sequências.html" },
+  { nome:"Poliedros", url:"material 2ano/file_poliedros.html"},
+  { nome:"Matemática Financeira", url:"material 3ano/file_matemática_financeira.html"},
 ]);
 async function acionarPesquisa(event) {
   if (

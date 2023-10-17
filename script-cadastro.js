@@ -21,12 +21,12 @@ function register () {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!')
+    alert('Email ou Senha mal formatados!')
     return
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    alert('One or More Extra Fields is Outta Line!!')
+    alert('Preencha o campo "nome" com seu nome completo!')
     return
   }
  
@@ -79,7 +79,7 @@ function login () {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!')
+    alert('Email ou Senha mal formatados!')
     return
     // Don't continue running the code
   }

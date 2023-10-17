@@ -127,6 +127,13 @@
     #juros-compostos tr:nth-child(even) {
         background-color: #f9f9f9;
     }
+    .lista-secoes a{
+                text-decoration: none;
+                color: black;
+            }
+            .lista-secoes a:hover{
+                text-decoration: underline;
+            }
     </style>
     <!-- Adicionando a biblioteca Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -135,6 +142,16 @@
 </script>
 </head>
 <body>
+    <ul class="lista-secoes">
+        <li><a href="#historia-matematica-financeira">História da Matemática Financeira</a></li>
+        <li><a href="#taxa-percentual">Taxa Percentual</a></li>
+        <li><a href="#aplicacoes-taxa-percentual">Aplicações da Taxa Percentual</a></li>
+        <li><a href="#conceitos-financeiros">Conceitos Financeiros</a></li>
+        <li><a href="#juros-simples">Juros Simples</a></li>
+        <li><a href="#juros-compostos">Juros Compostos</a></li>
+        <li><a href="#amortizacao">Amortização</a></li>
+        <li><a href="#exercicios">Exercícios</a></li>
+    </ul>
     <section id="historia-matematica-financeira">
         <div class="explanation">
             <h2>História da Matemática Financeira</h2>
@@ -410,7 +427,7 @@
         </div>
     </div>
     </section>
-
+    <section id="amortizacao"></section>
     <div class="explanation">
         <h3>Amortização e Parcelas de Financiamento</h3>
         <p>
@@ -439,6 +456,7 @@
         </p>
     </div>
 </div>
+<section id="exercicios"></section>
     <div class="questions">
         <h2>Teste de Matemática Financeira</h2>
         <ol>

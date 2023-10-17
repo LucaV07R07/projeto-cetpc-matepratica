@@ -122,19 +122,32 @@
               listItem.setAttribute("id", materia);
 
               listItem.addEventListener("click", function () {
-                // Open a new window with a file or URL based on the id
-                var id = this.getAttribute("id");
-                var fileName =
-                  "material 1ano/file_" +
-                  id.toLowerCase().replace(/\s/g, "_") +
-                  ".html"; // Replace with your file name pattern
-                var newWindow = window.open(fileName, "_blank");
-                if (newWindow) {
-                  newWindow.focus();
-                } else {
-                  alert("Please allow pop-ups for this website.");
-                }
-              });
+  var id = this.getAttribute("id");
+  var fileName =
+    "material 1ano/file_" +
+    id.toLowerCase().replace(/\s/g, "_") +
+    ".html"; // Replace with your file name pattern
+
+  // Fazer uma requisição HEAD para verificar a existência do arquivo
+  fetch(fileName, { method: "HEAD" })
+    .then(function (response) {
+      if (response.ok) {
+        // Arquivo encontrado, abrir em uma nova janela
+        var newWindow = window.open(fileName, "_blank");
+        if (newWindow) {
+          newWindow.focus();
+        } else {
+          alert("Por favor, permita pop-ups para este site.");
+        }
+      } else {
+        // Arquivo não encontrado, exibe aviso
+        alert("Página não encontrada. Conteúdo em construção");
+      }
+    })
+    .catch(function (error) {
+      console.error("Erro ao verificar a existência do arquivo:", error);
+    });
+});
 
               listItem.setAttribute(
                 "style",
@@ -175,7 +188,7 @@
               "Funções trigonométricas",
               "Matrizes e determinantes",
               "Sistemas lineares",
-              "Superfícies poligonais, círculos e áreas",
+              "superfícies poligonais",
               "Introdução a geometria espacial",
               "Poliedros",
               "Corpos redondos",
@@ -198,19 +211,32 @@
               listItem.setAttribute("id", materia);
 
               listItem.addEventListener("click", function () {
-                // Open a new window with a file or URL based on the id
-                var id = this.getAttribute("id");
-                var fileName =
-                  "material 2ano/file_" +
-                  id.toLowerCase().replace(/\s/g, "_") +
-                  ".html"; // Replace with your file name pattern
-                var newWindow = window.open(fileName, "_blank");
-                if (newWindow) {
-                  newWindow.focus();
-                } else {
-                  alert("Please allow pop-ups for this website.");
-                }
-              });
+  var id = this.getAttribute("id");
+  var fileName =
+    "material 2ano/file_" +
+    id.toLowerCase().replace(/\s/g, "_") +
+    ".html"; // Replace with your file name pattern
+
+  // Fazer uma requisição HEAD para verificar a existência do arquivo
+  fetch(fileName, { method: "HEAD" })
+    .then(function (response) {
+      if (response.ok) {
+        // Arquivo encontrado, abrir em uma nova janela
+        var newWindow = window.open(fileName, "_blank");
+        if (newWindow) {
+          newWindow.focus();
+        } else {
+          alert("Por favor, permita pop-ups para este site.");
+        }
+      } else {
+        // Arquivo não encontrado, exibe aviso
+        alert("Página não encontrada. Conteúdo em construção");
+      }
+    })
+    .catch(function (error) {
+      console.error("Erro ao verificar a existência do arquivo:", error);
+    });
+});
 
               listItem.setAttribute(
                 "style",
@@ -271,19 +297,32 @@
               listItem.setAttribute("id", materia);
 
               listItem.addEventListener("click", function () {
-                // Open a new window with a file or URL based on the id
-                var id = this.getAttribute("id");
-                var fileName =
-                  "material 3ano/file_" +
-                  id.toLowerCase().replace(/\s/g, "_") +
-                  ".html"; // Replace with your file name pattern
-                var newWindow = window.open(fileName, "_blank");
-                if (newWindow) {
-                  newWindow.focus();
-                } else {
-                  alert("Please allow pop-ups for this website.");
-                }
-              });
+  var id = this.getAttribute("id");
+  var fileName =
+    "material 3ano/file_" +
+    id.toLowerCase().replace(/\s/g, "_") +
+    ".html"; // Replace with your file name pattern
+
+  // Fazer uma requisição HEAD para verificar a existência do arquivo
+  fetch(fileName, { method: "HEAD" })
+    .then(function (response) {
+      if (response.ok) {
+        // Arquivo encontrado, abrir em uma nova janela
+        var newWindow = window.open(fileName, "_blank");
+        if (newWindow) {
+          newWindow.focus();
+        } else {
+          alert("Por favor, permita pop-ups para este site.");
+        }
+      } else {
+        // Arquivo não encontrado, exibe aviso
+        alert("Página não encontrada. Conteúdo em construção");
+      }
+    })
+    .catch(function (error) {
+      console.error("Erro ao verificar a existência do arquivo:", error);
+    });
+});
 
               listItem.setAttribute(
                 "style",
