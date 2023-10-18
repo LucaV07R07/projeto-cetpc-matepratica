@@ -7,6 +7,7 @@
 
 body{
   margin:10px;
+  background-color: #bde3eb
 }
 
 a{
@@ -28,7 +29,7 @@ a.links{
 /* formatando o cabeçalho dos formulários */
 h1{
   font-size: 48px;
-  color: #066a75;
+  color: #444444;
   padding: 10px 0;
   font-family: Arial,sans-serif;
   font-weight: bold;
@@ -52,7 +53,7 @@ p:first-child{
   margin: 0px;
 }
 label{
-  color: #405c60;
+  color: #444444;
   position: relative;
 }
 
@@ -91,12 +92,12 @@ input:not([type="checkbox"]){
 button{
   width: 100%!important;
   cursor: pointer;  
-  background: #04C3EB;
+  background: #31d1f1;
   ;
   padding: 8px 5px;
   color: #fff;
   font-size: 20px;  
-  border: 1px solid #fff; 
+  border: 1px solid #0394b1; 
   margin-bottom: 10px;  
   text-shadow: 0 1px 1px #333;
   
@@ -112,26 +113,26 @@ input[type="submit"]:hover{
 /*marcando os links para mudar de um formulário para outro */
 .link{
   position: absolute;
-  background: #e1eaeb;
-  color: #7f7c7c;
+  background: #444444;
+  color: #fff;
   left: 0px;
   height: 20px;
   width: 440px;
   padding: 17px 30px 20px 30px;
   font-size: 16px;
   text-align: right;
-  border-top: 1px solid #dbe5e8;
+  border-top: 1px solid #444444;
 
   -webkit-border-radius: 0 0  5px 5px;
   border-radius: 0 0  5px 5px;
 }
 .link a {
   font-weight: bold;
-  background: #f7f8f1;
+  background: #444444;
   padding: 6px;
-  color: #04C3EB;
+  color: #05839c;
   margin-left: 10px;
-  border: 1px solid #04C3EB;
+  border: 1px solid #05839c;
 
   -webkit-border-radius: 4px;
   border-radius: 4px;  
@@ -140,9 +141,8 @@ input[type="submit"]:hover{
   transition: all 0.4s  linear;
 }
 .link a:hover {
-  color: #05839c;
-  background: #f7f7f7;
-  border: 1px solid #05839c;
+  color: #32ddff;
+  border: 1px solid #32ddff;
 }
 
 /* estilos para para ambos os formulários */
@@ -153,7 +153,7 @@ input[type="submit"]:hover{
   width: 88%; 
   padding: 18px 6% 60px 6%;
   margin: 0 0 35px 0;
-  background:  #c5e6ec;
+  background:  #04C3EB;
   border: 1px solid rgba(147, 184, 189,0.8);
   
   -webkit-box-shadow: 5px;
