@@ -124,8 +124,18 @@ body {
     fill: #333;
 }
 .nome-do-usuario{
-    margin-right: 60px;
+    margin-left: 25%;
     color: #2c738f;
+}
+.bt-sair{
+    margin-right: 2.5%;
+    color: white;
+    opacity: 0.9;
+    background-color: #444444;
+    border: none;
+}
+.bt-sair:hover{
+cursor: pointer;
 }
 .sidebar {
     z-index: 9;
