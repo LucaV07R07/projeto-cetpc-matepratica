@@ -37,7 +37,10 @@ LinkMateria2.addEventListener("click", function (event) {
   linkInicio.style.backgroundColor = "";
 });
 function trataTexto(text) {
-  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
 }
 var urlsMaterias = (urlsMaterias = [
   { nome: "Conjuntos", url: "material 1ano/file_conjuntos.html" },
@@ -48,8 +51,11 @@ var urlsMaterias = (urlsMaterias = [
     url: "material 1ano/file_funções_quadráticas.html",
   },
   { nome: "Sequências", url: "material 1ano/file_sequências.html" },
-  { nome:"Poliedros", url:"material 2ano/file_poliedros.html"},
-  { nome:"Matemática Financeira", url:"material 3ano/file_matemática_financeira.html"},
+  { nome: "Poliedros", url: "material 2ano/file_poliedros.html" },
+  {
+    nome: "Matemática Financeira",
+    url: "material 3ano/file_matemática_financeira.html",
+  },
 ]);
 async function acionarPesquisa(event) {
   if (
@@ -233,7 +239,3 @@ function updateButton3Style() {
     ? "linear-gradient(to bottom, #00acee, #0be6e6) padding-box, linear-gradient(to bottom, #00acee, #0be6e6) border-box"
     : "";
 }
-
-   
-   
-  
