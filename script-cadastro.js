@@ -1,30 +1,15 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyBjuMluOorfnvb11HFJuLp-AYXQTID7kvQ",
-  authDomain: "matepratica-4d1fd.firebaseapp.com",
-  databaseURL: "https://matepratica-4d1fd-default-rtdb.firebaseio.com",
-  projectId: "matepratica-4d1fd",
-  storageBucket: "matepratica-4d1fd.appspot.com",
-  messagingSenderId: "304848171845",
-  appId: "1:304848171845:web:2ef58cda6335907d0a042c",
-  measurementId: "G-1KRZMT2DCR",
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const database = firebase.database();
 
 window.addEventListener("popstate", function () {
   history.forward();
   this.history.forward();
 });
 //Se o usuario existir e estiver logado
-firebase.auth().onAuthStateChanged(function (user) {
+auth.onAuthStateChanged(function (user) {
   if (user && window.location.pathname !== "/matepratica-site.html") {
     window.location.href = "matepratica-site.html";
   }
 });
-firebase.auth().onAuthStateChanged(function (user) {
+auth.onAuthStateChanged(function (user) {
   if (!user && window.location.pathname !== "/cadastro.html") {
     window.location.href = "cadastro.html";
   }
@@ -51,10 +36,8 @@ async function register() {
     }
 
     // Move on with Auth
-    await auth.createUserWithEmailAndPassword(email, password);
-
-    // Declare user variable
-    var user = auth.currentUser;
+    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+    const user = userCredential.user; // Obtém o usuário criado
 
     // Add this user to Firebase Database
     var database_ref = database.ref();
@@ -67,7 +50,7 @@ async function register() {
     };
 
     // Push to Firebase Database
-    await database_ref.child("users/" + user.uid).set(user_data);
+    database_ref.child("users/" + user.uid).set(user_data);
 
     // Done
     alert("User Created!!");
@@ -88,7 +71,6 @@ async function register() {
     alert(error_message);
   }
 }
-
 // Set up our login function
 async function login() {
   try {
@@ -105,8 +87,9 @@ async function login() {
       return; // Don't continue running the code
     }
 
-    await auth.signInWithEmailAndPassword(email, password);
-    var user = auth.currentUser;
+    // Sign in the user
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
 
     // Add this user to Firebase Database
     var database_ref = database.ref();
@@ -117,7 +100,7 @@ async function login() {
     };
 
     // Push to Firebase Database
-    await database_ref.child("users/" + user.uid).update(user_data);
+    database_ref.child("users/" + user.uid).update(user_data);
 
     // Done
     alert("Usuário logado!");
@@ -150,7 +133,7 @@ function validate_field(field) {
 
 async function logout() {
   try {
-    await auth.signOut(); // Realiza o logout de forma assíncrona
+    auth.signOut(); // Realiza o logout de forma assíncrona
     window.location.replace("cadastro.html"); // Redireciona para a página de cadastro após o logout
   } catch (error) {
     alert("Erro ao tentar fazer logout");
@@ -158,17 +141,24 @@ async function logout() {
   }
 }
 
-var user = auth.currentUser;
-
 async function getUserName(user) {
   if (!user) return "Usuário sem identificação"; // Retorna se o usuário não estiver logado
   const uid = user.uid;
   const usersRef = database.ref("users");
   const userRef = usersRef.child(uid);
   try {
-    const snapshot = await userRef.child("full_name").get();
-    const displayName = snapshot.val();
-    return displayName || "Usuário sem identificação"; // Retorna o nome do usuário ou uma mensagem padrão se não houver nome
+    const snapshot = await userRef.child("full_name").get(); // Note o await aqui
+
+    let displayName = snapshot.val();
+    if (displayName) {
+      // Verifica se o nome tem mais de 20 caracteres e o abrevia se necessário
+      if (displayName.length > 20) {
+        displayName = displayName.substring(0, 20)+"...";
+      }
+    } else {
+      displayName = "Usuário sem identificação"; // Define o nome padrão se não houver nome
+    }
+    return displayName;
   } catch (error) {
     console.error("Erro ao obter o nome do usuário:", error);
     return "Erro ao carregar informações do usuário"; // Retorna uma mensagem de erro em caso de falha
@@ -176,12 +166,11 @@ async function getUserName(user) {
 }
 
 // Função para atualizar a div com o nome do usuário
-async function updateUserInfo() {
+async function updateUserInfo(user) {
   const userInfoDiv = document.getElementById("div-nome-usuario");
   if (!userInfoDiv) return; // Retorna se a div não existir
 
   try {
-    const user = auth.currentUser;
     if (user) {
       userInfoDiv.style.display = "block"; // Exibe a div de informações do usuário
       const displayName = await getUserName(user); // Obtém o nome do usuário assincronamente

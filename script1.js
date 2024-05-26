@@ -1,10 +1,12 @@
 var linkInicio = document.getElementById("link-inicio");
 var linkMateria = document.getElementById("link-materiais");
 var LinkMateria2 = document.getElementById("link-materiais2");
+var linkDesempenho = document.getElementById("link-desempenho");
 var conteudoInicio = document.getElementById("conteudo-inicio");
 var conteudoMaterialDidatico = document.getElementById(
   "conteudo-material-didatico"
 );
+var conteudoDesempenho = document.getElementById("conteudo-desempenho");
 var barraPesquisa = document.querySelector("#txtbusca");
 var botaoPesquisa = document.querySelector("#search-button");
 var conteudoResultadoPesquisa = document.getElementById(
@@ -15,8 +17,10 @@ linkInicio.addEventListener("click", function (event) {
   conteudoInicio.style.display = "flex";
   conteudoMaterialDidatico.style.display = "none";
   conteudoResultadoPesquisa.style.display = "none";
+  conteudoDesempenho.style.display = "none";
   linkInicio.style.backgroundColor = "#c4c4c4";
   linkMateria.style.backgroundColor = "";
+  linkDesempenho.style.backgroundColor = "";
 });
 
 linkMateria.addEventListener("click", function (event) {
@@ -24,8 +28,10 @@ linkMateria.addEventListener("click", function (event) {
   conteudoInicio.style.display = "none";
   conteudoMaterialDidatico.style.display = "block";
   conteudoResultadoPesquisa.style.display = "none";
+  conteudoDesempenho.style.display = "none";
   linkMateria.style.backgroundColor = "#c4c4c4";
   linkInicio.style.backgroundColor = "";
+  linkDesempenho.style.backgroundColor = "";
 });
 
 LinkMateria2.addEventListener("click", function (event) {
@@ -33,9 +39,21 @@ LinkMateria2.addEventListener("click", function (event) {
   conteudoInicio.style.display = "none";
   conteudoMaterialDidatico.style.display = "block";
   conteudoResultadoPesquisa.style.display = "none";
+  conteudoDesempenho.style.display = "none";
   linkMateria.style.backgroundColor = "#c4c4c4";
   linkInicio.style.backgroundColor = "";
+  linkDesempenho.style.backgroundColor = "";
 });
+linkDesempenho.addEventListener("click", function(event){
+  event.preventDefault();
+  conteudoInicio.style.display = "none";
+  conteudoMaterialDidatico.style.display = "none";
+  conteudoResultadoPesquisa.style.display = "none";
+  conteudoDesempenho.style.display = "block";
+  linkInicio.style.backgroundColor = "";
+  linkMateria.style.backgroundColor = "";
+  linkDesempenho.style.backgroundColor = "#c4c4c4";
+})
 function trataTexto(text) {
   return text
     .normalize("NFD")
