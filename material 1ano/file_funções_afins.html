@@ -397,7 +397,7 @@ const resultados = {
     indiceAcertos: indiceAcertos.toFixed(2),
     timestamp: new Date().toISOString()
 };
-database.ref('results/'+userId+'/1ano'+'/teste-funcao-afim').push(resultados);
+database.ref('results/'+userId+'/1ano'+'/t-funcoesAfins').push(resultados);
 } else {
 console.log("Usuário não autenticado");
 }

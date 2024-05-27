@@ -312,6 +312,7 @@ body {
   height: 300px;
 }
 .conteudo-desempenho-usuario{ 
+  background-color: #F5F5F5;
   z-index: 7;
   position: relative;
   display: none;
@@ -324,6 +325,48 @@ body {
   top: 75px;
   height: 100vh;
   width: 100vw;
+}
+.desempenho-anos{
+  display: block;
+    color: black;
+    width: auto;
+    height: auto;
+    margin: -3px 0 0 0;
+    padding: 5px 0 100px 10px;
+    background-color: #F5F5F5;
+}
+.desempenho-anos button{
+  background-color: #08D5E8;
+  border: none;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 5px;
+}
+.desempenho-anos button:hover{
+  cursor: pointer;
+}
+select {
+  padding: 8px 12px; /* Espaçamento interno */
+  border: 1px solid #ccc; /* Borda */
+  border-radius: 5px; /* Borda arredondada */
+  background-color: white; /* Cor de fundo */
+  font-size: 16px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+}
+
+/* Estilo para as opções dentro da caixa select */
+select option {
+  padding: 8px 12px; /* Espaçamento interno */
+}
+
+/* Estilo para quando a caixa select está em foco */
+select:focus {
+  outline: none; /* Remove o contorno de foco */
+  border-color: #08D5E8; /* Muda a cor da borda quando em foco */
+}
+.notas-usuarios{
+  background-color: white;
+  margin: -50px 50px 50px 50px;
 }
 .resultados-pesquisa {
   z-index: 8;

@@ -9,7 +9,6 @@
     />
 
     <link rel="stylesheet" href="style-matepratica.css" />
-
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -406,13 +405,40 @@
         </div>
       </div>
     </div>
-    <div class="conteudo-desempenho-usuario" id="conteudo-desempenho"></div>
+    <div class="conteudo-desempenho-usuario" id="conteudo-desempenho">
+      <div class="desempenho-anos">
+      <label for="ano-select">Selecione o Ano:</label>
+      <select id="ano-select">
+        <option value="nenhum"></option>
+        <option value="1ano">1º Ano</option>
+        <option value="2ano">2º Ano</option>
+        <option value="3ano">3º Ano</option>
+      </select>
+    
+      <label for="materia-select" id="materia-select-label" class="hidden">Selecione a Matéria:</label>
+      <select id="materia-select" class="hidden">
+        <!-- trecho gerado por script -->
+      </select>
+    
+      <button id="verificar-desempenho">Verificar Desempenho</button>
+    </div>
+    <div class="notas-usuarios" id="notas-usuario">
+      <div>Escolha um ano, uma materia e clique em "Verificar Desempenho" para verificar seu desempenho</div>
+    </div>
+    <div style="width: 600px; height: 600px;">
+    <canvas id="grafico-distribuicao"></canvas>
+  </div>
+    </div>
+    <script src="verifica-ano.js"></script>
     <div class="resultados-pesquisa" id="id-resultado-pesquisa"></div>
     <script src="script1.js"></script>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="firebase_init.js"></script>
   <script defer src="script-cadastro.js"></script>
+  <script defer src="desempenho_user.js"></script>
 </html>

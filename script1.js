@@ -84,6 +84,7 @@ async function acionarPesquisa(event) {
     conteudoInicio.style.display = "none";
     conteudoMaterialDidatico.style.display = "none";
     conteudoResultadoPesquisa.style.display = "block";
+    conteudoDesempenho.style.display = "none";
     conteudoResultadoPesquisa.innerHTML = ""; // Limpa o conteúdo anterior
     var pesquisa = trataTexto(barraPesquisa.value.toLowerCase());
 

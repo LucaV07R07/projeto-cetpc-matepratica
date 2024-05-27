@@ -624,7 +624,7 @@
                 indiceAcertos: indiceAcertos.toFixed(2),
                 timestamp: new Date().toISOString()
             };
-            database.ref('results/'+userId+'/3ano'+'/teste-matematica-financeira').push(resultados);
+            database.ref('results/'+userId+'/3ano'+'/t-matematicaFinanceira').push(resultados);
         } else {
             console.log("Usuário não autenticado");
         }

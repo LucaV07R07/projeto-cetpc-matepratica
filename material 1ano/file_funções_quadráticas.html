@@ -515,7 +515,7 @@
                 indiceAcertos: indiceAcertos.toFixed(2),
                 timestamp: new Date().toISOString()
             };
-            database.ref('results/'+userId+'/1ano'+'/teste-funcao-quadratica').push(resultados);
+            database.ref('results/'+userId+'/1ano'+'/t-funcoesQuadraticas').push(resultados);
         } else {
             console.log("Usuário não autenticado");
         }
