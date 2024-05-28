@@ -3,18 +3,11 @@ window.addEventListener("popstate", function () {
   history.forward();
   this.history.forward();
 });
-//Se o usuario existir e estiver logado
-auth.onAuthStateChanged(function (user) {
-  if (user && window.location.pathname !== "/matepratica-site.html") {
-    window.location.href = "matepratica-site.html";
-  }
-});
 auth.onAuthStateChanged(function (user) {
   if (!user && window.location.pathname !== "/cadastro.html") {
     window.location.href = "cadastro.html";
   }
 });
-
 async function register() {
   try {
     // Get all our input fields
@@ -35,9 +28,10 @@ async function register() {
       return;
     }
 
-    // Move on with Auth
-    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-    const user = userCredential.user; // Obtém o usuário criado
+    // Create the user in Firebase Authentication
+    await auth.createUserWithEmailAndPassword(email, password);
+    var user = auth.currentUser;
+
 
     // Add this user to Firebase Database
     var database_ref = database.ref();
@@ -65,12 +59,14 @@ async function register() {
     var titulo = document.querySelector("h1");
     titulo.innerText =
       "Você está cadastrado! Faça login e entre no Mateprática!";
+
   } catch (error) {
     // Firebase will use this to alert of its errors
     var error_message = error.message;
     alert(error_message);
   }
 }
+
 // Set up our login function
 async function login() {
   try {
