@@ -1,8 +1,3 @@
-
-window.addEventListener("popstate", function () {
-  history.forward();
-  this.history.forward();
-});
 auth.onAuthStateChanged(function (user) {
   if (!user && window.location.pathname !== "/cadastro.html") {
     window.location.href = "cadastro.html";
