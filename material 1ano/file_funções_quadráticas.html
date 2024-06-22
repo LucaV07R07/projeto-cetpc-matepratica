@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Funções Quadráticas - História, Conceitos e Gráficos</title>
+    <title>1&ordm; Ano - Funções Quadráticas - História, Conceitos e Gráficos</title>
     <style>
          body {
                 font-family: Arial, sans-serif;
@@ -442,64 +442,90 @@
         </ol>
             <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
         </div>
-        <script>
-            function corrigirExercicios() {
-                const respostasCorretas = ["f(x) = ax^2 + bx + c",
-                "f(3) = -7",
-                "0.5",
-                "x = -5",
-                "3",
-                "Vértice: (4, 1)",
-                "f(3) = 0",
-                "0.3",
-                "0",
-                "f(2) = 1"];         
-    
-                 let acertos = 0;
-        let erros = 0;
-    
-        for (let i = 0; i < respostasCorretas.length; i++) {
-            const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
-    
-            if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
-                acertos++;
-            } else {
-                erros++;
-            }
-        }
-    
-        const indiceAcertos = (acertos / respostasCorretas.length) * 100;
-        let corBarra = "";
-        if (indiceAcertos >= 70) {
-            corBarra = "green"; // Verde para bom desempenho
-        } else if (indiceAcertos >= 40) {
-            corBarra = "yellow"; // Amarelo para desempenho médio
-        } else {
-            corBarra = "red"; // Vermelho para baixo desempenho
-        }
-    
-        const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
-        const progressBarWidth = `${indiceAcertos}%`;
-    
-        const modal = document.createElement("div");
-        modal.classList.add("modal");
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close" onclick="fecharModal()">&times;</span>
-                <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
-                <div class="message">${mensagem}</div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        setTimeout(() => {
-            modal.style.display = 'block';
-        }, 100);
-    }
-    function fecharModal() {
-                const modal = document.querySelector(".modal");
-                modal.style.display = "none";
-                modal.remove();
-            }
-        </script> 
+       
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="../firebase_init.js"></script> 
+<script defer src="../guard-material.js"></script>
+<script>
+   function corrigirExercicios() {
+
+    const respostasCorretas = [
+        "f(x) = ax^2 + bx + c",
+        "f(3) = -7",
+        "0.5",
+        "x = -5",
+        "3",
+        "Vértice: (4, 1)",
+        "f(3) = 0",
+        "0.3",
+        "0",
+        "f(2) = 1"
+    ];         
+
+    let acertos = 0;
+    let erros = 0;
+
+    for (let i = 0; i < respostasCorretas.length; i++) {
+        const respostaUsuario = document.querySelector(`input[name="q${i + 1}"]:checked`);
+
+        if (respostaUsuario && respostaUsuario.value.trim() === respostasCorretas[i]) {
+            acertos++;
+        } else {
+            erros++;
+        }
+    }
+
+    const indiceAcertos = (acertos / respostasCorretas.length) * 100;
+    let corBarra = "";
+    if (indiceAcertos >= 70) {
+        corBarra = "green"; // Verde para bom desempenho
+    } else if (indiceAcertos >= 40) {
+        corBarra = "yellow"; // Amarelo para desempenho médio
+    } else {
+        corBarra = "red"; // Vermelho para baixo desempenho
+    }
+
+    const mensagem = `Acertos: ${acertos}\nErros: ${erros}\nÍndice de Acertos: ${indiceAcertos.toFixed(2)}%`;
+    const progressBarWidth = `${indiceAcertos}%`;
+
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="progress-bar" style="background-color: ${corBarra}; width: ${progressBarWidth}"></div>
+            <div class="message">${mensagem}</div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    setTimeout(() => {
+        modal.style.display = 'block';
+    }, 100);
+
+    // Salvar os resultados no Firebase
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            const userId = user.uid;
+            const resultados = {
+                acertos: acertos,
+                erros: erros,
+                indiceAcertos: indiceAcertos.toFixed(2),
+                timestamp: new Date().toISOString()
+            };
+            database.ref('results/'+userId+'/1ano'+'/t-funcoesQuadraticas').push(resultados);
+        } else {
+            console.log("Usuário não autenticado");
+        }
+    });
+}
+
+function fecharModal() {
+    const modal = document.querySelector(".modal");
+    modal.style.display = "none";
+    modal.remove();
+}
+ </script>  
 </html>

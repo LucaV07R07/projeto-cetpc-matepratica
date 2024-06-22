@@ -1,80 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-cadastro.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-cadastro.css" />
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css"
+    />
     <title>Criar Conta</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <a class="links" id="paracadastro"></a>
-        <a class="links" id="paralogin"></a>
-        
-        <div class="content">      
-          <!-- FORMULÁRIO DE LOGIN -->
-          <div id="login">
-            <form method="post" action=""> 
-              <h1>Login</h1> 
-              <p> 
-                <label for="email_login">Seu e-mail</label>
-                <input id="email_login" name="email" required="required" type="text" placeholder="email"/>
-              </p>
-              
-              <p> 
-                <label for="senha_login">Sua senha</label>
-                <input id="password_login" name="password" required="required" type="password" placeholder="senha" /> 
-              </p>
-                  
-              <p> 
-                <button type="button" onclick="login()">Login</button>
-              </p>
-              
-              <p class="link">
-                Ainda não tem conta?
-                <a href="#paracadastro">Cadastre-se</a>
-              </p>
-            </form>
-          </div>
-    
-          <!-- FORMULÁRIO DE CADASTRO -->
-          <div id="cadastro">
-            <form method="post" action=""> 
-              <h1>Cadastro</h1> 
-              
-              <p> 
-                <label for="nome_cad">Seu nome</label>
-                <input id="full_name" name="full_name" required="required" type="text" placeholder="nome" />
-              </p>
-              
-              <p> 
-                <label for="email_cad">Seu e-mail</label>
-                <input id="email_cad" name="email" required="required" type="email" placeholder="email"/> 
-              </p>
-              
-              <p> 
-                <label for="senha_cad">Sua senha</label>
-                <input id="password_cad" name="password" required="required" type="password" placeholder="senha"/>
-              </p>
-              
-              <p> 
-                <button type="button" id="button-cadastrar" onclick="register()">Cadastrar</button>
-              </p>
-              
-              <p class="link">  
-                Já tem conta?
-                <a href="#paralogin">Ir para Login</a>
-              </p>
-            </form>
-          </div>
+      <a class="links" id="paracadastro"></a>
+      <a class="links" id="paralogin"></a>
+
+      <div class="content">
+        <!-- FORMULÁRIO DE LOGIN -->
+        <div id="login">
+          <form method="post" action="">
+            <h1>Login</h1>
+            <p>
+              <label for="email_login">Seu e-mail</label>
+              <input
+                id="email_login"
+                name="email"
+                required="required"
+                type="text"
+                placeholder="email"
+              />
+            </p>
+
+            <p>
+              <label for="senha_login">Sua senha</label>
+              <input
+                id="password_login"
+                name="password"
+                required="required"
+                type="password"
+                placeholder="senha"
+              />
+            </p>
+
+            <p>
+              <button type="button" onclick="login()">Login</button>
+            </p>
+
+            <p class="link">
+              Ainda não tem conta?
+              <a href="#paracadastro">Cadastre-se</a>
+            </p>
+          </form>
+        </div>
+
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div id="cadastro">
+          <form method="post" action="">
+            <h1>Cadastro</h1>
+
+            <p>
+              <label for="nome_cad">Seu nome</label>
+              <input
+                id="full_name"
+                name="full_name"
+                required="required"
+                type="text"
+                placeholder="nome"
+              />
+            </p>
+
+            <p>
+              <label for="email_cad">Seu e-mail</label>
+              <input
+                id="email_cad"
+                name="email"
+                required="required"
+                type="email"
+                placeholder="email"
+              />
+            </p>
+
+            <p>
+              <label for="senha_cad">Sua senha</label>
+              <input
+                id="password_cad"
+                name="password"
+                required="required"
+                type="password"
+                placeholder="senha"
+              />
+            </p>
+
+            <p>
+              <button type="button" id="button-cadastrar" onclick="register()">
+                Cadastrar
+              </button>
+            </p>
+
+            <p class="link">
+              Já tem conta?
+              <a href="#paralogin">Ir para Login</a>
+            </p>
+          </form>
         </div>
       </div>
-    
-</body>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-<script src="script-cadastro.js"></script>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="firebase_init.js"></script>
+  <script src="script-cadastro.js"></script>
 </html>

@@ -1,88 +1,86 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #444444;
-    color: white;
-  }
-  h1{
-    color: #04C3EB;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background-color: #04C3EB;
-    position:fixed;
-    width: 100vw;
-  }
-  
-  .logo img {
-    height: 40px;
-  }
-  
-  .banner {
-    text-align: center;
-    padding: 100px 20px;
-    background-size: cover;
-    color: white;
-  }
-  
-  .banner h1 {
-    font-size: 36px;
-  }
-  
-  .banner p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .start-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #444444;
-    color: #444444;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .start-button:hover {
-    background-color: #04C3EB;
-  }
-  
-  .features {
-    padding: 20px;
-  }
-  
-  .features h2 {
-    color: #04C3EB;
-  }
-  
-  .features .feature {
-    margin-bottom: 20px;
-  }
-  
-  .login-section {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .login-button {
-    padding: 15px 30px;
-    background-color: #04C3EB;
-    color: #444444;
-    border-color: #04C3EB;
-    border-width: 3px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-    margin-bottom:100px ;
-  }
-  
-  .login-button:hover {
-    border-color: #444444;
-  }
-  
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #444444;
+  color: white;
+}
+h1 {
+  color: #04c3eb;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #04c3eb;
+  position: fixed;
+  width: 100vw;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.banner {
+  text-align: center;
+  padding: 100px 20px;
+  background-size: cover;
+  color: white;
+}
+
+.banner h1 {
+  font-size: 36px;
+}
+
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #444444;
+  color: #444444;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.start-button:hover {
+  background-color: #04c3eb;
+}
+
+.features {
+  padding: 20px;
+}
+
+.features h2 {
+  color: #04c3eb;
+}
+
+.features .feature {
+  margin-bottom: 20px;
+}
+
+.login-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.login-button {
+  padding: 15px 30px;
+  background-color: #04c3eb;
+  color: #444444;
+  border-color: #04c3eb;
+  border-width: 3px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: 100px;
+}
+
+.login-button:hover {
+  border-color: #444444;
+}

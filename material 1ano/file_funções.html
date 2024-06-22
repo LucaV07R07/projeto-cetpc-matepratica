@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Funções - História, Conceitos e Gráficos</title>
+    <title>1&ordm; Ano - Funções - História, Conceitos e Gráficos</title>
     <style>
          body {
                 font-family: Arial, sans-serif;
@@ -329,18 +329,28 @@
         </ol>
         <button class="btn-correct" onclick="corrigirExercicios()">Corrigir Quiz</button>
     </div>
-    <script>
-        function corrigirExercicios() {
-            const respostasCorretas = ["Uma regra ou correspondência entre dois conjuntos onde cada elemento do domínio é associado a um único elemento no contradomínio.",
+    
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="../firebase_init.js"></script> 
+<script defer src="../guard-material.js"></script>
+  <script>
+  function corrigirExercicios() {
+
+    const respostasCorretas = [
+    "Uma regra ou correspondência entre dois conjuntos onde cada elemento do domínio é associado a um único elemento no contradomínio.",
              "O conjunto de todos os valores de entrada para os quais a função é definida.",
               "O conjunto de todos os valores de saída que a função pode produzir.",
               "É a aplicação de uma função após a aplicação de outra função.",
               "Soma de Funções",
             "16",
              "1",
-             "27"];         
+             "27" 
+    ];         
 
-             let acertos = 0;
+    let acertos = 0;
     let erros = 0;
 
     for (let i = 0; i < respostasCorretas.length; i++) {
@@ -379,12 +389,28 @@
     setTimeout(() => {
         modal.style.display = 'block';
     }, 100);
-}
-function fecharModal() {
-            const modal = document.querySelector(".modal");
-            modal.style.display = "none";
-            modal.remove();
+
+    // Salvar os resultados no Firebase
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            const userId = user.uid;
+            const resultados = {
+                acertos: acertos,
+                erros: erros,
+                indiceAcertos: indiceAcertos.toFixed(2),
+                timestamp: new Date().toISOString()
+            };
+            database.ref('results/'+userId+'/1ano'+'/t-funcoes').push(resultados);
+        } else {
+            console.log("Usuário não autenticado");
         }
-    </script> 
-</body>
+    });
+}
+
+function fecharModal() {
+    const modal = document.querySelector(".modal");
+    modal.style.display = "none";
+    modal.remove();
+}
+ </script> 
 </html>
